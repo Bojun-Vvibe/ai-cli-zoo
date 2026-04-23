@@ -1,0 +1,79 @@
+# CHOOSING.md — pick a CLI in 60 seconds
+
+This is a decision tree, not a leaderboard. Start at the top and walk down.
+
+## 1. Where does the model live?
+
+- **Cloud-only is fine** → continue to step 2.
+- **Must run locally / air-gapped** → [`aider`](clis/aider/) (Ollama),
+  [`gptme`](clis/gptme/) (Ollama, llama.cpp), or
+  [`continue`](clis/continue/) (any OpenAI-compatible local endpoint).
+  Skip the rest of this tree.
+
+## 2. Where do you live?
+
+- **Terminal, full-screen TUI** → [`opencode`](clis/opencode/),
+  [`crush`](clis/crush/), [`codex`](clis/codex/),
+  [`OpenHands`](clis/openhands/) (CLI mode).
+- **Terminal, REPL-style** → [`aider`](clis/aider/), [`gptme`](clis/gptme/),
+  [`mentat`](clis/mentat/), [`plandex`](clis/plandex/).
+- **Inside an IDE** → [`cline`](clis/cline/) (VS Code),
+  [`continue`](clis/continue/) (VS Code + JetBrains).
+- **GitHub-issue → PR, no local UI** → [`sweep`](clis/sweep/).
+- **Greenfield "build me an app from a paragraph"** →
+  [`smol-developer`](clis/smol-developer/).
+
+## 3. How much agency do you want to give the model?
+
+```
+low  ◄────────────────────────────────────────────────────────►  high
+aider     mentat     continue     opencode     codex     OpenHands     sweep
+(diff       (diff      (suggest)   (tool-call    (sandboxed   (full Linux   (writes
+ preview,    preview)               with         exec,         sandbox,      to your
+ you `y/n`)                        approval)    auto-loop)    long runs)    main branch)
+```
+
+- **"Show me the diff before any write"** → `aider`, `mentat`.
+- **"Approve each tool call"** → `cline`, `opencode` (default).
+- **"Run a sandbox, just don't break my host"** → `codex`, `OpenHands`.
+- **"Open a PR, I'll review on GitHub"** → `sweep`.
+
+## 4. Do you need MCP (Model Context Protocol) servers?
+
+- **Yes, must consume MCP servers** → `opencode`, `codex`, `cline`,
+  `OpenHands`, `crush`, `continue`. All ship MCP clients.
+- **No, prefer the CLI to bring its own tools** → `aider` (built-in repo-map),
+  `gptme` (built-in shell/python/browser), `plandex` (built-in plan engine).
+
+## 5. Multi-file, multi-step plans?
+
+- **Single edit at a time** → `aider`, `mentat`, `cline`.
+- **Multi-step plan with branches** → [`plandex`](clis/plandex/).
+- **Long-horizon agent loop with sub-agents** → [`opencode`](clis/opencode/)
+  (Task tool), [`OpenHands`](clis/openhands/) (multi-agent).
+
+## 6. Team / org constraints
+
+- **Telemetry must be off by default** → all entries marked "Off" in the
+  matrix: `opencode`, `aider`, `cline`, `crush`, `continue`, `mentat`,
+  `gptme`, `smol-developer`.
+- **Permissive license required (no AGPL)** → avoid `plandex` (AGPL core).
+  Prefer Apache-2.0 / MIT entries.
+- **Air-gapped CI** → `aider` + Ollama, or `continue` headless mode pointed
+  at a local vLLM.
+
+## TL;DR cheat-sheet
+
+| Situation | Pick |
+|-----------|------|
+| First-time user, want a clean TUI | `opencode` |
+| Want a single binary, no Python | `crush` or `codex` |
+| Already live in VS Code | `cline` |
+| Editing a large existing repo, git-native | `aider` |
+| Need a sandboxed agent that can run shell | `codex` or `OpenHands` |
+| Building a new project from scratch | `smol-developer`, then switch |
+| Triaging a backlog of GitHub issues | `sweep` |
+| Want plans, not just edits | `plandex` |
+| Want a Python REPL with an LLM in it | `gptme` |
+| Multi-tool config in one YAML | `continue` |
+| Diff-first conservative edits | `mentat` or `aider` |
