@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **12 AI coding CLIs**. Each entry
+A curated, deeply-annotated catalog comparing **14 AI coding CLIs**. Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
@@ -32,6 +32,8 @@ the right tool for the job in under five minutes.
 | [gptme](clis/gptme/) | Python | MIT | Many via litellm + local | No (tool-based shell) | No | Off | Shell + Python + browser tools in one REPL |
 | [smol-developer](clis/smol-developer/) | Python | MIT | OpenAI | No | No | Off | "One prompt → whole repo" greenfield generator |
 | [sweep](clis/sweep/) | Python | Apache-2.0 | OpenAI, Anthropic | No | Issue → PR pipeline | Opt-in | GitHub-issue-driven auto-PRs |
+| [goose](clis/goose/) | Rust | Apache-2.0 | Anthropic, OpenAI, Gemini, local, Bedrock, Vertex | Yes (client + server, all built-ins are MCP) | Recipe-based composition; subagent extension spawns child process | Opt-in | Everything-is-an-MCP-extension architecture |
+| [gemini-cli](clis/gemini-cli/) | TS (Node) | Apache-2.0 | Gemini 2.x / 1.5 (OAuth, AI Studio, Vertex) | Yes (client) | Single agent, parallel tool calls | Opt-in (free tier opts into training) | 1M+ token context with aggressive prefix caching |
 
 > **Caveat.** Licenses, model lists, and feature flags drift. Each subdirectory
 > README pins a "as of" date — treat it as a snapshot, not a contract.
