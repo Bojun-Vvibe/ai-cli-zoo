@@ -14,9 +14,11 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
 
 - **Terminal, full-screen TUI** → [`opencode`](clis/opencode/),
   [`crush`](clis/crush/), [`codex`](clis/codex/),
+  [`claude-code`](clis/claude-code/), [`gemini-cli`](clis/gemini-cli/),
   [`OpenHands`](clis/openhands/) (CLI mode).
 - **Terminal, REPL-style** → [`aider`](clis/aider/), [`gptme`](clis/gptme/),
   [`mentat`](clis/mentat/), [`plandex`](clis/plandex/).
+- **Unix pipe primitive (no session, no UI)** → [`mods`](clis/mods/).
 - **Inside an IDE** → [`cline`](clis/cline/) (VS Code),
   [`continue`](clis/continue/) (VS Code + JetBrains).
 - **GitHub-issue → PR, no local UI** → [`sweep`](clis/sweep/).
@@ -50,14 +52,18 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
 - **Single edit at a time** → `aider`, `mentat`, `cline`.
 - **Multi-step plan with branches** → [`plandex`](clis/plandex/).
 - **Long-horizon agent loop with sub-agents** → [`opencode`](clis/opencode/)
-  (Task tool), [`OpenHands`](clis/openhands/) (multi-agent).
+  (Task tool), [`claude-code`](clis/claude-code/) (Task tool, hooks, skills),
+  [`OpenHands`](clis/openhands/) (multi-agent).
+- **No plan, just transform stdin** → [`mods`](clis/mods/).
 
 ## 6. Team / org constraints
 
 - **Telemetry must be off by default** → all entries marked "Off" in the
   matrix: `opencode`, `aider`, `cline`, `crush`, `continue`, `mentat`,
-  `gptme`, `smol-developer`.
+  `gptme`, `smol-developer`, `mods` (no telemetry at all).
 - **Permissive license required (no AGPL)** → avoid `plandex` (AGPL core).
+  **Source-available, not OSI-approved** → `claude-code` is excluded if
+  you require an OSI license.
   Prefer Apache-2.0 / MIT entries.
 - **Air-gapped CI** → `aider` + Ollama, or `continue` headless mode pointed
   at a local vLLM.
@@ -77,3 +83,6 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
 | Want a Python REPL with an LLM in it | `gptme` |
 | Multi-tool config in one YAML | `continue` |
 | Diff-first conservative edits | `mentat` or `aider` |
+| Need hooks + sub-agents on Claude | `claude-code` |
+| Want a max-context model with caching | `gemini-cli` |
+| LLM as a unix utility, no agent loop | `mods` |
