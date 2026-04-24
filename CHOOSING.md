@@ -170,6 +170,20 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
   socket mount makes it root-equivalent on the host — pick
   [`OpenHands`](clis/openhands/) instead for the same shape with
   active maintenance.
+- **"Run agent-generated code in a *hosted* Firecracker microVM that
+  cold-starts in ~150 ms, scales to many concurrent sandboxes, and is
+  built to be driven from `smolagents` / `crewai` / `langgraph` / your
+  own framework"** → [`e2b`](clis/e2b/). The CLI manages auth, sandbox
+  templates, and the lifecycle; the SDK (Python or TS) is what your
+  agent actually calls. Pick this over [`container-use`](clis/container-use/)
+  when you need cloud-scale, sub-second cold starts, and you are happy
+  with hosted infra (or willing to self-host `e2b-dev/infra`); pick
+  `container-use` instead when you want everything on your laptop with
+  `git`-branch-per-agent semantics. Pick this over [`codel`](clis/codel/)
+  when you need *many* concurrent sandboxes rather than one bundled
+  all-in-one runtime. Skip it if you only want a single coding-CLI on
+  your local machine — none of E2B's value materialises until you have
+  an agent that programmatically spawns sandboxes.
 - **"Agent loop with hard per-task budget caps in steps + tokens +
   USD"** → [`chatgpt-cli`](clis/chatgpt-cli/) `--agent`. ReAct or
   Plan/Execute, workdir sandbox enforced at the tool layer, allowlist
@@ -188,6 +202,18 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
 - **Yes, want to *expose* a context-packing tool to an MCP-aware
   agent** → [`repomix`](clis/repomix/) (`repomix --mcp` exposes
   `pack_codebase`, `pack_remote_repository`, etc. over stdio).
+- **Yes, want to *expose* IDE-grade symbolic edit tools (LSP-backed
+  rename / find-references / replace-symbol-body) to an MCP-aware
+  agent** → [`serena`](clis/serena/). `serena start-mcp-server`
+  publishes `find_symbol`, `find_referencing_symbols`,
+  `replace_symbol_body`, `insert_after_symbol`, etc. backed by real
+  language servers (Pyright, gopls, rust-analyzer, JDT, omnisharp,
+  clangd, …). Pick this when your MCP-capable agent
+  ([`opencode`](clis/opencode/), [`codex`](clis/codex/),
+  [`claude-code`](clis/claude-code/), [`crush`](clis/crush/),
+  Cursor, Cline) is wasting tokens reading whole files to perform
+  what should be one-symbol edits, especially on large polyglot
+  monorepos.
 - **No, prefer the CLI to bring its own tools** → `aider` (built-in repo-map),
   `gptme` (built-in shell/python/browser), `plandex` (built-in plan engine).
 
@@ -369,6 +395,18 @@ models themselves. Compose with shell pipes
   when you want the **web-mirror symmetry** for non-CLI
   teammates; pick `repomix` when you need Tree-sitter compression
   or Secretlint secret-scanning that gitingest does not have.
+- **Don't *pack* — *find* the relevant files first by semantic
+  query, then pack only those** → [`seagoat`](clis/seagoat/).
+  Local-first daemon (sentence-transformers + ChromaDB) plus a `gt`
+  CLI that fuses semantic + literal + regex hits in one ranking.
+  `gt "function that retries with exponential backoff" | head -20`
+  gives you a file:line shortlist you can then feed into
+  `files-to-prompt` / `repomix` / `aider`'s `/add` so you do not
+  pack the whole repo when you only need three files. Pick this
+  over the packers above when your problem is *finding* the right
+  files, not packing them once you know which they are; skip it if
+  `rg` is already fast enough on your repo, or if you need
+  cloud-embedded multi-repo code search.
 
 Decision shortcut:
 
@@ -521,9 +559,12 @@ in the first place.
   per invocation), `kubectl-ai` (no analytics; egress = Kubernetes
   API + LLM provider + any MCP servers you mount), `holmesgpt`
   (off in OSS codebase; egress = LLM provider + configured toolsets
-  + opt-in write-backs), `harbor` (no analytics in CLI or App;
+  + opt-in write-backs),   `harbor` (no analytics in CLI or App;
   egress = Docker image pulls + the active backend's model
-  registry).
+  registry), `serena` (no analytics; egress = locally-spawned
+  LSP processes + the connected MCP client; optional dashboard
+  binds `127.0.0.1` only), `seagoat` (no analytics; daemon binds
+  locally, embedding is local, queries hit `127.0.0.1`).
 - **Permissive license required (no AGPL, no GPL)** → avoid `plandex`
   (AGPL core), `open-interpreter` (AGPL-3.0), `khoj` (AGPL-3.0),
   `patchwork` (AGPL-3.0), `tenere` (GPL-3.0), and
@@ -621,3 +662,6 @@ in the first place.
 | Multi-candidate (`-g`-style) **shell-command picker** that switches between OpenAI / Azure / Groq / Ollama / Mistral with one env var (`SHAI_API_PROVIDER`), with an opt-in `CTX=true` mode that pipes recent shell output into the prompt for follow-up disambiguation | [`shell-ai`](clis/shell-ai/) |
 | **Single static Rust binary** for the `prepare-commit-msg` git-hook niche, with **per-file diff summarisation** so a 30-file commit becomes 30 small prompts + one rollup instead of one giant prompt that truncates | [`gptcommit`](clis/gptcommit/) |
 | Iterate on **prompts as code** with automatic local-SQLite versioning + autogenerated commit messages per `@ell.simple` decorated function, plus a local web UI (`ell-studio`) with a side-by-side diff viewer for every version of every "language model program" you have ever called | [`ell`](clis/ell/) |
+| Expose **IDE-grade symbolic edit tools** (LSP-backed rename / find-references / replace-symbol-body) as MCP tools to your existing MCP-capable coding agent ([`opencode`](clis/opencode/) / [`codex`](clis/codex/) / [`claude-code`](clis/claude-code/) / [`crush`](clis/crush/) / Cursor / Cline), so it stops doing line-number text surgery on large polyglot monorepos | [`serena`](clis/serena/) |
+| **Find the right files first by semantic + literal + regex fusion** (local sentence-transformers index, no cloud upload of source) before handing them to a packer or an agent — `gt "where do we round numbers"` is the workflow | [`seagoat`](clis/seagoat/) |
+| **Hosted Firecracker microVM sandbox per LLM-tool-call** for agents you build in `smolagents` / `crewai` / `langgraph` / your own framework — ~150 ms cold start, many concurrent sandboxes, none of the docker-socket-mount footguns of laptop runners | [`e2b`](clis/e2b/) |
