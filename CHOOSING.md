@@ -36,13 +36,25 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   [`claude-code`](clis/claude-code/), [`gemini-cli`](clis/gemini-cli/),
   [`OpenHands`](clis/openhands/) (CLI mode).
 - **Terminal, REPL-style** → [`aider`](clis/aider/), [`gptme`](clis/gptme/),
-  [`mentat`](clis/mentat/), [`plandex`](clis/plandex/).
+  [`mentat`](clis/mentat/), [`plandex`](clis/plandex/), or
+  [`gpt-cli`](clis/gpt-cli/) if you want **named persona presets**
+  (`gpt rust`, `gpt bash`, `gpt <your-name>`) defined in one
+  `~/.config/gpt-cli/gpt.yml` — each preset bundles model +
+  temperature + system prompt + predefined opening turns, plus
+  first-class `--thinking N` for Claude extended-thinking, and a
+  per-turn USD cost counter computed locally. No agent loop, no file
+  edits — pure chat.
 - **Terminal, multi-provider chat TUI with persistent searchable
   history (no agency, no tools)** → [`elia`](clis/elia/) — keyboard-
   driven Textual TUI, SQLite history with `/`-search, `Ctrl-J` to
   switch model mid-conversation. Pick this over [`oterm`](clis/oterm/)
   if you need cloud providers (OpenAI / Anthropic / Gemini / Groq),
-  not just Ollama.
+  not just Ollama. Pick [`parllama`](clis/parllama/) instead if you
+  want the same multi-provider chat **plus a full Ollama
+  model-management console in the same TUI** — pull / delete / copy /
+  Modelfile-build / GGUF-quantize without leaving the keyboard, with
+  Fabric-pattern import and a persistent memory store as bonus
+  screens.
 - **Unix pipe primitive (no session, no UI)** → [`mods`](clis/mods/),
   or [`smartcat`](clis/smartcat/) (`sc`) if you want **named
   system prompts in a config file** swappable with one flag
@@ -106,6 +118,17 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
 ```
 
 - **"Show me the diff before any write"** → `aider`, `mentat`.
+- **"Skip the diff preview, write the files now, let `git diff` be
+  the review surface"** → [`promptr`](clis/promptr/). Reads a
+  LiquidJS-templated prompt file plus a list of source paths from
+  the command line, sends one OpenAI Chat Completions request, and
+  **overwrites those files in place** with the model's response. No
+  approval gate, no agent loop, no plan — built for Makefile / CI /
+  git-hook use where the safety net is already `git`. Pick this
+  over [`aider`](clis/aider/) when the workflow is "this prompt +
+  this file list → done, in one shell command"; switch back to
+  `aider` the moment you want to chat about the change before it
+  lands.
 - **"The failing test is the halting condition"** →
   [`micro-agent`](clis/micro-agent/). Bounds the agent to one file
   and rewrites it until `npm test` (or whatever `-t` is) passes,
@@ -374,7 +397,12 @@ in the first place.
   `pull` and your own clients on `:11434`), `llm-cmd` (inherits
   `llm`'s no-telemetry posture; logs locally to SQLite),
   `gitingest` (CLI does not phone home; remote fetches go directly
-  to GitHub).
+  to GitHub), `parllama` (no analytics; egress is your Ollama daemon
+  plus the active provider plus `registry.ollama.ai` on `pull`),
+  `gpt-cli` (no analytics; per-turn USD cost computed locally;
+  `--log_file` writes JSONL to local disk only), `promptr` (no
+  analytics; egress is exactly one OpenAI Chat Completions request
+  per invocation).
 - **Permissive license required (no AGPL, no GPL)** → avoid `plandex`
   (AGPL core), `open-interpreter` (AGPL-3.0), `khoj` (AGPL-3.0), and
   `tgpt` (GPL-3.0).
@@ -443,3 +471,6 @@ in the first place.
 | Hand a non-technical user (or an air-gapped machine) one file that boots a local LLM with no install — same byte-for-byte executable on macOS / Linux / Windows / *BSD, x86-64 and arm64, weights included | [`llamafile`](clis/llamafile/) |
 | Point an existing OpenAI-SDK app at one local server that serves chat **and** embeddings **and** Whisper transcription **and** image generation **and** TTS **and** reranking under the same `/v1/...` routes | [`localai`](clis/localai/) |
 | Run one PR-review / `/describe` / `/improve` / `/ask` bot across more than one SCM (GitHub + GitLab + Bitbucket + Azure DevOps + Gitea + Gerrit) from one `.pr_agent.toml` | [`pr-agent`](clis/pr-agent/) |
+| Multi-screen Textual TUI whose *Models* screen doubles as a full Ollama registry console (pull / delete / copy / Modelfile-build / GGUF-quantize) plus chat tabs against any local or cloud provider | [`parllama`](clis/parllama/) |
+| Named persona presets (`gpt rust`, `gpt bash`, `gpt <your-name>`) defined in one YAML, with first-class Claude `--thinking N` and a per-turn USD cost counter — pure chat REPL, no agent loop | [`gpt-cli`](clis/gpt-cli/) |
+| Templated prompt files in the repo + a file list on the command line; the model overwrites those files in place with `git diff` as the only review surface — built for Makefile / CI / git-hook use, not chat | [`promptr`](clis/promptr/) |
