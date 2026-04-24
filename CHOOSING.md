@@ -9,7 +9,10 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   [`gptme`](clis/gptme/) (Ollama, llama.cpp), or
   [`continue`](clis/continue/) (any OpenAI-compatible local endpoint),
   or [`oterm`](clis/oterm/) for an Ollama-only multi-tab TUI with no
-  cloud surface at all.
+  cloud surface at all, or [`khoj`](clis/khoj/) for a long-lived
+  local daemon that indexes a personal notes / PDF / code corpus and
+  answers chat queries with citations (`--anonymous-mode
+  --offline-chat` for a fully offline pipeline).
   Skip the rest of this tree.
 
 ## 2. Where do you live?
@@ -20,6 +23,12 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   [`OpenHands`](clis/openhands/) (CLI mode).
 - **Terminal, REPL-style** → [`aider`](clis/aider/), [`gptme`](clis/gptme/),
   [`mentat`](clis/mentat/), [`plandex`](clis/plandex/).
+- **Terminal, multi-provider chat TUI with persistent searchable
+  history (no agency, no tools)** → [`elia`](clis/elia/) — keyboard-
+  driven Textual TUI, SQLite history with `/`-search, `Ctrl-J` to
+  switch model mid-conversation. Pick this over [`oterm`](clis/oterm/)
+  if you need cloud providers (OpenAI / Anthropic / Gemini / Groq),
+  not just Ollama.
 - **Unix pipe primitive (no session, no UI)** → [`mods`](clis/mods/),
   or [`llm`](clis/llm/) if you also want every prompt logged to SQLite
   for later replay, or [`shell-gpt`](clis/shell-gpt/) if you want the
@@ -88,7 +97,11 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
   of prompt patterns to apply to that stdin (`pbpaste | fabric -p
   extract_wisdom`).
 - **Chat with a folder of documents from a terminal** →
-  [`aichat`](clis/aichat/) (built-in RAG, single binary).
+  [`aichat`](clis/aichat/) (built-in RAG, single binary, session-
+  scoped index — best for ad-hoc "ask this folder once"), or
+  [`khoj`](clis/khoj/) (long-lived daemon, persistent incremental
+  index, citations back to source — best when the corpus is your
+  ongoing notes vault / PDF library that you query repeatedly).
 
 ## 5b. Single-purpose workflow glue
 
@@ -192,9 +205,12 @@ docs. For those, run a converter first.
   `repomix` (no analytics; only egress is the optional `--remote` git
   clone), `chatblade`, `promptfoo` (eval cache local; `share` is
   opt-in), `marker` (no network unless `--use_llm` configured),
-  `gptscript`.
+  `gptscript`, `shell-genie` (no analytics; `feedback` writes locally
+  only), `elia` (no telemetry; history stays in local SQLite),
+  `khoj` (off when run with `--anonymous-mode`).
 - **Permissive license required (no AGPL, no GPL)** → avoid `plandex`
-  (AGPL core), `open-interpreter` (AGPL-3.0), and `tgpt` (GPL-3.0).
+  (AGPL core), `open-interpreter` (AGPL-3.0), `khoj` (AGPL-3.0), and
+  `tgpt` (GPL-3.0).
   **Source-available, not OSI-approved** → `claude-code` is excluded if
   you require an OSI license.
   Prefer Apache-2.0 / MIT entries.
@@ -225,6 +241,7 @@ docs. For those, run a converter first.
 | Want chat + RAG over local docs from one binary | [`aichat`](clis/aichat/) |
 | Want the LLM to write and *run* code in a REPL on your real machine | [`open-interpreter`](clis/open-interpreter/) |
 | Forget shell flags, want `Ctrl-L` to generate the command inline | [`shell-gpt`](clis/shell-gpt/) (single answer) or [`gorilla-cli`](clis/gorilla-cli/) (multi-candidate picker; default endpoint logs prompts) |
+| Want the simplest possible "natural language → one shell command → y/n" with shell-aware prompt templates and no flags to learn | [`shell-genie`](clis/shell-genie/) |
 | Want an LLM in a fresh terminal with no API key, right now | [`tgpt`](clis/tgpt/) |
 | Want a team-shared, version-controlled prompt-pattern library | [`fabric`](clis/fabric/) |
 | Want to pack a whole subtree as deterministic context for any LLM CLI | [`files-to-prompt`](clis/files-to-prompt/) |
@@ -239,3 +256,5 @@ docs. For those, run a converter first.
 | Convert a PDF / EPUB / DOCX into Markdown that preserves tables and equations | [`marker`](clis/marker/) |
 | Ship a runnable, version-controlled `.gpt` agent script alongside your code | [`gptscript`](clis/gptscript/) |
 | Regression-test a prompt across providers and fail CI when quality / cost / latency budget breaks | [`promptfoo`](clis/promptfoo/) |
+| Multi-provider terminal chat TUI with persistent SQLite history and `/`-search across past conversations | [`elia`](clis/elia/) |
+| Long-lived local daemon that indexes your notes / PDF / code corpus and answers chat queries with citations, fully offline-capable | [`khoj`](clis/khoj/) |

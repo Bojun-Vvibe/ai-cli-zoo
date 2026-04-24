@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **36 AI coding CLIs**. Each entry
+A curated, deeply-annotated catalog comparing **39 AI coding CLIs**. Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
@@ -56,6 +56,9 @@ the right tool for the job in under five minutes.
 | [promptfoo](clis/promptfoo/) | TS (Node) | MIT | OpenAI, Anthropic, Gemini, Bedrock, Ollama, Replicate, HuggingFace, custom HTTP / Python | No (custom-provider hook instead) | None — eval harness, not an agent | Off (eval cache local; `share` opt-in) | Cartesian-product prompt eval: `prompts × providers × tests` with assertions (`contains`, `is-json`, `latency`, `cost`, `llm-rubric`, `javascript`/`python`), HTML diff viewer, optional red-team mode |
 | [marker](clis/marker/) | Python | GPL/commercial-dual | None for core (layout/OCR/table local models); optional `--use_llm` finishing pass via OpenAI / Anthropic / Gemini / Ollama | No | None — converter, not an agent | Off (network only if `--use_llm` configured) | PDF / EPUB / DOCX → clean Markdown with preserved tables, LaTeX equations, and image refs; the missing front-end for every other CLI in this catalog |
 | [gptscript](clis/gptscript/) | Go | Apache-2.0 | OpenAI, Anthropic, Azure, any OpenAI-compatible | Yes (client; tools can be MCP servers, OpenAPI specs, or other `.gpt` files) | Sub-tools: scripts call other scripts as tools | Off | `.gpt` files: English instruction body + declared tools / args / output schema, runnable and composable like shell scripts |
+| [shell-genie](clis/shell-genie/) | Python | MIT | OpenAI built-in; hosted free `free-genie` endpoint; any OpenAI-compatible endpoint via `OPENAI_API_BASE` | No | None — one HTTP call per ask | Off (no analytics; `feedback` writes locally only) | Aggressively minimal natural-language → one shell command → y/n; ships shell-aware prompt templates for bash / zsh / fish / PowerShell |
+| [elia](clis/elia/) | Python | Apache-2.0 | OpenAI, Anthropic, Gemini, Groq, Ollama, any OpenAI-compatible (declared in `config.toml`) | No | None — linear chat threads | Off (no telemetry; history stays in local SQLite) | Multi-provider Textual chat TUI with persistent SQLite history, `/`-search across past conversations, and `Ctrl-J` mid-conversation model switching |
+| [khoj](clis/khoj/) | Python | AGPL-3.0 | Embed: local sentence-transformers or OpenAI; Chat: local llama.cpp/Ollama, OpenAI, Anthropic, Gemini, any OpenAI-compatible | No (HTTP API only) | User-facing personas, not autonomous sub-agents | Off with `--anonymous-mode`; opt-in account telemetry otherwise | Long-lived local daemon that incrementally indexes a personal corpus (notes, PDFs, code) and answers chat queries with citations, fully offline-capable |
 
 > **Caveat.** Licenses, model lists, and feature flags drift. Each subdirectory
 > README pins a "as of" date — treat it as a snapshot, not a contract.
