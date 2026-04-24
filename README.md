@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **30 AI coding CLIs**. Each entry
+A curated, deeply-annotated catalog comparing **33 AI coding CLIs**. Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
@@ -50,6 +50,9 @@ the right tool for the job in under five minutes.
 | [opencommit](clis/opencommit/) | TS (Node) | MIT | OpenAI, Anthropic, Azure, Gemini, Groq, Mistral, Ollama, any OpenAI-compatible | No | None — one LLM call per commit | Off (no analytics) | `prepare-commit-msg` git-hook integration: `git commit` opens `$EDITOR` with a Conventional-Commits-shaped message pre-filled from the staged diff |
 | [aicommits](clis/aicommits/) | TS (Node) | MIT | OpenAI built-in; any OpenAI-compatible endpoint via `OPENAI_API_BASE` (Ollama, vLLM, LiteLLM, Groq, OpenRouter) | No | None — one diff → N suggestions | Off (no telemetry) | `-g N` multi-suggestion picker: arrow-key choose between N candidate commit messages instead of edit-or-confirm a single one |
 | [aiac](clis/aiac/) | Go | Apache-2.0 | OpenAI, Azure, Anthropic, Bedrock, Ollama, any OpenAI-compatible | No | None — chat mode is single-thread | Off (no analytics) | IaC-shaped post-processing: emits clean Terraform / Pulumi / K8s / Dockerfile / GitHub Actions artifacts ready to `fmt && validate`, no markdown fences or prose |
+| [symbex](clis/symbex/) | Python | Apache-2.0 | None — emits Python source for downstream LLM CLI | No | None — AST extractor, not a model client | Off (no network) | AST-correct surgical symbol extractor: `symbex 'MyClass.*'` prints exactly the matching Python methods, an order-of-magnitude smaller context than file-level packers |
+| [repomix](clis/repomix/) | TS (Node) | MIT | None — emits text; tokenizes with `tiktoken` | Yes (server: `repomix --mcp`) | None — one-shot pack | Off (no analytics) | Remote-fetch + Tree-sitter compression + Secretlint secret-scan + per-directory token counts in one packer; `repomix --remote owner/repo --compress` works without cloning |
+| [chatblade](clis/chatblade/) | Python | MIT | OpenAI built-in; any OpenAI-compatible endpoint via `OPENAI_API_BASE` (Ollama, vLLM, LM Studio, LiteLLM, OpenRouter, Azure) | No | None — one round-trip per call | Off (no analytics) | Inline structured-output extraction: `chatblade -e '.commands[0]' -j "..."` makes the model reply as JSON and pulls out a sub-path in one command, plus plain-text named sessions you can `git diff` |
 
 > **Caveat.** Licenses, model lists, and feature flags drift. Each subdirectory
 > README pins a "as of" date — treat it as a snapshot, not a contract.

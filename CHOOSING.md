@@ -27,9 +27,17 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   [`tgpt`](clis/tgpt/) if you want zero-config no-API-key operation,
   or [`fabric`](clis/fabric/) if you want to apply a curated
   prompt-pattern library to whatever you pipe in, or
+  [`chatblade`](clis/chatblade/) if you want the model to reply as
+  JSON/YAML and extract a sub-path in the same call (`chatblade -e
+  '.commands[0]' -j "..."`), or
   [`files-to-prompt`](clis/files-to-prompt/) if you need to **pack a
   whole subtree** as deterministic context to pipe *into* one of the
-  above (`files-to-prompt src/ --cxml | llm -m claude-sonnet '...'`).
+  above (`files-to-prompt src/ --cxml | llm -m claude-sonnet '...'`),
+  or [`symbex`](clis/symbex/) if you only need **specific Python
+  symbols** instead of whole files (`symbex 'MyClass.*' | llm
+  '...'`), or [`repomix`](clis/repomix/) if you want a **whole-repo
+  pack with token counts, secret-scan, and optional remote fetch**
+  (`repomix --remote owner/repo --compress`).
 - **Multi-turn REPL where the model writes and runs code** →
   [`open-interpreter`](clis/open-interpreter/) (any language, real
   machine, no sandbox), [`gptme`](clis/gptme/) (sandboxed-ish via
@@ -60,6 +68,9 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
 
 - **Yes, must consume MCP servers** → `opencode`, `codex`, `cline`,
   `OpenHands`, `crush`, `continue`. All ship MCP clients.
+- **Yes, want to *expose* a context-packing tool to an MCP-aware
+  agent** → [`repomix`](clis/repomix/) (`repomix --mcp` exposes
+  `pack_codebase`, `pack_remote_repository`, etc. over stdio).
 - **No, prefer the CLI to bring its own tools** → `aider` (built-in repo-map),
   `gptme` (built-in shell/python/browser), `plandex` (built-in plan engine).
 
@@ -98,13 +109,41 @@ agent. These are install-once-and-forget tools.
   greenfield scaffolding; for editing an existing IaC repo, switch
   to `aider` or `claude-code`.
 
+## 5c. Context-packing pipeline (LLM-input shaping)
+
+These produce text *for* a downstream LLM CLI; they do not call
+models themselves. Compose with shell pipes
+(`<packer> | <llm-cli> '<question>'`).
+
+- **Pack a directory tree, language-agnostic, deterministic, no
+  network** → [`files-to-prompt`](clis/files-to-prompt/) (Python,
+  honors `.gitignore`, emits Anthropic-XML / markdown / line-numbered
+  shapes).
+- **Pack a *Python* codebase down to specific symbols, not whole
+  files** → [`symbex`](clis/symbex/) (AST-correct,
+  `symbex 'MyClass.*'`, ~10× smaller context than file-level
+  packers, Python-only).
+- **Pack a *whole repo* with token counts, secret-scan, optional
+  Tree-sitter compression, and the ability to fetch a remote repo
+  you do not have cloned** → [`repomix`](clis/repomix/) (Node, MIT,
+  `--mcp` server mode for MCP-aware agents).
+
+Decision shortcut:
+
+- "Just give me one Python function": `symbex`.
+- "A few selected files, glob-controlled, no Node": `files-to-prompt`.
+- "The whole repo, with budget visibility and a safety net":
+  `repomix`.
+
 ## 6. Team / org constraints
 
 - **Telemetry must be off by default** → all entries marked "Off" in the
   matrix: `opencode`, `aider`, `cline`, `crush`, `continue`, `mentat`,
   `gptme`, `smol-developer`, `mods` (no telemetry at all), `forge`,
   `tgpt` (no telemetry; note that free providers see prompts), `fabric`,
-  `opencommit`, `aicommits`, `aiac`.
+  `opencommit`, `aicommits`, `aiac`, `symbex` (no network at all),
+  `repomix` (no analytics; only egress is the optional `--remote` git
+  clone), `chatblade`.
 - **Permissive license required (no AGPL, no GPL)** → avoid `plandex`
   (AGPL core), `open-interpreter` (AGPL-3.0), and `tgpt` (GPL-3.0).
   **Source-available, not OSI-approved** → `claude-code` is excluded if
@@ -145,3 +184,6 @@ agent. These are install-once-and-forget tools.
 | Auto-fill commit messages via a git hook, no new command in your workflow | [`opencommit`](clis/opencommit/) |
 | Pick from 3 candidate commit messages with arrow keys instead of editing one | [`aicommits`](clis/aicommits/) |
 | Scaffold a fresh Terraform / K8s / Dockerfile from a one-line description | [`aiac`](clis/aiac/) |
+| Pack a Python codebase down to *specific symbols* instead of whole files | [`symbex`](clis/symbex/) |
+| Pack a whole repo (or a remote repo you have not cloned) with token counts, secret-scan, and optional compression | [`repomix`](clis/repomix/) |
+| Make the model reply as JSON/YAML and extract a sub-path in one shell command | [`chatblade`](clis/chatblade/) |
