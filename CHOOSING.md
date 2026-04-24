@@ -182,6 +182,28 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
   (Task tool), [`claude-code`](clis/claude-code/) (Task tool, hooks, skills),
   [`OpenHands`](clis/openhands/) (multi-agent), [`forge`](clis/forge/)
   (YAML workflows with per-step model routing).
+- **Role-based team of cooperating agents (planner / researcher / coder /
+  reviewer talking to each other)** → [`crewai`](clis/crewai/) — `Process="hierarchical"`
+  puts a manager LLM over worker agents, per-agent `llm=` lets each role
+  run on a different model (cheap planner, premium coder), and the CLI
+  has real `crewai test --n_iterations N` / `crewai train` verbs for
+  regressing and tuning crew quality. Pick this over `forge` when the
+  shape is "five distinct *roles*" rather than "linear pipeline of steps".
+- **Typed-Python agent framework with retries-on-validation-failure and a
+  CLI you can chat the same agent from** → [`pydantic-ai`](clis/pydantic-ai/)
+  — tools are typed Python, output is a Pydantic model, validation errors
+  feed back into the loop, and `clai --agent module:var` chats with the
+  *same* `Agent` your service runs (no drift between terminal and prod).
+  Also publishes any agent as an MCP server via `Agent.to_mcp_server()`.
+- **Code-as-action agent (model writes Python, sandbox executes it, loops
+  on the output) as a framework + thin CLI** →
+  [`smolagents`](clis/smolagents/) — `CodeAgent` emits `results =
+  web_search(...); summary = llm(results[:3])` instead of structured
+  tool-call JSON, cutting tokens and latency on multi-step tasks. Pick
+  the E2B / Docker / Wasm sandbox before running anything you can't
+  afford to lose; the local-Python default is fast and unsandboxed. For
+  the *interactive REPL* version of the same idea, prefer
+  [`open-interpreter`](clis/open-interpreter/).
 - **No plan, just transform stdin** → [`mods`](clis/mods/), or
   [`llm`](clis/llm/) if you also want a queryable history of every call,
   or [`fabric`](clis/fabric/) if you want a versioned, shared library
