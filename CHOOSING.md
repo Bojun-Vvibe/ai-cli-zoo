@@ -440,3 +440,6 @@ in the first place.
 | Local LLM runtime: `brew install ollama && ollama run llama3.1` in five minutes, then OpenAI-compatible HTTP at `:11434` for the rest of the catalog to point at | [`ollama`](clis/ollama/) |
 | Suggestion lands in your *readline buffer* (no TUI dialog, no menu) so your shell's normal line editor handles edit-then-Enter — for users already on [`llm`](clis/llm/) | [`llm-cmd`](clis/llm-cmd/) |
 | Pack a remote GitHub repo without cloning, with a hosted web mirror so non-CLI teammates can grab the same digest by URL-renaming `hub` → `ingest` | [`gitingest`](clis/gitingest/) |
+| Hand a non-technical user (or an air-gapped machine) one file that boots a local LLM with no install — same byte-for-byte executable on macOS / Linux / Windows / *BSD, x86-64 and arm64, weights included | [`llamafile`](clis/llamafile/) |
+| Point an existing OpenAI-SDK app at one local server that serves chat **and** embeddings **and** Whisper transcription **and** image generation **and** TTS **and** reranking under the same `/v1/...` routes | [`localai`](clis/localai/) |
+| Run one PR-review / `/describe` / `/improve` / `/ask` bot across more than one SCM (GitHub + GitLab + Bitbucket + Azure DevOps + Gitea + Gerrit) from one `.pr_agent.toml` | [`pr-agent`](clis/pr-agent/) |
