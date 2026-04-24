@@ -9,7 +9,14 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   [`gptme`](clis/gptme/) (Ollama, llama.cpp), or
   [`continue`](clis/continue/) (any OpenAI-compatible local endpoint),
   or [`oterm`](clis/oterm/) for an Ollama-only multi-tab TUI with no
-  cloud surface at all, or [`khoj`](clis/khoj/) for a long-lived
+  cloud surface at all, or [`tlm`](clis/tlm/) for a single Go binary
+  that delivers the natural-language → shell-command loop against a
+  local Ollama with zero cloud egress, or
+  [`ramalama`](clis/ramalama/) if you want the *runtime* layer
+  (container-native local model server with hardware-aware image
+  selection) that the other CLIs in this list can target via its
+  OpenAI-compatible HTTP endpoint, or [`khoj`](clis/khoj/) for a
+  long-lived
   local daemon that indexes a personal notes / PDF / code corpus and
   answers chat queries with citations (`--anonymous-mode
   --offline-chat` for a fully offline pipeline), or
@@ -33,6 +40,10 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   if you need cloud providers (OpenAI / Anthropic / Gemini / Groq),
   not just Ollama.
 - **Unix pipe primitive (no session, no UI)** → [`mods`](clis/mods/),
+  or [`smartcat`](clis/smartcat/) (`sc`) if you want **named
+  system prompts in a config file** swappable with one flag
+  (`sc -p commit < diff.txt`) plus first-class glob input
+  (`sc -g 'src/**/*.rs' "..."`),
   or [`llm`](clis/llm/) if you also want every prompt logged to SQLite
   for later replay, or [`shell-gpt`](clis/shell-gpt/) if you want the
   output to default to a *shell command* you can execute inline, or
@@ -286,7 +297,10 @@ in the first place.
   enabled), `txtai` (no analytics; fully offline by default),
   `k8sgpt` (no analytics; LLM egress only when `--explain` set),
   `ttok` (one-time vocab download, then offline), `strip-tags`
-  (no network at all).
+  (no network at all), `tlm` (no telemetry; only egress is your
+  local Ollama endpoint), `smartcat` (no telemetry; conversation
+  file local), `ramalama` (no telemetry; container/model pulls
+  visible to the OCI/Hugging Face/Ollama upstreams).
 - **Permissive license required (no AGPL, no GPL)** → avoid `plandex`
   (AGPL core), `open-interpreter` (AGPL-3.0), `khoj` (AGPL-3.0), and
   `tgpt` (GPL-3.0).
@@ -320,6 +334,7 @@ in the first place.
 | Want chat + RAG over local docs from one binary | [`aichat`](clis/aichat/) |
 | Want the LLM to write and *run* code in a REPL on your real machine | [`open-interpreter`](clis/open-interpreter/) |
 | Forget shell flags, want `Ctrl-L` to generate the command inline | [`shell-gpt`](clis/shell-gpt/) (single answer) or [`gorilla-cli`](clis/gorilla-cli/) (multi-candidate picker; default endpoint logs prompts) |
+| Want a single Go binary that gives you natural-language → shell command against a *local* Ollama, no cloud egress, with a `tlm install` bootstrap | [`tlm`](clis/tlm/) |
 | Want the simplest possible "natural language → one shell command → y/n" with shell-aware prompt templates and no flags to learn | [`shell-genie`](clis/shell-genie/) |
 | Want an LLM in a fresh terminal with no API key, right now | [`tgpt`](clis/tgpt/) |
 | Want a team-shared, version-controlled prompt-pattern library | [`fabric`](clis/fabric/) |
@@ -343,3 +358,5 @@ in the first place.
 | Triage a misbehaving Kubernetes cluster — deterministic analyzer sweep over the live API, optional plain-English explanations | [`k8sgpt`](clis/k8sgpt/) |
 | Count tokens of any packer's output before paying for the API call (and optionally truncate to a hard cap) | [`ttok`](clis/ttok/) |
 | Strip a `curl`'d webpage to clean text (or minified HTML) for piping into any LLM CLI | [`strip-tags`](clis/strip-tags/) |
+| Named system prompts in a TOML config file, swappable with one flag in a Unix pipeline (`sc -p commit < diff.txt`), plus glob input (`sc -g 'src/**/*.rs' "..."`) | [`smartcat`](clis/smartcat/) |
+| Run local GGUF models with hardware-aware container selection (CPU / CUDA / ROCm / Metal / Vulkan, same command line) and an OpenAI-compatible HTTP endpoint other catalog CLIs can target | [`ramalama`](clis/ramalama/) |

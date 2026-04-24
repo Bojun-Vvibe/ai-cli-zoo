@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **45 AI coding CLIs**. Each entry
+A curated, deeply-annotated catalog comparing **48 AI coding CLIs**. Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
@@ -65,6 +65,9 @@ the right tool for the job in under five minutes.
 | [k8sgpt](clis/k8sgpt/) | Go | Apache-2.0 | Optional `--explain` backend: OpenAI, Azure, Cohere, Bedrock, Vertex, HuggingFace, LocalAI, Ollama, `noopai` | No (gRPC `serve` instead) | None — analyzers run in parallel, one sweep per `analyze` | Off (no analytics; LLM egress only when `--explain` set) | Deterministic Kubernetes analyzer catalog (Pods, Services, Ingress, HPAs, webhooks, gateways…) finds breakage on its own; LLM is a post-hoc narration layer for on-call humans, not the decision-maker |
 | [ttok](clis/ttok/) | Python | Apache-2.0 | None — `tiktoken` encoder only; `-m gpt-4o` selects a tokenizer, not an endpoint | No | None — one-shot tokenizer | Off (one-time vocab download from OpenAI's public CDN, then offline) | Cheap pre-flight token gate for every other catalog packer: `… \| ttok` answers "will this fit?" before paying for an API call, `… \| ttok --truncate N` caps the stream |
 | [strip-tags](clis/strip-tags/) | Python | Apache-2.0 | None — emits text for downstream LLM CLI | No | None — HTML→text Unix filter | Off (no network; `strip-tags` does not fetch URLs itself) | HTML→text cleaner that drops `<script>`/`<style>`/chrome and supports `bs4` CSS selectors; the missing front-end for "I just `curl`'d a webpage and want to ask the model about it" without burning tokens on tracker JS |
+| [tlm](clis/tlm/) | Go | Apache-2.0 | Ollama only (whatever `ollama list` reports) | No | None — one-shot `suggest`/`explain`/`chat` | Off (no telemetry; only egress is your local Ollama endpoint) | Single static Go binary for the local-only natural-language → shell-command loop, with a `tlm install` bootstrap that pulls and configures an Ollama model in one command |
+| [smartcat](clis/smartcat/) | Rust | Apache-2.0 | OpenAI, Anthropic, Mistral, Groq, any OpenAI-compatible (Ollama / vLLM / LM Studio / LiteLLM / OpenRouter / DeepSeek) — declared per-block in `.api_configs.toml` | No | None — stdin→stdout filter | Off (no telemetry; conversation file local) | Named system prompts as a `prompts.toml` config file (`sc -p commit < diff.txt`, `sc -p review < diff.txt`) plus first-class glob input (`sc -g 'src/**/*.rs' "..."`) for a Unix-native LLM filter |
+| [ramalama](clis/ramalama/) | Python (containerised `llama.cpp`) | Apache-2.0 | Any GGUF model, pulled from Ollama registry, Hugging Face, OCI artifact registries, or local files; no closed-weight cloud models | No (exposes OpenAI-compatible HTTP for MCP-aware clients to point at) | None — runtime layer, not an agent | Off (no telemetry; Podman/Docker pulls visible to those upstreams) | Hardware-aware container selection for local LLM inference: same `pull`/`run`/`serve` UX across CPU, NVIDIA CUDA, AMD ROCm, Intel oneAPI, Apple Metal — pick the matching `llama.cpp` image automatically |
 
 > **Caveat.** Licenses, model lists, and feature flags drift. Each subdirectory
 > README pins a "as of" date — treat it as a snapshot, not a contract.
