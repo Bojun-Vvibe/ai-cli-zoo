@@ -60,7 +60,16 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   model-management console in the same TUI** — pull / delete / copy /
   Modelfile-build / GGUF-quantize without leaving the keyboard, with
   Fabric-pattern import and a persistent memory store as bonus
-  screens.
+  screens. Pick [`tenere`](clis/tenere/) instead if you want **modal
+  vim editing inside the prompt buffer**, multi-tab independent chats,
+  and crash-resume of the last saved chat behind a single ~5 MB Rust
+  binary — narrower backend matrix (OpenAI / `llama.cpp` / Ollama
+  only) and no agency. Pick [`oatmeal`](clis/oatmeal/) if you want
+  the chat TUI **glued to a running Neovim or VS Code**: yank a
+  visual selection straight into the chat as a fenced block and
+  accept the model's reply back into the buffer at the cursor — the
+  clipboard middleman is gone, but the project has been quiet since
+  2024-03 (no MCP, no agent loop).
 - **Unix pipe primitive (no session, no UI)** → [`mods`](clis/mods/),
   or [`smartcat`](clis/smartcat/) (`sc`) if you want **named
   system prompts in a config file** swappable with one flag
@@ -109,7 +118,15 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   (`OLLAMA_MODEL=...`) when scrollback may contain secrets.
 - **Inside an IDE** → [`cline`](clis/cline/) (VS Code),
   [`continue`](clis/continue/) (VS Code + JetBrains).
-- **GitHub-issue → PR, no local UI** → [`sweep`](clis/sweep/).
+- **GitHub-issue → PR, no local UI** → [`sweep`](clis/sweep/), or
+  [`patchwork`](clis/patchwork/) if you want a **library of fix-shaped
+  Patchflows** (`AutoFix` over Semgrep findings, `DependencyUpgrade`
+  over a `depscan` run, `ResolveIssue` with chromadb RAG over the
+  repo, `GenerateDocstring`, `GenerateUnitTests`, `PRReview`,
+  `GenerateREADME`) declared as YAML + reusable Python Steps, where
+  the *same* `patchwork <Patchflow>` invocation works on a laptop and
+  in CI and the artifact is always an SCM pull request, not a chat
+  log.
 - **Greenfield "build me an app from a paragraph"** →
   [`smol-developer`](clis/smol-developer/).
 
@@ -483,7 +500,8 @@ in the first place.
   egress = Docker image pulls + the active backend's model
   registry).
 - **Permissive license required (no AGPL, no GPL)** → avoid `plandex`
-  (AGPL core), `open-interpreter` (AGPL-3.0), `khoj` (AGPL-3.0), and
+  (AGPL core), `open-interpreter` (AGPL-3.0), `khoj` (AGPL-3.0),
+  `patchwork` (AGPL-3.0), `tenere` (GPL-3.0), and
   `tgpt` (GPL-3.0).
   **Source-available, not OSI-approved** → `claude-code` is excluded if
   you require an OSI license.
@@ -565,3 +583,6 @@ in the first place.
 | Want a **transparent shell wrapper** that records every command + output and lets `!` prefix turn the next line into NL→suggested-command (or `!!` into autonomous multi-step) inside your normal interactive shell, with a hotkey to ask about the last output | [`butterfish`](clis/butterfish/) |
 | Want a disposable **generate-Python → exec → feed-stdout-back** loop in your real cwd (no sandbox) for one-off "do this in my filesystem" tasks, single `pip install` away | [`rawdog`](clis/rawdog/) |
 | Want `mods`-shaped Unix-pipe ergonomics but with a **built-in glob/URL context feeder** (`clai -i 'src/**/*.go' query "..."`, `-i URL` for inline web fetch) so you do not have to chain a separate packer first, plus re-enterable named conversations | [`clai`](clis/clai/) |
+| Want a chat TUI **glued to a running Neovim or VS Code** — yank a visual selection straight into the chat as a fenced block, accept the model's reply back into the editor buffer at the cursor, no clipboard middleman that breaks indentation; project quiet since 2024-03 | [`oatmeal`](clis/oatmeal/) |
+| Want **modal vim editing inside the prompt buffer** plus multi-tab independent chats with crash-resume of the last saved chat, behind a single ~5 MB Rust binary — narrower backend matrix (OpenAI / `llama.cpp` / Ollama only), no agency, no MCP | [`tenere`](clis/tenere/) |
+| Want **agentic workflow automation that ends in a PR** (`AutoFix` over Semgrep findings, `DependencyUpgrade` over `depscan`, `ResolveIssue` with chromadb RAG, `GenerateDocstring`, `GenerateUnitTests`, `PRReview`, `GenerateREADME`) — declared as YAML + reusable Python Steps, identical invocation on a laptop and in CI | [`patchwork`](clis/patchwork/) |
