@@ -144,6 +144,24 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
   change spans multiple files.
 - **"Approve each tool call"** → `cline`, `opencode` (default).
 - **"Run a sandbox, just don't break my host"** → `codex`, `OpenHands`.
+- **"Run an agent in a bundled Docker sandbox with a built-in browser
+  and a journal of every step"** → [`codel`](clis/codel/). One
+  `docker run` brings up backend + headless browser + code editor +
+  PostgreSQL journal; the agent spawns per-task worker containers via
+  the host Docker socket. Lowest-friction "agent in a sandbox" demo
+  in the catalog, but the project has been dormant since 2024 and the
+  socket mount makes it root-equivalent on the host — pick
+  [`OpenHands`](clis/openhands/) instead for the same shape with
+  active maintenance.
+- **"Agent loop with hard per-task budget caps in steps + tokens +
+  USD"** → [`chatgpt-cli`](clis/chatgpt-cli/) `--agent`. ReAct or
+  Plan/Execute, workdir sandbox enforced at the tool layer, allowlist
+  policy for destructive shell commands, full ReAct-trace log per
+  task on disk. The easiest catalog entry to *audit after the fact*
+  — `cat ~/.chatgpt-cli/agent-logs/<task>.log` shows every thought,
+  action, observation, token count, and final USD spend. Pick this
+  over [`forge`](clis/forge/) when you want budget caps as a primary
+  feature instead of a YAML field.
 - **"Open a PR, I'll review on GitHub"** → `sweep`.
 
 ## 4. Do you need MCP (Model Context Protocol) servers?
@@ -194,6 +212,15 @@ agent. These are install-once-and-forget tools.
   Pick `opencommit` if you want the hook installed once and
   `git commit` to "just work"; pick `aicommits` if you prefer
   choosing from N suggestions over editing one.
+- **Review the diff visually *and* draft / explain commits in the
+  same binary** → [`lumen`](clis/lumen/). One Rust binary that
+  combines a `tig`-shaped TUI diff viewer with `lumen draft`
+  (conventional commit message from staged changes), `lumen explain
+  <ref>` (prose explanation of any commit or range with `fzf` picker),
+  and `lumen operate "<intent>"` (natural-language → `git` command).
+  Pick this when you do code review *in the terminal* and want the
+  LLM available without leaving it; pick `opencommit` / `aicommits`
+  if you only want to draft messages and never review.
 - **Generate Terraform / K8s / Dockerfile / GitHub Actions from a
   one-line description** → [`aiac`](clis/aiac/). Output is a clean
   IaC artifact (no markdown fences, no prose), ready to
@@ -475,6 +502,9 @@ in the first place.
 | Want a shell-command suggester that shows *multiple* candidates to pick from | [`gorilla-cli`](clis/gorilla-cli/) |
 | Auto-fill commit messages via a git hook, no new command in your workflow | [`opencommit`](clis/opencommit/) |
 | Pick from 3 candidate commit messages with arrow keys instead of editing one | [`aicommits`](clis/aicommits/) |
+| TUI diff viewer + AI commit-draft + AI commit-explain in one Rust binary | [`lumen`](clis/lumen/) |
+| Boot an autonomous agent (LLM + browser + editor + journal) in one `docker run` | [`codel`](clis/codel/) |
+| Multi-step agent loop with hard per-task budget caps in steps + tokens + USD | [`chatgpt-cli`](clis/chatgpt-cli/) |
 | Scaffold a fresh Terraform / K8s / Dockerfile from a one-line description | [`aiac`](clis/aiac/) |
 | Pack a Python codebase down to *specific symbols* instead of whole files | [`symbex`](clis/symbex/) |
 | Pack a whole repo (or a remote repo you have not cloned) with token counts, secret-scan, and optional compression | [`repomix`](clis/repomix/) |
