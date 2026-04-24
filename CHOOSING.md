@@ -18,7 +18,9 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   [`OpenHands`](clis/openhands/) (CLI mode).
 - **Terminal, REPL-style** → [`aider`](clis/aider/), [`gptme`](clis/gptme/),
   [`mentat`](clis/mentat/), [`plandex`](clis/plandex/).
-- **Unix pipe primitive (no session, no UI)** → [`mods`](clis/mods/).
+- **Unix pipe primitive (no session, no UI)** → [`mods`](clis/mods/),
+  or [`llm`](clis/llm/) if you also want every prompt logged to SQLite
+  for later replay.
 - **Inside an IDE** → [`cline`](clis/cline/) (VS Code),
   [`continue`](clis/continue/) (VS Code + JetBrains).
 - **GitHub-issue → PR, no local UI** → [`sweep`](clis/sweep/).
@@ -55,7 +57,10 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
   (Task tool), [`claude-code`](clis/claude-code/) (Task tool, hooks, skills),
   [`OpenHands`](clis/openhands/) (multi-agent), [`forge`](clis/forge/)
   (YAML workflows with per-step model routing).
-- **No plan, just transform stdin** → [`mods`](clis/mods/).
+- **No plan, just transform stdin** → [`mods`](clis/mods/), or
+  [`llm`](clis/llm/) if you also want a queryable history of every call.
+- **Chat with a folder of documents from a terminal** →
+  [`aichat`](clis/aichat/) (built-in RAG, single binary).
 
 ## 6. Team / org constraints
 
@@ -89,3 +94,5 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
 | LLM as a unix utility, no agent loop | `mods` |
 | Want different models for plan vs edit vs review | [`forge`](clis/forge/) |
 | Want a serious coder model with a free tier and no credit card | [`qwen-code`](clis/qwen-code/) |
+| Want SQLite-logged history of every LLM call | [`llm`](clis/llm/) |
+| Want chat + RAG over local docs from one binary | [`aichat`](clis/aichat/) |

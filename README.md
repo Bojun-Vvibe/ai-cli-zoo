@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **18 AI coding CLIs**. Each entry
+A curated, deeply-annotated catalog comparing **20 AI coding CLIs**. Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
@@ -38,6 +38,8 @@ the right tool for the job in under five minutes.
 | [mods](clis/mods/) | Go | MIT | OpenAI, Anthropic, Gemini, Cohere, Groq, local, Azure, any OpenAI-compatible | No | None — one-shot stdin→stdout | Off (no telemetry at all) | Unix-pipe primitive for LLMs |
 | [forge](clis/forge/) | Rust (npm launcher) | Apache-2.0 | Anthropic, OpenAI, Gemini, OpenRouter, local, any OpenAI-compatible | Yes (client) | YAML-defined multi-agent workflows, per-step model | Off | Provider-mixing as a first-class concept (planner / editor / reviewer on different models) |
 | [qwen-code](clis/qwen-code/) | TS (Node) | Apache-2.0 | Qwen3-Coder (OAuth + DashScope), any OpenAI-compatible endpoint | Yes (client) | Single agent, parallel tool calls | Opt-in | First-party Qwen3-Coder access with a real free-tier quota |
+| [llm](clis/llm/) | Python | Apache-2.0 | OpenAI built-in; Anthropic, Gemini, Mistral, Cohere, Ollama, OpenRouter, Bedrock, etc. via plugins | Plugin-only (experimental `llm-tools-mcp`) | None — single conversation | Off (no telemetry) | SQLite log of every prompt/response + first-class plugin system |
+| [aichat](clis/aichat/) | Rust | MIT/Apache-2.0 | 20+ providers built-in: OpenAI, Anthropic, Gemini, Mistral, Cohere, Groq, DeepSeek, Together, Ollama, Bedrock, Qwen/Zhipu/Moonshot/Ernie, any OpenAI-compatible | No (function-script convention instead) | None — serial function calls | Off (no telemetry) | Single static binary with built-in document RAG + shell-integration completion |
 
 > **Caveat.** Licenses, model lists, and feature flags drift. Each subdirectory
 > README pins a "as of" date — treat it as a snapshot, not a contract.
