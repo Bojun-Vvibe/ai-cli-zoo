@@ -474,3 +474,6 @@ in the first place.
 | Multi-screen Textual TUI whose *Models* screen doubles as a full Ollama registry console (pull / delete / copy / Modelfile-build / GGUF-quantize) plus chat tabs against any local or cloud provider | [`parllama`](clis/parllama/) |
 | Named persona presets (`gpt rust`, `gpt bash`, `gpt <your-name>`) defined in one YAML, with first-class Claude `--thinking N` and a per-turn USD cost counter — pure chat REPL, no agent loop | [`gpt-cli`](clis/gpt-cli/) |
 | Templated prompt files in the repo + a file list on the command line; the model overwrites those files in place with `git diff` as the only review surface — built for Makefile / CI / git-hook use, not chat | [`promptr`](clis/promptr/) |
+| `prompt`-file → whole-repo greenfield scaffold from one paragraph of intent, runnable `run.sh` at the end, spec lives as a git-tracked artifact (not a chat log) | [`gpt-engineer`](clis/gpt-engineer/) |
+| Single Go binary that fuses **shell-command exec mode + chat mode** in one Bubble Tea TUI, `Tab` to toggle, `[E]xecute/[A]nswer/[C]opy/[X]cancel` confirm bar | [`yai`](clis/yai/) |
+| Natural-language → shell command but with **prerequisite install commands separated as first-class output** (`s`=setup / `d`=desired / `a`=all hotkey menu) — fixes "the suggestion assumed I had `jq` installed" | [`cmdh`](clis/cmdh/) |
