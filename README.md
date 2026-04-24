@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **48 AI coding CLIs**. Each entry
+A curated, deeply-annotated catalog comparing **51 AI coding CLIs**. Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
@@ -68,6 +68,9 @@ the right tool for the job in under five minutes.
 | [tlm](clis/tlm/) | Go | Apache-2.0 | Ollama only (whatever `ollama list` reports) | No | None — one-shot `suggest`/`explain`/`chat` | Off (no telemetry; only egress is your local Ollama endpoint) | Single static Go binary for the local-only natural-language → shell-command loop, with a `tlm install` bootstrap that pulls and configures an Ollama model in one command |
 | [smartcat](clis/smartcat/) | Rust | Apache-2.0 | OpenAI, Anthropic, Mistral, Groq, any OpenAI-compatible (Ollama / vLLM / LM Studio / LiteLLM / OpenRouter / DeepSeek) — declared per-block in `.api_configs.toml` | No | None — stdin→stdout filter | Off (no telemetry; conversation file local) | Named system prompts as a `prompts.toml` config file (`sc -p commit < diff.txt`, `sc -p review < diff.txt`) plus first-class glob input (`sc -g 'src/**/*.rs' "..."`) for a Unix-native LLM filter |
 | [ramalama](clis/ramalama/) | Python (containerised `llama.cpp`) | Apache-2.0 | Any GGUF model, pulled from Ollama registry, Hugging Face, OCI artifact registries, or local files; no closed-weight cloud models | No (exposes OpenAI-compatible HTTP for MCP-aware clients to point at) | None — runtime layer, not an agent | Off (no telemetry; Podman/Docker pulls visible to those upstreams) | Hardware-aware container selection for local LLM inference: same `pull`/`run`/`serve` UX across CPU, NVIDIA CUDA, AMD ROCm, Intel oneAPI, Apple Metal — pick the matching `llama.cpp` image automatically |
+| [magentic](clis/magentic/) | Python | MIT | OpenAI, Anthropic (built-in extras); ~100 more via LiteLLM extra | No | None — single round-trip per `@prompt` call; you drive any tool loop in Python | Off (no analytics; egress only to provider) | Type-annotated structured output as the primary API: `def f(...) -> list[Recipe]` returns validated Pydantic objects, streaming-aware |
+| [mentals-ai](clis/mentals-ai/) | C++ | MIT | OpenAI built-in; any OpenAI-compatible endpoint (Ollama, vLLM, LiteLLM, OpenRouter, DeepSeek) | No | Sub-agents as Markdown link syntax (`use:`/`delegate:`) — recursive composition is a language construct | Off (no analytics; local `.log` traces) | Markdown-as-program: the agent definition *is* a `.md` file with `# Heading` mentals, runnable as a graph by a single C++ binary |
+| [ai-shell](clis/ai-shell/) | TS (Node) | MIT | OpenAI built-in; any OpenAI-compatible endpoint via `OPENAI_API_ENDPOINT` (Ollama, LiteLLM, vLLM, OpenRouter, Groq, DeepSeek) | No | None — one-shot translator with optional `ai chat` REPL | Off (no analytics; OpenAI endpoint sees prompts) | `[E]xecute / [R]evise / [C]opy` revise loop on every suggestion: iterate the shell command without retyping the original intent |
 
 > **Caveat.** Licenses, model lists, and feature flags drift. Each subdirectory
 > README pins a "as of" date — treat it as a snapshot, not a contract.

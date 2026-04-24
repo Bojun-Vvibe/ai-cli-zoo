@@ -66,6 +66,13 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   machine, no sandbox), [`gptme`](clis/gptme/) (sandboxed-ish via
   Docker tool), or [`codex`](clis/codex/) (sandboxed via
   Seatbelt/Landlock).
+- **Forget shell flags, want `Ctrl-L` to generate the command inline** →
+  [`shell-gpt`](clis/shell-gpt/) (single answer) or
+  [`gorilla-cli`](clis/gorilla-cli/) (multi-candidate picker; default
+  endpoint logs prompts), or [`ai-shell`](clis/ai-shell/) if you want
+  an `[E]xecute / [R]evise / [C]opy` loop where you can iterate on
+  the suggestion (`r` to nudge, regenerate, repeat) without retyping
+  the original intent.
 - **Inside an IDE** → [`cline`](clis/cline/) (VS Code),
   [`continue`](clis/continue/) (VS Code + JetBrains).
 - **GitHub-issue → PR, no local UI** → [`sweep`](clis/sweep/).
@@ -149,7 +156,23 @@ agent. These are install-once-and-forget tools.
   run it in CI. Closest cousin in the catalog is
   [`forge`](clis/forge/) (heavier, multi-agent YAML for coding);
   pick `gptscript` for general-purpose scripting and `forge` for
-  code-modifying agent pipelines.
+  code-modifying agent pipelines. Pick [`mentals-ai`](clis/mentals-ai/)
+  instead if you want the *agent program itself* to be a Markdown
+  file with `# Heading` mentals and `use:` / `delegate:` link syntax
+  for recursive sub-agents — non-engineers can read and edit it in
+  any Markdown previewer, and the runtime is a single C++ binary
+  (the install tax is the C++ build; there are no prebuilt releases
+  as of 2026-04).
+- **Embed LLM calls as type-annotated Python functions in your own
+  service or notebook** → [`magentic`](clis/magentic/). `def f(...)
+  -> list[Recipe]:` with a `@prompt` decorator returns validated
+  Pydantic objects, streaming-aware, native function-calling on
+  OpenAI / Anthropic and ~100 more via LiteLLM. The cleanest
+  structured-output API in the catalog. Closest cousin is
+  [`chatblade`](clis/chatblade/) (`-e '.path' -j` extracts JSON
+  sub-paths from a one-shot CLI call) — pick `chatblade` for shell
+  pipelines, `magentic` when the consumer is Python code that wants
+  real objects.
 - **Regression-test a prompt across N providers and assert quality /
   cost / latency** → [`promptfoo`](clis/promptfoo/). Declarative
   `promptfooconfig.yaml`, cartesian eval, HTML diff viewer, optional
@@ -299,8 +322,11 @@ in the first place.
   `ttok` (one-time vocab download, then offline), `strip-tags`
   (no network at all), `tlm` (no telemetry; only egress is your
   local Ollama endpoint), `smartcat` (no telemetry; conversation
-  file local), `ramalama` (no telemetry; container/model pulls
-  visible to the OCI/Hugging Face/Ollama upstreams).
+  file local),   `ramalama` (no telemetry; container/model pulls
+  visible to the OCI/Hugging Face/Ollama upstreams), `magentic`
+  (no analytics; egress only to the configured provider),
+  `mentals-ai` (no analytics; local `.log` traces), `ai-shell`
+  (no analytics; configured OpenAI-compatible endpoint sees prompts).
 - **Permissive license required (no AGPL, no GPL)** → avoid `plandex`
   (AGPL core), `open-interpreter` (AGPL-3.0), `khoj` (AGPL-3.0), and
   `tgpt` (GPL-3.0).
@@ -360,3 +386,6 @@ in the first place.
 | Strip a `curl`'d webpage to clean text (or minified HTML) for piping into any LLM CLI | [`strip-tags`](clis/strip-tags/) |
 | Named system prompts in a TOML config file, swappable with one flag in a Unix pipeline (`sc -p commit < diff.txt`), plus glob input (`sc -g 'src/**/*.rs' "..."`) | [`smartcat`](clis/smartcat/) |
 | Run local GGUF models with hardware-aware container selection (CPU / CUDA / ROCm / Metal / Vulkan, same command line) and an OpenAI-compatible HTTP endpoint other catalog CLIs can target | [`ramalama`](clis/ramalama/) |
+| Embed LLM calls as type-annotated Python functions, get validated Pydantic objects back (streaming-aware), no agent loop | [`magentic`](clis/magentic/) |
+| Write the agent program as a Markdown file with `# Heading` mentals and `use:` / `delegate:` links — readable by non-engineers, runnable by a single C++ binary | [`mentals-ai`](clis/mentals-ai/) |
+| One-shot natural-language → shell command with an iterative `[R]evise` loop so you can nudge the suggestion without retyping the original intent | [`ai-shell`](clis/ai-shell/) |
