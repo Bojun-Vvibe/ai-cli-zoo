@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **33 AI coding CLIs**. Each entry
+A curated, deeply-annotated catalog comparing **36 AI coding CLIs**. Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
@@ -53,6 +53,9 @@ the right tool for the job in under five minutes.
 | [symbex](clis/symbex/) | Python | Apache-2.0 | None — emits Python source for downstream LLM CLI | No | None — AST extractor, not a model client | Off (no network) | AST-correct surgical symbol extractor: `symbex 'MyClass.*'` prints exactly the matching Python methods, an order-of-magnitude smaller context than file-level packers |
 | [repomix](clis/repomix/) | TS (Node) | MIT | None — emits text; tokenizes with `tiktoken` | Yes (server: `repomix --mcp`) | None — one-shot pack | Off (no analytics) | Remote-fetch + Tree-sitter compression + Secretlint secret-scan + per-directory token counts in one packer; `repomix --remote owner/repo --compress` works without cloning |
 | [chatblade](clis/chatblade/) | Python | MIT | OpenAI built-in; any OpenAI-compatible endpoint via `OPENAI_API_BASE` (Ollama, vLLM, LM Studio, LiteLLM, OpenRouter, Azure) | No | None — one round-trip per call | Off (no analytics) | Inline structured-output extraction: `chatblade -e '.commands[0]' -j "..."` makes the model reply as JSON and pulls out a sub-path in one command, plus plain-text named sessions you can `git diff` |
+| [promptfoo](clis/promptfoo/) | TS (Node) | MIT | OpenAI, Anthropic, Gemini, Bedrock, Ollama, Replicate, HuggingFace, custom HTTP / Python | No (custom-provider hook instead) | None — eval harness, not an agent | Off (eval cache local; `share` opt-in) | Cartesian-product prompt eval: `prompts × providers × tests` with assertions (`contains`, `is-json`, `latency`, `cost`, `llm-rubric`, `javascript`/`python`), HTML diff viewer, optional red-team mode |
+| [marker](clis/marker/) | Python | GPL/commercial-dual | None for core (layout/OCR/table local models); optional `--use_llm` finishing pass via OpenAI / Anthropic / Gemini / Ollama | No | None — converter, not an agent | Off (network only if `--use_llm` configured) | PDF / EPUB / DOCX → clean Markdown with preserved tables, LaTeX equations, and image refs; the missing front-end for every other CLI in this catalog |
+| [gptscript](clis/gptscript/) | Go | Apache-2.0 | OpenAI, Anthropic, Azure, any OpenAI-compatible | Yes (client; tools can be MCP servers, OpenAPI specs, or other `.gpt` files) | Sub-tools: scripts call other scripts as tools | Off | `.gpt` files: English instruction body + declared tools / args / output schema, runnable and composable like shell scripts |
 
 > **Caveat.** Licenses, model lists, and feature flags drift. Each subdirectory
 > README pins a "as of" date — treat it as a snapshot, not a contract.

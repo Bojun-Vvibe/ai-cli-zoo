@@ -108,6 +108,21 @@ agent. These are install-once-and-forget tools.
   `terraform fmt && validate` or `kubectl apply`. Use it for
   greenfield scaffolding; for editing an existing IaC repo, switch
   to `aider` or `claude-code`.
+- **Ship a runnable, version-controlled agent script alongside your
+  code** → [`gptscript`](clis/gptscript/). A `.gpt` file is an
+  English instruction body plus declared tools / args / output
+  schema; scripts call other scripts as sub-tools. Closer to a
+  shell script than to an interactive session — review it in PRs,
+  run it in CI. Closest cousin in the catalog is
+  [`forge`](clis/forge/) (heavier, multi-agent YAML for coding);
+  pick `gptscript` for general-purpose scripting and `forge` for
+  code-modifying agent pipelines.
+- **Regression-test a prompt across N providers and assert quality /
+  cost / latency** → [`promptfoo`](clis/promptfoo/). Declarative
+  `promptfooconfig.yaml`, cartesian eval, HTML diff viewer, optional
+  red-team mode. The only entry in the catalog whose job is *grading*
+  output rather than producing it; pair with [`llm`](clis/llm/) for
+  exploration and [`fabric`](clis/fabric/) for prompt authoring.
 
 ## 5c. Context-packing pipeline (LLM-input shaping)
 
@@ -134,6 +149,38 @@ Decision shortcut:
 - "A few selected files, glob-controlled, no Node": `files-to-prompt`.
 - "The whole repo, with budget visibility and a safety net":
   `repomix`.
+- "It's a PDF / EPUB / DOCX, not source code":
+  [`marker`](clis/marker/) first, then one of the above on the
+  resulting `.md` tree.
+
+## 5d. Document conversion (PDF → LLM-ingestible text)
+
+Source-tree packers (§5c) assume your inputs are already text. They
+are useless on PDFs of papers, contracts, scanned manuals, or office
+docs. For those, run a converter first.
+
+- **Convert PDF / EPUB / DOCX / PPTX → Markdown with preserved
+  tables, LaTeX equations, and image refs** →
+  [`marker`](clis/marker/). Local layout + OCR + table-recognition
+  pipeline; optional `--use_llm` finishing pass for ambiguous
+  regions. Output is a directory of `.md` + images you can pipe into
+  any other CLI here:
+  `marker_single paper.pdf out/ && cat out/paper/paper.md | llm
+  '...'`. Skip it only if `pdftotext` is good enough for your input
+  (one-column, no tables, no math).
+
+## 5e. Evaluating prompts (gating quality, not producing it)
+
+- **Run a prompt against N providers × M test rows and fail CI on
+  regressions** → [`promptfoo`](clis/promptfoo/). Declarative
+  `promptfooconfig.yaml` with `assert:` blocks (`contains`,
+  `is-json`, `latency`, `cost`, `llm-rubric`, `javascript`,
+  `python`, `model-graded-*`), HTML diff viewer (`promptfoo view`),
+  optional `redteam` mode for adversarial generation. The only
+  *grader* in this catalog; everything else *produces* output.
+  Compose with [`llm`](clis/llm/) (replay logged sessions as
+  `promptfoo` rows) and [`fabric`](clis/fabric/) (author the
+  patterns you then regress).
 
 ## 6. Team / org constraints
 
@@ -143,7 +190,9 @@ Decision shortcut:
   `tgpt` (no telemetry; note that free providers see prompts), `fabric`,
   `opencommit`, `aicommits`, `aiac`, `symbex` (no network at all),
   `repomix` (no analytics; only egress is the optional `--remote` git
-  clone), `chatblade`.
+  clone), `chatblade`, `promptfoo` (eval cache local; `share` is
+  opt-in), `marker` (no network unless `--use_llm` configured),
+  `gptscript`.
 - **Permissive license required (no AGPL, no GPL)** → avoid `plandex`
   (AGPL core), `open-interpreter` (AGPL-3.0), and `tgpt` (GPL-3.0).
   **Source-available, not OSI-approved** → `claude-code` is excluded if
@@ -187,3 +236,6 @@ Decision shortcut:
 | Pack a Python codebase down to *specific symbols* instead of whole files | [`symbex`](clis/symbex/) |
 | Pack a whole repo (or a remote repo you have not cloned) with token counts, secret-scan, and optional compression | [`repomix`](clis/repomix/) |
 | Make the model reply as JSON/YAML and extract a sub-path in one shell command | [`chatblade`](clis/chatblade/) |
+| Convert a PDF / EPUB / DOCX into Markdown that preserves tables and equations | [`marker`](clis/marker/) |
+| Ship a runnable, version-controlled `.gpt` agent script alongside your code | [`gptscript`](clis/gptscript/) |
+| Regression-test a prompt across providers and fail CI when quality / cost / latency budget breaks | [`promptfoo`](clis/promptfoo/) |
