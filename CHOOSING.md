@@ -206,6 +206,15 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
   has real `crewai test --n_iterations N` / `crewai train` verbs for
   regressing and tuning crew quality. Pick this over `forge` when the
   shape is "five distinct *roles*" rather than "linear pipeline of steps".
+  For a **batteries-included software-company SOP** that ships PM /
+  Architect / Engineer / QA roles + a shared message bus and writes
+  PRD / system-design / API-spec / task-plan as separate Markdown
+  artifacts alongside the code, prefer [`metagpt`](clis/metagpt/) —
+  per-role model assignment lives in three lines of `config2.yaml`.
+  For the same multi-agent SDLC shape but with the **phase graph
+  declared as JSON** (swap roles, phase order, loop stop conditions
+  without touching Python) and the full role transcript saved as part
+  of the deliverable, prefer [`chatdev`](clis/chatdev/).
 - **Typed-Python agent framework with retries-on-validation-failure and a
   CLI you can chat the same agent from** → [`pydantic-ai`](clis/pydantic-ai/)
   — tools are typed Python, output is a Pydantic model, validation errors
@@ -238,6 +247,17 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
   with the same CLI — best when you want to *ship the index* to
   another machine, version-control it, or wrap it in a custom
   pipeline rather than chat with it interactively).
+- **Need a written, sourced *research report* (not a chat thread) on a
+  natural-language question** → [`gpt-researcher`](clis/gpt-researcher/)
+  — Planner → parallel Researchers → Reviewer → Writer pipeline emits
+  Markdown with inline citations plus a structured `{question,
+  sub_questions, sources, findings}` JSON; pluggable search backends
+  (Tavily / DuckDuckGo / SerpAPI / Searx / Bing) and a `--report-source
+  local` mode that researches a folder of PDFs without web egress.
+  Pick this over a generic coding agent when the deliverable is a
+  cited report; pick it over `aichat` / `khoj` when you want breadth
+  (10+ sources, fanned out concurrently) rather than chat over a
+  pre-built index.
 
 ## 5b. Single-purpose workflow glue
 
@@ -589,3 +609,6 @@ in the first place.
 | Want to **run several agents in parallel on the same prompt without trashing your working tree** — each agent lands in its own container on its own git branch, exposed as plain MCP tools so any MCP-capable client ([`opencode`](clis/opencode/), [`claude-code`](clis/claude-code/), [`crush`](clis/crush/), [`goose`](clis/goose/)) inherits the sandbox without you writing Docker plumbing | [`container-use`](clis/container-use/) |
 | Want a **research-grade autonomous agent with reproducible trajectories** — every action + observation + tool output saved as typed JSON, the whole agent (prompts, tools, parser, demos) is one diffable YAML, fan-out batch mode for SWE-bench-class evals; trajectory replay via `sweagent inspect` | [`swe-agent`](clis/swe-agent/) |
 | Want **a typed multi-role pipeline (File Picker → Planner → Editor → Reviewer) checked into your repo** instead of one heroic agent with opaque sub-agent escape hatches — `.agents/types/*.ts` declares each role's tool allowlist and which other roles it may spawn, with per-role model assignment | [`codebuff`](clis/codebuff/) |
+| Want a **cited long-form research report** (not a chat thread) — Planner → parallel Researchers → Reviewer → Writer pipeline, swappable search backends (Tavily / DDG / SerpAPI / Searx / Bing), `--report-source local` for offline PDF research, structured JSON of sources + findings dumped alongside the Markdown | [`gpt-researcher`](clis/gpt-researcher/) |
+| Want a **declarative SDLC pipeline as JSON** — phase graph (`ChatChainConfig.json`) pairs roles per turn (CEO ↔ CPO, CTO ↔ Programmer, CRO ↔ Programmer, Programmer ↔ Tester) and composed phases loop until file-complete / no-comments / tests-pass; full multi-agent transcript saved as part of the deliverable | [`chatdev`](clis/chatdev/) |
+| Want a **batteries-included software-company SOP** — PM → Architect → ProjectManager → Engineer → QA roles on a shared message bus, PRD + system design + API spec + task plan as separate Markdown / JSON artifacts alongside the code, per-role model assignment in three lines of `config2.yaml` | [`metagpt`](clis/metagpt/) |
