@@ -26,7 +26,13 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   --offline-chat` for a fully offline pipeline), or
   [`txtai`](clis/txtai/) if you want a *portable on-disk index file*
   (sentence-transformers + Faiss-CPU by default, no network) you
-  can build on one machine and ship to an air-gapped box.
+  can build on one machine and ship to an air-gapped box, or
+  [`harbor`](clis/harbor/) if your real ask is "**the whole local
+  LLM stack** — chat UI + runtime + web RAG + voice + image
+  generation — wired up correctly in one command" rather than any
+  single component (`harbor up open-webui ollama searxng speaches
+  comfyui` brings the lot up on Docker Compose with cross-service
+  URLs already threaded; hard prereq is Docker).
   Skip the rest of this tree.
 
 ## 2. Where do you live?
@@ -341,7 +347,26 @@ then summarize.
   over an exploratory agent (`OpenHands`, `claude-code` with
   `kubectl`) when you need bounded token cost and reproducible
   findings; pick the agents instead when you need *remediation*,
-  not just diagnosis.
+  not just diagnosis. Pick [`kubectl-ai`](clis/kubectl-ai/)
+  instead when you want a **chat-shaped** Kubernetes assistant
+  that runs `kubectl` itself in an agent loop (Gemini / OpenAI /
+  Anthropic / Vertex / Ollama / llama.cpp), with the bonus that
+  `kubectl-ai --mcp-server` mounts a curated kubectl toolset
+  inside [`opencode`](clis/opencode/) /
+  [`claude-code`](clis/claude-code/) / [`crush`](clis/crush/) /
+  [`continue`](clis/continue/) so your generic coding agent
+  inherits safe cluster powers without you hand-rolling an MCP
+  server. Pick [`holmesgpt`](clis/holmesgpt/) instead when the
+  shape is **SRE investigation across multiple stacks** —
+  Kubernetes *plus* Prometheus / Grafana / Loki / Tempo / Datadog
+  / NewRelic / Sentry / Elasticsearch / Postgres / Kafka /
+  AWS / GCP / ArgoCD / Helm / Confluence / GitHub / Jira /
+  PagerDuty / OpsGenie under one CNCF-sandbox agent, with
+  petabyte-aware tool-output handling and write-back to the
+  source channel; the install tax is heavier than `k8sgpt` /
+  `kubectl-ai`, but it is the only catalog entry that ingests
+  alerts, runs the investigation, and posts the RCA back where
+  the on-call human looks.
 
 ## 5g. Token budgeting and HTML cleaning (front-ends to the LLM call)
 
@@ -400,9 +425,14 @@ in the first place.
   to GitHub), `parllama` (no analytics; egress is your Ollama daemon
   plus the active provider plus `registry.ollama.ai` on `pull`),
   `gpt-cli` (no analytics; per-turn USD cost computed locally;
-  `--log_file` writes JSONL to local disk only), `promptr` (no
+  `--log_file` writes JSONL to local disk only),   `promptr` (no
   analytics; egress is exactly one OpenAI Chat Completions request
-  per invocation).
+  per invocation), `kubectl-ai` (no analytics; egress = Kubernetes
+  API + LLM provider + any MCP servers you mount), `holmesgpt`
+  (off in OSS codebase; egress = LLM provider + configured toolsets
+  + opt-in write-backs), `harbor` (no analytics in CLI or App;
+  egress = Docker image pulls + the active backend's model
+  registry).
 - **Permissive license required (no AGPL, no GPL)** → avoid `plandex`
   (AGPL core), `open-interpreter` (AGPL-3.0), `khoj` (AGPL-3.0), and
   `tgpt` (GPL-3.0).
@@ -477,3 +507,6 @@ in the first place.
 | `prompt`-file → whole-repo greenfield scaffold from one paragraph of intent, runnable `run.sh` at the end, spec lives as a git-tracked artifact (not a chat log) | [`gpt-engineer`](clis/gpt-engineer/) |
 | Single Go binary that fuses **shell-command exec mode + chat mode** in one Bubble Tea TUI, `Tab` to toggle, `[E]xecute/[A]nswer/[C]opy/[X]cancel` confirm bar | [`yai`](clis/yai/) |
 | Natural-language → shell command but with **prerequisite install commands separated as first-class output** (`s`=setup / `d`=desired / `a`=all hotkey menu) — fixes "the suggestion assumed I had `jq` installed" | [`cmdh`](clis/cmdh/) |
+| Chat-shaped Kubernetes assistant that runs `kubectl` itself in an agent loop, **and** doubles as an MCP server so [`opencode`](clis/opencode/) / [`claude-code`](clis/claude-code/) / [`crush`](clis/crush/) inherit safe `kubectl` powers without you hand-rolling an MCP server | [`kubectl-ai`](clis/kubectl-ai/) |
+| Cross-stack SRE investigation agent — Kubernetes + Prometheus + Grafana + Loki + Tempo + Datadog + NewRelic + Sentry + Postgres + Kafka + AWS + GCP + ArgoCD + Helm + Confluence + GitHub + Jira + PagerDuty + OpsGenie — under one CNCF-sandbox agent that ingests alerts and posts RCAs back to the source channel, with petabyte-aware tool-output handling | [`holmesgpt`](clis/holmesgpt/) |
+| One command brings up the **whole local LLM stack** (chat UI + runtime + web RAG + voice + image generation) on Docker Compose with cross-service URLs already correct, instead of hand-maintaining a Compose file forever — `harbor up open-webui ollama searxng speaches comfyui` | [`harbor`](clis/harbor/) |
