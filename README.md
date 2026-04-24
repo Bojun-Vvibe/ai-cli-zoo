@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **27 AI coding CLIs**. Each entry
+A curated, deeply-annotated catalog comparing **30 AI coding CLIs**. Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
@@ -47,6 +47,9 @@ the right tool for the job in under five minutes.
 | [files-to-prompt](clis/files-to-prompt/) | Python | Apache-2.0 | None — emits text for downstream LLM CLI | No | None — context packer, not a model client | Off (no network) | Deterministic context packer for piping into any LLM CLI; honors `.gitignore`, emits Anthropic XML / markdown / line-numbered shapes |
 | [oterm](clis/oterm/) | Python | MIT | Ollama only (whatever `ollama list` reports) | Yes (client) | None — chat tabs with in-line tool calls | Off (no network beyond Ollama) | Persistent multi-tab Textual TUI purpose-built for local Ollama, with edit-and-fork on every turn |
 | [gorilla-cli](clis/gorilla-cli/) | Python | Apache-2.0 | Hosted Gorilla endpoint by default; any OpenAI-compatible endpoint via `GORILLA_API_URL` | No | None — one HTTP call returns N candidates | On (hosted endpoint logs prompts) | Multi-candidate shell-command picker with arrow-key selection; zero-key default, shell-only scope |
+| [opencommit](clis/opencommit/) | TS (Node) | MIT | OpenAI, Anthropic, Azure, Gemini, Groq, Mistral, Ollama, any OpenAI-compatible | No | None — one LLM call per commit | Off (no analytics) | `prepare-commit-msg` git-hook integration: `git commit` opens `$EDITOR` with a Conventional-Commits-shaped message pre-filled from the staged diff |
+| [aicommits](clis/aicommits/) | TS (Node) | MIT | OpenAI built-in; any OpenAI-compatible endpoint via `OPENAI_API_BASE` (Ollama, vLLM, LiteLLM, Groq, OpenRouter) | No | None — one diff → N suggestions | Off (no telemetry) | `-g N` multi-suggestion picker: arrow-key choose between N candidate commit messages instead of edit-or-confirm a single one |
+| [aiac](clis/aiac/) | Go | Apache-2.0 | OpenAI, Azure, Anthropic, Bedrock, Ollama, any OpenAI-compatible | No | None — chat mode is single-thread | Off (no analytics) | IaC-shaped post-processing: emits clean Terraform / Pulumi / K8s / Dockerfile / GitHub Actions artifacts ready to `fmt && validate`, no markdown fences or prose |
 
 > **Caveat.** Licenses, model lists, and feature flags drift. Each subdirectory
 > README pins a "as of" date — treat it as a snapshot, not a contract.

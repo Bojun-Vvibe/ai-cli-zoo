@@ -79,12 +79,32 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
 - **Chat with a folder of documents from a terminal** →
   [`aichat`](clis/aichat/) (built-in RAG, single binary).
 
+## 5b. Single-purpose workflow glue
+
+Some niches are narrow enough that a dedicated CLI beats a general
+agent. These are install-once-and-forget tools.
+
+- **Auto-generate git commit messages from staged diff** →
+  [`opencommit`](clis/opencommit/) (richer provider matrix,
+  `prepare-commit-msg` hook story) or [`aicommits`](clis/aicommits/)
+  (OpenAI-only by default, `-g N` multi-candidate picker UX).
+  Pick `opencommit` if you want the hook installed once and
+  `git commit` to "just work"; pick `aicommits` if you prefer
+  choosing from N suggestions over editing one.
+- **Generate Terraform / K8s / Dockerfile / GitHub Actions from a
+  one-line description** → [`aiac`](clis/aiac/). Output is a clean
+  IaC artifact (no markdown fences, no prose), ready to
+  `terraform fmt && validate` or `kubectl apply`. Use it for
+  greenfield scaffolding; for editing an existing IaC repo, switch
+  to `aider` or `claude-code`.
+
 ## 6. Team / org constraints
 
 - **Telemetry must be off by default** → all entries marked "Off" in the
   matrix: `opencode`, `aider`, `cline`, `crush`, `continue`, `mentat`,
   `gptme`, `smol-developer`, `mods` (no telemetry at all), `forge`,
-  `tgpt` (no telemetry; note that free providers see prompts), `fabric`.
+  `tgpt` (no telemetry; note that free providers see prompts), `fabric`,
+  `opencommit`, `aicommits`, `aiac`.
 - **Permissive license required (no AGPL, no GPL)** → avoid `plandex`
   (AGPL core), `open-interpreter` (AGPL-3.0), and `tgpt` (GPL-3.0).
   **Source-available, not OSI-approved** → `claude-code` is excluded if
@@ -122,3 +142,6 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
 | Want to pack a whole subtree as deterministic context for any LLM CLI | [`files-to-prompt`](clis/files-to-prompt/) |
 | Want a chat TUI that talks *only* to a local Ollama, with multi-tab + MCP | [`oterm`](clis/oterm/) |
 | Want a shell-command suggester that shows *multiple* candidates to pick from | [`gorilla-cli`](clis/gorilla-cli/) |
+| Auto-fill commit messages via a git hook, no new command in your workflow | [`opencommit`](clis/opencommit/) |
+| Pick from 3 candidate commit messages with arrow keys instead of editing one | [`aicommits`](clis/aicommits/) |
+| Scaffold a fresh Terraform / K8s / Dockerfile from a one-line description | [`aiac`](clis/aiac/) |
