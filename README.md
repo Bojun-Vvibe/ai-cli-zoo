@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **39 AI coding CLIs**. Each entry
+A curated, deeply-annotated catalog comparing **42 AI coding CLIs**. Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
@@ -59,6 +59,9 @@ the right tool for the job in under five minutes.
 | [shell-genie](clis/shell-genie/) | Python | MIT | OpenAI built-in; hosted free `free-genie` endpoint; any OpenAI-compatible endpoint via `OPENAI_API_BASE` | No | None — one HTTP call per ask | Off (no analytics; `feedback` writes locally only) | Aggressively minimal natural-language → one shell command → y/n; ships shell-aware prompt templates for bash / zsh / fish / PowerShell |
 | [elia](clis/elia/) | Python | Apache-2.0 | OpenAI, Anthropic, Gemini, Groq, Ollama, any OpenAI-compatible (declared in `config.toml`) | No | None — linear chat threads | Off (no telemetry; history stays in local SQLite) | Multi-provider Textual chat TUI with persistent SQLite history, `/`-search across past conversations, and `Ctrl-J` mid-conversation model switching |
 | [khoj](clis/khoj/) | Python | AGPL-3.0 | Embed: local sentence-transformers or OpenAI; Chat: local llama.cpp/Ollama, OpenAI, Anthropic, Gemini, any OpenAI-compatible | No (HTTP API only) | User-facing personas, not autonomous sub-agents | Off with `--anonymous-mode`; opt-in account telemetry otherwise | Long-lived local daemon that incrementally indexes a personal corpus (notes, PDFs, code) and answers chat queries with citations, fully offline-capable |
+| [code-review-gpt](clis/code-review-gpt/) | TS (Node) | MIT | OpenAI, Anthropic, any OpenAI-compatible | No | None — one LLM call per file | Off (no analytics) | Diff-scoped PR-time AI code review with a CI mode that posts inline GitHub PR comments; custom rubrics encode team-specific lint policy that regex linters cannot express |
+| [logai](clis/logai/) | Python | BSD-3-Clause | Local: TF-IDF / Word2Vec / sentence-transformers; LLM summarization (optional): OpenAI, any OpenAI-compatible | No | None — sequential pipeline stages | Off (no analytics; LLM egress only if summarization enabled) | Two-stage log analysis: classical Drain/IPLoM template extraction + Isolation Forest anomaly scoring collapses GBs to dozens of templates, then LLM summarizes only the residual anomalies |
+| [txtai](clis/txtai/) | Python | Apache-2.0 | Embeddings: sentence-transformers, OpenAI, Cohere, HF; LLM: local llama.cpp/Ollama, OpenAI, Anthropic, any LiteLLM-routed | No (FastAPI surface available) | None — linear YAML workflows | Off (no analytics; fully offline by default) | Index-as-a-file portability: build an embeddings index on one machine, scp the tarball, query offline with the same CLI; covers vector search + graph-RAG + HF pipelines behind one shell surface |
 
 > **Caveat.** Licenses, model lists, and feature flags drift. Each subdirectory
 > README pins a "as of" date — treat it as a snapshot, not a contract.

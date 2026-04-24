@@ -12,7 +12,10 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   cloud surface at all, or [`khoj`](clis/khoj/) for a long-lived
   local daemon that indexes a personal notes / PDF / code corpus and
   answers chat queries with citations (`--anonymous-mode
-  --offline-chat` for a fully offline pipeline).
+  --offline-chat` for a fully offline pipeline), or
+  [`txtai`](clis/txtai/) if you want a *portable on-disk index file*
+  (sentence-transformers + Faiss-CPU by default, no network) you
+  can build on one machine and ship to an air-gapped box.
   Skip the rest of this tree.
 
 ## 2. Where do you live?
@@ -101,7 +104,13 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
   scoped index — best for ad-hoc "ask this folder once"), or
   [`khoj`](clis/khoj/) (long-lived daemon, persistent incremental
   index, citations back to source — best when the corpus is your
-  ongoing notes vault / PDF library that you query repeatedly).
+  ongoing notes vault / PDF library that you query repeatedly), or
+  [`txtai`](clis/txtai/) (one level lower than `khoj`: build a
+  portable on-disk index file with `python -m txtai.console`,
+  `.index notes.txt`, `.save notes.index`, then query it offline
+  with the same CLI — best when you want to *ship the index* to
+  another machine, version-control it, or wrap it in a custom
+  pipeline rather than chat with it interactively).
 
 ## 5b. Single-purpose workflow glue
 
@@ -136,6 +145,16 @@ agent. These are install-once-and-forget tools.
   red-team mode. The only entry in the catalog whose job is *grading*
   output rather than producing it; pair with [`llm`](clis/llm/) for
   exploration and [`fabric`](clis/fabric/) for prompt authoring.
+- **AI-review a finished diff at PR time, no write access to your
+  repo** → [`code-review-gpt`](clis/code-review-gpt/). Reads the
+  diff, emits severity-tagged comments (`🔴 critical / 🟡 warning /
+  🟢 nit`), optional `--ci=github` mode posts inline PR comments.
+  This is the *inverse* of [`aider`](clis/aider/) /
+  [`claude-code`](clis/claude-code/) (which start from a request and
+  emit a patch); here you start from a finished patch and ask for
+  review. Pair with [`symbex`](clis/symbex/) or
+  [`repomix`](clis/repomix/) if you need cross-file reasoning that
+  the diff alone cannot provide.
 
 ## 5c. Context-packing pipeline (LLM-input shaping)
 
@@ -195,6 +214,24 @@ docs. For those, run a converter first.
   `promptfoo` rows) and [`fabric`](clis/fabric/) (author the
   patterns you then regress).
 
+## 5f. Operational data → AI (log analysis)
+
+Source-tree packers and document converters assume your input is
+something a human *wrote*. For machine-emitted streams — application
+logs, syslog, k8s events — the right move is to mine first and only
+then summarize.
+
+- **Find the needle in a multi-GB log haystack and get a plain-
+  English explanation** → [`logai`](clis/logai/). Two-stage
+  pipeline: classical log mining (Drain / IPLoM template extraction,
+  TF-IDF / Word2Vec embeddings, Isolation Forest / DBSCAN anomaly
+  scoring) collapses millions of lines to dozens of templates, then
+  an *optional* LLM stage summarizes only the residual anomalies in
+  natural language. Run pure-classical with no API key, or enable
+  the LLM stage for narrative incident reports. The only "ops data
+  → AI" entry in the catalog; nothing else here touches log volume
+  at this shape.
+
 ## 6. Team / org constraints
 
 - **Telemetry must be off by default** → all entries marked "Off" in the
@@ -207,7 +244,10 @@ docs. For those, run a converter first.
   opt-in), `marker` (no network unless `--use_llm` configured),
   `gptscript`, `shell-genie` (no analytics; `feedback` writes locally
   only), `elia` (no telemetry; history stays in local SQLite),
-  `khoj` (off when run with `--anonymous-mode`).
+  `khoj` (off when run with `--anonymous-mode`),
+  `code-review-gpt` (no analytics; only egress is the LLM provider),
+  `logai` (no analytics; LLM egress only if summarization stage
+  enabled), `txtai` (no analytics; fully offline by default).
 - **Permissive license required (no AGPL, no GPL)** → avoid `plandex`
   (AGPL core), `open-interpreter` (AGPL-3.0), `khoj` (AGPL-3.0), and
   `tgpt` (GPL-3.0).
@@ -258,3 +298,6 @@ docs. For those, run a converter first.
 | Regression-test a prompt across providers and fail CI when quality / cost / latency budget breaks | [`promptfoo`](clis/promptfoo/) |
 | Multi-provider terminal chat TUI with persistent SQLite history and `/`-search across past conversations | [`elia`](clis/elia/) |
 | Long-lived local daemon that indexes your notes / PDF / code corpus and answers chat queries with citations, fully offline-capable | [`khoj`](clis/khoj/) |
+| AI-review a finished diff at PR time, post inline GitHub PR comments, no write access to the repo | [`code-review-gpt`](clis/code-review-gpt/) |
+| Find the needle in multi-GB application logs, plain-English summary of anomaly clusters, classical mining + optional LLM summarization | [`logai`](clis/logai/) |
+| Build a portable on-disk embeddings index (sentence-transformers + Faiss-CPU), ship it offline, query it with the same CLI | [`txtai`](clis/txtai/) |
