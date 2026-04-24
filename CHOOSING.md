@@ -21,7 +21,10 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
 - **Unix pipe primitive (no session, no UI)** → [`mods`](clis/mods/),
   or [`llm`](clis/llm/) if you also want every prompt logged to SQLite
   for later replay, or [`shell-gpt`](clis/shell-gpt/) if you want the
-  output to default to a *shell command* you can execute inline.
+  output to default to a *shell command* you can execute inline, or
+  [`tgpt`](clis/tgpt/) if you want zero-config no-API-key operation,
+  or [`fabric`](clis/fabric/) if you want to apply a curated
+  prompt-pattern library to whatever you pipe in.
 - **Multi-turn REPL where the model writes and runs code** →
   [`open-interpreter`](clis/open-interpreter/) (any language, real
   machine, no sandbox), [`gptme`](clis/gptme/) (sandboxed-ish via
@@ -64,7 +67,10 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
   [`OpenHands`](clis/openhands/) (multi-agent), [`forge`](clis/forge/)
   (YAML workflows with per-step model routing).
 - **No plan, just transform stdin** → [`mods`](clis/mods/), or
-  [`llm`](clis/llm/) if you also want a queryable history of every call.
+  [`llm`](clis/llm/) if you also want a queryable history of every call,
+  or [`fabric`](clis/fabric/) if you want a versioned, shared library
+  of prompt patterns to apply to that stdin (`pbpaste | fabric -p
+  extract_wisdom`).
 - **Chat with a folder of documents from a terminal** →
   [`aichat`](clis/aichat/) (built-in RAG, single binary).
 
@@ -72,8 +78,10 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
 
 - **Telemetry must be off by default** → all entries marked "Off" in the
   matrix: `opencode`, `aider`, `cline`, `crush`, `continue`, `mentat`,
-  `gptme`, `smol-developer`, `mods` (no telemetry at all), `forge`.
-- **Permissive license required (no AGPL)** → avoid `plandex` (AGPL core).
+  `gptme`, `smol-developer`, `mods` (no telemetry at all), `forge`,
+  `tgpt` (no telemetry; note that free providers see prompts), `fabric`.
+- **Permissive license required (no AGPL, no GPL)** → avoid `plandex`
+  (AGPL core), `open-interpreter` (AGPL-3.0), and `tgpt` (GPL-3.0).
   **Source-available, not OSI-approved** → `claude-code` is excluded if
   you require an OSI license.
   Prefer Apache-2.0 / MIT entries.
@@ -104,3 +112,5 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
 | Want chat + RAG over local docs from one binary | [`aichat`](clis/aichat/) |
 | Want the LLM to write and *run* code in a REPL on your real machine | [`open-interpreter`](clis/open-interpreter/) |
 | Forget shell flags, want `Ctrl-L` to generate the command inline | [`shell-gpt`](clis/shell-gpt/) |
+| Want an LLM in a fresh terminal with no API key, right now | [`tgpt`](clis/tgpt/) |
+| Want a team-shared, version-controlled prompt-pattern library | [`fabric`](clis/fabric/) |

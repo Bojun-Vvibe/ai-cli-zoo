@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **22 AI coding CLIs**. Each entry
+A curated, deeply-annotated catalog comparing **24 AI coding CLIs**. Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
@@ -42,6 +42,8 @@ the right tool for the job in under five minutes.
 | [aichat](clis/aichat/) | Rust | MIT/Apache-2.0 | 20+ providers built-in: OpenAI, Anthropic, Gemini, Mistral, Cohere, Groq, DeepSeek, Together, Ollama, Bedrock, Qwen/Zhipu/Moonshot/Ernie, any OpenAI-compatible | No (function-script convention instead) | None — serial function calls | Off (no telemetry) | Single static binary with built-in document RAG + shell-integration completion |
 | [open-interpreter](clis/open-interpreter/) | Python | AGPL-3.0 | OpenAI, Anthropic, Gemini, local (Ollama/LM Studio/llama.cpp), any OpenAI-compatible via litellm | No | None — single REPL with code-exec loop | Off (opt-in) | Code-execution REPL: model writes Python/shell, runs it locally, sees output, loops |
 | [shell-gpt](clis/shell-gpt/) | Python | MIT | OpenAI built-in; anything OpenAI-compatible (LiteLLM proxies, Ollama, LM Studio, vLLM) | No | None — flat chat sessions, OpenAI-style functions | Off (no telemetry) | `Ctrl-L` shell integration: natural-language → shell command with [E]xecute/[D]escribe/[A]bort prompt |
+| [tgpt](clis/tgpt/) | Go | GPL-3.0 | Free providers (Pollinations, Phind, DuckDuckGo, Blackbox, Koboldai) by default; OpenAI/Anthropic/Groq/Ollama/OpenRouter via flags | No | None — one-shot or flat REPL | Off (no telemetry; free providers see prompts) | Zero-config no-API-key terminal LLM; `brew install tgpt && tgpt "..."` works in 30 seconds |
+| [fabric](clis/fabric/) | Go | MIT | OpenAI, Anthropic, Gemini, Groq, Ollama, OpenRouter, Azure, Bedrock | No | None — one pattern = one call, compose via shell pipes | Off (no telemetry) | Shared, version-controlled, hand-curated 200+ pattern library as the product |
 
 > **Caveat.** Licenses, model lists, and feature flags drift. Each subdirectory
 > README pins a "as of" date — treat it as a snapshot, not a contract.
