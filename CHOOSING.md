@@ -73,6 +73,14 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   an `[E]xecute / [R]evise / [C]opy` loop where you can iterate on
   the suggestion (`r` to nudge, regenerate, repeat) without retyping
   the original intent.
+- **Already in `tmux` / `screen` and just want "what just
+  happened?"** → [`wut`](clis/wut/). Reads the current pane's
+  scrollback and explains the last command's output in one shot,
+  optionally with a follow-up question (`wut "how do I fix this?"`).
+  Pick this over `shell-gpt` / `tlm` / `gorilla-cli` / `ai-shell`
+  when you want **zero copy-paste** — those translate intent into a
+  command, `wut` interprets what already happened. Use Ollama
+  (`OLLAMA_MODEL=...`) when scrollback may contain secrets.
 - **Inside an IDE** → [`cline`](clis/cline/) (VS Code),
   [`continue`](clis/continue/) (VS Code + JetBrains).
 - **GitHub-issue → PR, no local UI** → [`sweep`](clis/sweep/).
@@ -90,6 +98,13 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
 ```
 
 - **"Show me the diff before any write"** → `aider`, `mentat`.
+- **"The failing test is the halting condition"** →
+  [`micro-agent`](clis/micro-agent/). Bounds the agent to one file
+  and rewrites it until `npm test` (or whatever `-t` is) passes,
+  capped at `--max-runs N`. Observable stop condition in CI instead
+  of "model says done". Pick this for leaf-module / pure-function
+  TDD; switch to `aider` / `claude-code` / `opencode` the moment the
+  change spans multiple files.
 - **"Approve each tool call"** → `cline`, `opencode` (default).
 - **"Run a sandbox, just don't break my host"** → `codex`, `OpenHands`.
 - **"Open a PR, I'll review on GitHub"** → `sweep`.
@@ -208,6 +223,15 @@ models themselves. Compose with shell pipes
   Tree-sitter compression, and the ability to fetch a remote repo
   you do not have cloned** → [`repomix`](clis/repomix/) (Node, MIT,
   `--mcp` server mode for MCP-aware agents).
+- **Pack a tree from a single static Rust binary, with a
+  Handlebars-templated export shape and an interactive TUI that
+  shows a live token count as you toggle files** →
+  [`code2prompt`](clis/code2prompt/). No Python, no Node; choose it
+  over `files-to-prompt` when you want to **shape the wrapper
+  prompt** with a custom template, and over `repomix` when you want
+  hand-curation in a TUI rather than batch flags. Skip it if you
+  need Tree-sitter compression or Secretlint scanning — those are
+  `repomix` exclusives.
 
 Decision shortcut:
 

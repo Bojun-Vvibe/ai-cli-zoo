@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **51 AI coding CLIs**. Each entry
+A curated, deeply-annotated catalog comparing **54 AI coding CLIs**. Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
@@ -71,6 +71,9 @@ the right tool for the job in under five minutes.
 | [magentic](clis/magentic/) | Python | MIT | OpenAI, Anthropic (built-in extras); ~100 more via LiteLLM extra | No | None — single round-trip per `@prompt` call; you drive any tool loop in Python | Off (no analytics; egress only to provider) | Type-annotated structured output as the primary API: `def f(...) -> list[Recipe]` returns validated Pydantic objects, streaming-aware |
 | [mentals-ai](clis/mentals-ai/) | C++ | MIT | OpenAI built-in; any OpenAI-compatible endpoint (Ollama, vLLM, LiteLLM, OpenRouter, DeepSeek) | No | Sub-agents as Markdown link syntax (`use:`/`delegate:`) — recursive composition is a language construct | Off (no analytics; local `.log` traces) | Markdown-as-program: the agent definition *is* a `.md` file with `# Heading` mentals, runnable as a graph by a single C++ binary |
 | [ai-shell](clis/ai-shell/) | TS (Node) | MIT | OpenAI built-in; any OpenAI-compatible endpoint via `OPENAI_API_ENDPOINT` (Ollama, LiteLLM, vLLM, OpenRouter, Groq, DeepSeek) | No | None — one-shot translator with optional `ai chat` REPL | Off (no analytics; OpenAI endpoint sees prompts) | `[E]xecute / [R]evise / [C]opy` revise loop on every suggestion: iterate the shell command without retyping the original intent |
+| [code2prompt](clis/code2prompt/) | Rust | MIT | None — emits text for downstream LLM CLI | Yes (server: `code2prompt --mcp`) | None — one-shot packer | Off (no telemetry; only egress is the clipboard / output file) | Single static Rust binary that packs a tree into a prompt with **Handlebars templates** for the export shape, plus an interactive TUI with a live `tiktoken` counter so you can hand-curate context against a token budget before exporting |
+| [wut](clis/wut/) | Python | MIT | OpenAI, Anthropic, Ollama (env-var configured) | No | None — one LLM call per invocation | Off (no analytics; provider sees the scrollback you just printed) | Reads your **current `tmux` / `screen` pane scrollback** and explains the last command's output — three keystrokes, zero copy-paste, optional follow-up question |
+| [micro-agent](clis/micro-agent/) | TS (Node) | MIT | OpenAI, Anthropic, any OpenAI-compatible (Ollama, Groq, vLLM, LiteLLM, OpenRouter) | No | Two-agent in `--visual` mode (Claude critiques, OpenAI writes); single agent otherwise | Off (no analytics; provider sees source + tests + test output) | **The failing test is the halting condition**: agent rewrites a single file until `npm test` (or whatever `-t` is) passes, capped at `--max-runs N` — observable stop condition instead of "model says done" |
 
 > **Caveat.** Licenses, model lists, and feature flags drift. Each subdirectory
 > README pins a "as of" date — treat it as a snapshot, not a contract.
