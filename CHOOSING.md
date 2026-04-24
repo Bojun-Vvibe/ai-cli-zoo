@@ -12,6 +12,10 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   cloud surface at all, or [`tlm`](clis/tlm/) for a single Go binary
   that delivers the natural-language → shell-command loop against a
   local Ollama with zero cloud egress, or
+  [`ollama`](clis/ollama/) itself if you need the *runtime* layer
+  first — `brew install ollama && ollama run llama3.1` gets you a
+  local model in five minutes plus an OpenAI-compatible endpoint at
+  `127.0.0.1:11434` that all of the above can point at, or
   [`ramalama`](clis/ramalama/) if you want the *runtime* layer
   (container-native local model server with hardware-aware image
   selection) that the other CLIs in this list can target via its
@@ -72,7 +76,11 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   endpoint logs prompts), or [`ai-shell`](clis/ai-shell/) if you want
   an `[E]xecute / [R]evise / [C]opy` loop where you can iterate on
   the suggestion (`r` to nudge, regenerate, repeat) without retyping
-  the original intent.
+  the original intent, or [`llm-cmd`](clis/llm-cmd/) if you already
+  use [`llm`](clis/llm/) and want the suggestion to land directly
+  in your **readline buffer** (no TUI dialog, no menu — your shell's
+  normal line editor handles edit-then-Enter), accepting that there
+  is no `[A]bort` step and Enter executes immediately.
 - **Already in `tmux` / `screen` and just want "what just
   happened?"** → [`wut`](clis/wut/). Reads the current pane's
   scrollback and explains the last command's output in one shot,
@@ -232,6 +240,15 @@ models themselves. Compose with shell pipes
   hand-curation in a TUI rather than batch flags. Skip it if you
   need Tree-sitter compression or Secretlint scanning — those are
   `repomix` exclusives.
+- **Pack a *remote* GitHub repo without cloning it first, and
+  optionally let teammates grab the same digest by URL-renaming
+  `hub` → `ingest` in their browser** →
+  [`gitingest`](clis/gitingest/). Same engine as the
+  `gitingest.com` web mirror, MIT, glob-filtered, single
+  `digest.txt` out. Pick this over `repomix --remote owner/repo`
+  when you want the **web-mirror symmetry** for non-CLI
+  teammates; pick `repomix` when you need Tree-sitter compression
+  or Secretlint secret-scanning that gitingest does not have.
 
 Decision shortcut:
 
@@ -239,6 +256,8 @@ Decision shortcut:
 - "A few selected files, glob-controlled, no Node": `files-to-prompt`.
 - "The whole repo, with budget visibility and a safety net":
   `repomix`.
+- "The repo lives on GitHub and I haven't cloned it (or my
+  teammate hasn't installed any CLI)": `gitingest`.
 - "It's a PDF / EPUB / DOCX, not source code":
   [`marker`](clis/marker/) first, then one of the above on the
   resulting `.md` tree.
@@ -350,7 +369,12 @@ in the first place.
   visible to the OCI/Hugging Face/Ollama upstreams), `magentic`
   (no analytics; egress only to the configured provider),
   `mentals-ai` (no analytics; local `.log` traces), `ai-shell`
-  (no analytics; configured OpenAI-compatible endpoint sees prompts).
+  (no analytics; configured OpenAI-compatible endpoint sees prompts),
+  `ollama` (no telemetry; only egress is `registry.ollama.ai` on
+  `pull` and your own clients on `:11434`), `llm-cmd` (inherits
+  `llm`'s no-telemetry posture; logs locally to SQLite),
+  `gitingest` (CLI does not phone home; remote fetches go directly
+  to GitHub).
 - **Permissive license required (no AGPL, no GPL)** → avoid `plandex`
   (AGPL core), `open-interpreter` (AGPL-3.0), `khoj` (AGPL-3.0), and
   `tgpt` (GPL-3.0).
@@ -413,3 +437,6 @@ in the first place.
 | Embed LLM calls as type-annotated Python functions, get validated Pydantic objects back (streaming-aware), no agent loop | [`magentic`](clis/magentic/) |
 | Write the agent program as a Markdown file with `# Heading` mentals and `use:` / `delegate:` links — readable by non-engineers, runnable by a single C++ binary | [`mentals-ai`](clis/mentals-ai/) |
 | One-shot natural-language → shell command with an iterative `[R]evise` loop so you can nudge the suggestion without retyping the original intent | [`ai-shell`](clis/ai-shell/) |
+| Local LLM runtime: `brew install ollama && ollama run llama3.1` in five minutes, then OpenAI-compatible HTTP at `:11434` for the rest of the catalog to point at | [`ollama`](clis/ollama/) |
+| Suggestion lands in your *readline buffer* (no TUI dialog, no menu) so your shell's normal line editor handles edit-then-Enter — for users already on [`llm`](clis/llm/) | [`llm-cmd`](clis/llm-cmd/) |
+| Pack a remote GitHub repo without cloning, with a hosted web mirror so non-CLI teammates can grab the same digest by URL-renaming `hub` → `ingest` | [`gitingest`](clis/gitingest/) |
