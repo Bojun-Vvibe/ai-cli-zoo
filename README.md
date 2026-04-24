@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **24 AI coding CLIs**. Each entry
+A curated, deeply-annotated catalog comparing **27 AI coding CLIs**. Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
@@ -44,6 +44,9 @@ the right tool for the job in under five minutes.
 | [shell-gpt](clis/shell-gpt/) | Python | MIT | OpenAI built-in; anything OpenAI-compatible (LiteLLM proxies, Ollama, LM Studio, vLLM) | No | None — flat chat sessions, OpenAI-style functions | Off (no telemetry) | `Ctrl-L` shell integration: natural-language → shell command with [E]xecute/[D]escribe/[A]bort prompt |
 | [tgpt](clis/tgpt/) | Go | GPL-3.0 | Free providers (Pollinations, Phind, DuckDuckGo, Blackbox, Koboldai) by default; OpenAI/Anthropic/Groq/Ollama/OpenRouter via flags | No | None — one-shot or flat REPL | Off (no telemetry; free providers see prompts) | Zero-config no-API-key terminal LLM; `brew install tgpt && tgpt "..."` works in 30 seconds |
 | [fabric](clis/fabric/) | Go | MIT | OpenAI, Anthropic, Gemini, Groq, Ollama, OpenRouter, Azure, Bedrock | No | None — one pattern = one call, compose via shell pipes | Off (no telemetry) | Shared, version-controlled, hand-curated 200+ pattern library as the product |
+| [files-to-prompt](clis/files-to-prompt/) | Python | Apache-2.0 | None — emits text for downstream LLM CLI | No | None — context packer, not a model client | Off (no network) | Deterministic context packer for piping into any LLM CLI; honors `.gitignore`, emits Anthropic XML / markdown / line-numbered shapes |
+| [oterm](clis/oterm/) | Python | MIT | Ollama only (whatever `ollama list` reports) | Yes (client) | None — chat tabs with in-line tool calls | Off (no network beyond Ollama) | Persistent multi-tab Textual TUI purpose-built for local Ollama, with edit-and-fork on every turn |
+| [gorilla-cli](clis/gorilla-cli/) | Python | Apache-2.0 | Hosted Gorilla endpoint by default; any OpenAI-compatible endpoint via `GORILLA_API_URL` | No | None — one HTTP call returns N candidates | On (hosted endpoint logs prompts) | Multi-candidate shell-command picker with arrow-key selection; zero-key default, shell-only scope |
 
 > **Caveat.** Licenses, model lists, and feature flags drift. Each subdirectory
 > README pins a "as of" date — treat it as a snapshot, not a contract.

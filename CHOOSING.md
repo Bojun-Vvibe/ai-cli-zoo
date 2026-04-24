@@ -7,7 +7,9 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
 - **Cloud-only is fine** → continue to step 2.
 - **Must run locally / air-gapped** → [`aider`](clis/aider/) (Ollama),
   [`gptme`](clis/gptme/) (Ollama, llama.cpp), or
-  [`continue`](clis/continue/) (any OpenAI-compatible local endpoint).
+  [`continue`](clis/continue/) (any OpenAI-compatible local endpoint),
+  or [`oterm`](clis/oterm/) for an Ollama-only multi-tab TUI with no
+  cloud surface at all.
   Skip the rest of this tree.
 
 ## 2. Where do you live?
@@ -24,7 +26,10 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   output to default to a *shell command* you can execute inline, or
   [`tgpt`](clis/tgpt/) if you want zero-config no-API-key operation,
   or [`fabric`](clis/fabric/) if you want to apply a curated
-  prompt-pattern library to whatever you pipe in.
+  prompt-pattern library to whatever you pipe in, or
+  [`files-to-prompt`](clis/files-to-prompt/) if you need to **pack a
+  whole subtree** as deterministic context to pipe *into* one of the
+  above (`files-to-prompt src/ --cxml | llm -m claude-sonnet '...'`).
 - **Multi-turn REPL where the model writes and runs code** →
   [`open-interpreter`](clis/open-interpreter/) (any language, real
   machine, no sandbox), [`gptme`](clis/gptme/) (sandboxed-ish via
@@ -111,6 +116,9 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
 | Want SQLite-logged history of every LLM call | [`llm`](clis/llm/) |
 | Want chat + RAG over local docs from one binary | [`aichat`](clis/aichat/) |
 | Want the LLM to write and *run* code in a REPL on your real machine | [`open-interpreter`](clis/open-interpreter/) |
-| Forget shell flags, want `Ctrl-L` to generate the command inline | [`shell-gpt`](clis/shell-gpt/) |
+| Forget shell flags, want `Ctrl-L` to generate the command inline | [`shell-gpt`](clis/shell-gpt/) (single answer) or [`gorilla-cli`](clis/gorilla-cli/) (multi-candidate picker; default endpoint logs prompts) |
 | Want an LLM in a fresh terminal with no API key, right now | [`tgpt`](clis/tgpt/) |
 | Want a team-shared, version-controlled prompt-pattern library | [`fabric`](clis/fabric/) |
+| Want to pack a whole subtree as deterministic context for any LLM CLI | [`files-to-prompt`](clis/files-to-prompt/) |
+| Want a chat TUI that talks *only* to a local Ollama, with multi-tab + MCP | [`oterm`](clis/oterm/) |
+| Want a shell-command suggester that shows *multiple* candidates to pick from | [`gorilla-cli`](clis/gorilla-cli/) |
