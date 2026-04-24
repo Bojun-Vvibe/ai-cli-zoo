@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **16 AI coding CLIs**. Each entry
+A curated, deeply-annotated catalog comparing **18 AI coding CLIs**. Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
@@ -36,6 +36,8 @@ the right tool for the job in under five minutes.
 | [gemini-cli](clis/gemini-cli/) | TS (Node) | Apache-2.0 | Gemini 2.x / 1.5 (OAuth, AI Studio, Vertex) | Yes (client) | Single agent, parallel tool calls | Opt-in (free tier opts into training) | 1M+ token context with aggressive prefix caching |
 | [claude-code](clis/claude-code/) | TS (Node) | Source-available (Anthropic Commercial) | Claude Opus / Sonnet / Haiku (API, Pro/Max OAuth, Bedrock, Vertex) | Yes (client, deeply integrated) | True sub-agents via `Task` tool, configurable per project | Opt-out (no content training on API/Pro/Max) | Hooks + Skills + Sub-agents triangle |
 | [mods](clis/mods/) | Go | MIT | OpenAI, Anthropic, Gemini, Cohere, Groq, local, Azure, any OpenAI-compatible | No | None — one-shot stdin→stdout | Off (no telemetry at all) | Unix-pipe primitive for LLMs |
+| [forge](clis/forge/) | Rust (npm launcher) | Apache-2.0 | Anthropic, OpenAI, Gemini, OpenRouter, local, any OpenAI-compatible | Yes (client) | YAML-defined multi-agent workflows, per-step model | Off | Provider-mixing as a first-class concept (planner / editor / reviewer on different models) |
+| [qwen-code](clis/qwen-code/) | TS (Node) | Apache-2.0 | Qwen3-Coder (OAuth + DashScope), any OpenAI-compatible endpoint | Yes (client) | Single agent, parallel tool calls | Opt-in | First-party Qwen3-Coder access with a real free-tier quota |
 
 > **Caveat.** Licenses, model lists, and feature flags drift. Each subdirectory
 > README pins a "as of" date — treat it as a snapshot, not a contract.

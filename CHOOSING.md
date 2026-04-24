@@ -53,14 +53,15 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
 - **Multi-step plan with branches** → [`plandex`](clis/plandex/).
 - **Long-horizon agent loop with sub-agents** → [`opencode`](clis/opencode/)
   (Task tool), [`claude-code`](clis/claude-code/) (Task tool, hooks, skills),
-  [`OpenHands`](clis/openhands/) (multi-agent).
+  [`OpenHands`](clis/openhands/) (multi-agent), [`forge`](clis/forge/)
+  (YAML workflows with per-step model routing).
 - **No plan, just transform stdin** → [`mods`](clis/mods/).
 
 ## 6. Team / org constraints
 
 - **Telemetry must be off by default** → all entries marked "Off" in the
   matrix: `opencode`, `aider`, `cline`, `crush`, `continue`, `mentat`,
-  `gptme`, `smol-developer`, `mods` (no telemetry at all).
+  `gptme`, `smol-developer`, `mods` (no telemetry at all), `forge`.
 - **Permissive license required (no AGPL)** → avoid `plandex` (AGPL core).
   **Source-available, not OSI-approved** → `claude-code` is excluded if
   you require an OSI license.
@@ -86,3 +87,5 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
 | Need hooks + sub-agents on Claude | `claude-code` |
 | Want a max-context model with caching | `gemini-cli` |
 | LLM as a unix utility, no agent loop | `mods` |
+| Want different models for plan vs edit vs review | [`forge`](clis/forge/) |
+| Want a serious coder model with a free tier and no credit card | [`qwen-code`](clis/qwen-code/) |
