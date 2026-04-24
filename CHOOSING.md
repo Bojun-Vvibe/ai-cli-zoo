@@ -20,7 +20,13 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   [`mentat`](clis/mentat/), [`plandex`](clis/plandex/).
 - **Unix pipe primitive (no session, no UI)** → [`mods`](clis/mods/),
   or [`llm`](clis/llm/) if you also want every prompt logged to SQLite
-  for later replay.
+  for later replay, or [`shell-gpt`](clis/shell-gpt/) if you want the
+  output to default to a *shell command* you can execute inline.
+- **Multi-turn REPL where the model writes and runs code** →
+  [`open-interpreter`](clis/open-interpreter/) (any language, real
+  machine, no sandbox), [`gptme`](clis/gptme/) (sandboxed-ish via
+  Docker tool), or [`codex`](clis/codex/) (sandboxed via
+  Seatbelt/Landlock).
 - **Inside an IDE** → [`cline`](clis/cline/) (VS Code),
   [`continue`](clis/continue/) (VS Code + JetBrains).
 - **GitHub-issue → PR, no local UI** → [`sweep`](clis/sweep/).
@@ -96,3 +102,5 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
 | Want a serious coder model with a free tier and no credit card | [`qwen-code`](clis/qwen-code/) |
 | Want SQLite-logged history of every LLM call | [`llm`](clis/llm/) |
 | Want chat + RAG over local docs from one binary | [`aichat`](clis/aichat/) |
+| Want the LLM to write and *run* code in a REPL on your real machine | [`open-interpreter`](clis/open-interpreter/) |
+| Forget shell flags, want `Ctrl-L` to generate the command inline | [`shell-gpt`](clis/shell-gpt/) |
