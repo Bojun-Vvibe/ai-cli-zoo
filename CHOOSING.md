@@ -231,6 +231,42 @@ then summarize.
   the LLM stage for narrative incident reports. The only "ops data
   → AI" entry in the catalog; nothing else here touches log volume
   at this shape.
+- **Triage a misbehaving Kubernetes cluster, get a one-line-per-
+  issue list of broken objects with optional plain-English
+  paragraphs** → [`k8sgpt`](clis/k8sgpt/). Deterministic Go
+  analyzers walk the live cluster API (Pods, Services, Ingress,
+  HPAs, PDBs, webhooks, gateways…) and emit findings on their own;
+  `--explain` is a *post-hoc* narration layer powered by OpenAI /
+  Azure / Bedrock / Vertex / Cohere / LocalAI / Ollama. Pick this
+  over an exploratory agent (`OpenHands`, `claude-code` with
+  `kubectl`) when you need bounded token cost and reproducible
+  findings; pick the agents instead when you need *remediation*,
+  not just diagnosis.
+
+## 5g. Token budgeting and HTML cleaning (front-ends to the LLM call)
+
+The packers in 5d/5e produce text. Two more upstream steps are
+worth their own slot: **measuring** the cost of that text before
+spending it, and **cleaning** raw web HTML so it is worth measuring
+in the first place.
+
+- **Measure exactly how many tokens a packer just emitted (and
+  optionally cap the stream)** → [`ttok`](clis/ttok/). One-shot
+  Unix filter wrapping `tiktoken`. `… | ttok` prints the count;
+  `… | ttok --truncate 100000` caps it. Counts are exact for
+  OpenAI tiktoken-vocab models, useful upper-bound estimates for
+  Anthropic / Gemini / Llama. The cheap pre-flight gate that makes
+  every `files-to-prompt` / `symbex` / `repomix` / `strip-tags` /
+  `marker` invocation steerable instead of "discover the bill via
+  an API error".
+- **Strip a webpage to text before piping it into an LLM CLI** →
+  [`strip-tags`](clis/strip-tags/). `bs4`-backed HTML→text filter
+  with CSS-selector targeting (`strip-tags article` keeps only the
+  `<article>` content) and a `--minify` mode that preserves
+  structure but drops chrome. Pair with `curl` for static pages,
+  with a headless-browser pre-renderer for SPAs. The web-content
+  analogue to `marker` (PDF → markdown) and `files-to-prompt`
+  (source tree → packed prompt).
 
 ## 6. Team / org constraints
 
@@ -247,7 +283,10 @@ then summarize.
   `khoj` (off when run with `--anonymous-mode`),
   `code-review-gpt` (no analytics; only egress is the LLM provider),
   `logai` (no analytics; LLM egress only if summarization stage
-  enabled), `txtai` (no analytics; fully offline by default).
+  enabled), `txtai` (no analytics; fully offline by default),
+  `k8sgpt` (no analytics; LLM egress only when `--explain` set),
+  `ttok` (one-time vocab download, then offline), `strip-tags`
+  (no network at all).
 - **Permissive license required (no AGPL, no GPL)** → avoid `plandex`
   (AGPL core), `open-interpreter` (AGPL-3.0), `khoj` (AGPL-3.0), and
   `tgpt` (GPL-3.0).
@@ -301,3 +340,6 @@ then summarize.
 | AI-review a finished diff at PR time, post inline GitHub PR comments, no write access to the repo | [`code-review-gpt`](clis/code-review-gpt/) |
 | Find the needle in multi-GB application logs, plain-English summary of anomaly clusters, classical mining + optional LLM summarization | [`logai`](clis/logai/) |
 | Build a portable on-disk embeddings index (sentence-transformers + Faiss-CPU), ship it offline, query it with the same CLI | [`txtai`](clis/txtai/) |
+| Triage a misbehaving Kubernetes cluster — deterministic analyzer sweep over the live API, optional plain-English explanations | [`k8sgpt`](clis/k8sgpt/) |
+| Count tokens of any packer's output before paying for the API call (and optionally truncate to a hard cap) | [`ttok`](clis/ttok/) |
+| Strip a `curl`'d webpage to clean text (or minified HTML) for piping into any LLM CLI | [`strip-tags`](clis/strip-tags/) |

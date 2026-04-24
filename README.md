@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **42 AI coding CLIs**. Each entry
+A curated, deeply-annotated catalog comparing **45 AI coding CLIs**. Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
@@ -62,6 +62,9 @@ the right tool for the job in under five minutes.
 | [code-review-gpt](clis/code-review-gpt/) | TS (Node) | MIT | OpenAI, Anthropic, any OpenAI-compatible | No | None — one LLM call per file | Off (no analytics) | Diff-scoped PR-time AI code review with a CI mode that posts inline GitHub PR comments; custom rubrics encode team-specific lint policy that regex linters cannot express |
 | [logai](clis/logai/) | Python | BSD-3-Clause | Local: TF-IDF / Word2Vec / sentence-transformers; LLM summarization (optional): OpenAI, any OpenAI-compatible | No | None — sequential pipeline stages | Off (no analytics; LLM egress only if summarization enabled) | Two-stage log analysis: classical Drain/IPLoM template extraction + Isolation Forest anomaly scoring collapses GBs to dozens of templates, then LLM summarizes only the residual anomalies |
 | [txtai](clis/txtai/) | Python | Apache-2.0 | Embeddings: sentence-transformers, OpenAI, Cohere, HF; LLM: local llama.cpp/Ollama, OpenAI, Anthropic, any LiteLLM-routed | No (FastAPI surface available) | None — linear YAML workflows | Off (no analytics; fully offline by default) | Index-as-a-file portability: build an embeddings index on one machine, scp the tarball, query offline with the same CLI; covers vector search + graph-RAG + HF pipelines behind one shell surface |
+| [k8sgpt](clis/k8sgpt/) | Go | Apache-2.0 | Optional `--explain` backend: OpenAI, Azure, Cohere, Bedrock, Vertex, HuggingFace, LocalAI, Ollama, `noopai` | No (gRPC `serve` instead) | None — analyzers run in parallel, one sweep per `analyze` | Off (no analytics; LLM egress only when `--explain` set) | Deterministic Kubernetes analyzer catalog (Pods, Services, Ingress, HPAs, webhooks, gateways…) finds breakage on its own; LLM is a post-hoc narration layer for on-call humans, not the decision-maker |
+| [ttok](clis/ttok/) | Python | Apache-2.0 | None — `tiktoken` encoder only; `-m gpt-4o` selects a tokenizer, not an endpoint | No | None — one-shot tokenizer | Off (one-time vocab download from OpenAI's public CDN, then offline) | Cheap pre-flight token gate for every other catalog packer: `… \| ttok` answers "will this fit?" before paying for an API call, `… \| ttok --truncate N` caps the stream |
+| [strip-tags](clis/strip-tags/) | Python | Apache-2.0 | None — emits text for downstream LLM CLI | No | None — HTML→text Unix filter | Off (no network; `strip-tags` does not fetch URLs itself) | HTML→text cleaner that drops `<script>`/`<style>`/chrome and supports `bs4` CSS selectors; the missing front-end for "I just `curl`'d a webpage and want to ask the model about it" without burning tokens on tracker JS |
 
 > **Caveat.** Licenses, model lists, and feature flags drift. Each subdirectory
 > README pins a "as of" date — treat it as a snapshot, not a contract.
