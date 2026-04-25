@@ -371,6 +371,25 @@ agent. These are install-once-and-forget tools.
   review. Pair with [`symbex`](clis/symbex/) or
   [`repomix`](clis/repomix/) if you need cross-file reasoning that
   the diff alone cannot provide.
+- **Refactor a multi-language codebase by *syntactic pattern* rather
+  than by asking an LLM** → [`ast-grep`](clis/ast-grep/). Single
+  static Rust binary, tree-sitter-backed, pattern language is
+  isomorphic to the target language: `var $X = $Y` matches every
+  `var` declaration in JS/TS regardless of identifier and rewrites
+  to `let $X = $Y`. YAML rules (`all` / `any` / `not` / `inside` /
+  `has` / `follows` + `fix`) compose into per-repo lint catalogs;
+  `ast-grep scan --format github` posts to PRs. The deterministic
+  counterpart to "have an agent refactor my codebase": when the
+  change is expressible as a syntactic pattern, this is faster,
+  cheaper, and correct by construction. Also exposes itself as an
+  MCP server (separate `ast-grep-mcp` package) so an agent
+  ([`opencode`](clis/opencode/) / [`claude-code`](clis/claude-code/) /
+  [`goose`](clis/goose/)) can call it as a precise refactor primitive
+  instead of doing token-expensive regex edits. Skip it when the
+  refactor needs **type information** (use a TS-Morph / Roslyn /
+  rust-analyzer driven script instead) or when the change is
+  inherently semantic and better described in English (then reach
+  for [`aider`](clis/aider/) or [`opencode`](clis/opencode/)).
 
 ## 5c. Context-packing pipeline (LLM-input shaping)
 
@@ -460,6 +479,23 @@ docs. For those, run a converter first.
   frontier models (~$0.005–$0.02 per page) and non-deterministic;
   pick `marker` first when its output is usable, fall back to
   `zerox` when it isn't.
+- **Convert a *heterogeneous corpus* (PDF + DOCX + PPTX + XLSX +
+  audio + XBRL/JATS) behind one CLI, fully offline, with a typed
+  IR you can re-export from** → [`docling`](clis/docling/). Linux
+  Foundation AI & Data project (donated by IBM Research, MIT,
+  active multi-contributor development); default pipeline is local
+  layout + table + OCR (no LLM, no network); optional
+  `--pipeline vlm --vlm-model granite_docling` mode runs a 258M
+  document VLM with MLX acceleration on Apple Silicon. The killer
+  trick is the unified `DoclingDocument` JSON IR: convert once,
+  ship the JSON, then re-render Markdown / HTML / chunks tuned
+  for your RAG without re-running the heavy ML pipeline. Also
+  exposes itself as an MCP server (`docling mcp`) so coding agents
+  can hand it a document directly. Pick `marker` if your inputs
+  are PDF-only and you want the most polished single-format
+  pipeline; pick `docling` if your corpus is mixed-format or you
+  need the typed IR; pick `zerox` if your inputs are adversarial
+  scans and you can afford a frontier vision model.
 
 ## 5d.1. Web pages → LLM-ingestible Markdown
 
@@ -492,6 +528,23 @@ articles, paginated docs sites — which `curl | html2text` mangles.
   Compose with [`llm`](clis/llm/) (replay logged sessions as
   `promptfoo` rows) and [`fabric`](clis/fabric/) (author the
   patterns you then regress).
+- **Write LLM evals as ordinary pytest tests and run them in CI
+  alongside unit tests** → [`deepeval`](clis/deepeval/). Same goal
+  as `promptfoo` (gating quality, not producing it), opposite
+  shape: instead of a YAML matrix, you write `test_*.py` files
+  that build `LLMTestCase` objects and assert against metrics
+  (G-Eval / DAG for custom criteria, plus a deep catalog of
+  agentic — task completion, tool correctness, plan adherence,
+  step efficiency — RAG, multi-turn, and MCP-specific metrics).
+  `deepeval test run tests/llm/` reuses pytest collection,
+  fixtures, parallelism, and JUnit XML, so a 50-case eval suite
+  drops into existing CI in half a day. Pick `promptfoo` if your
+  team prefers declarative YAML and an HTML diff viewer over a
+  Python test file; pick `deepeval` if you live in pytest already
+  and want one test command for unit, integration, and eval, or
+  if you specifically need agentic / MCP metrics. Default
+  telemetry is on — set `DEEPEVAL_TELEMETRY_OPT_OUT=YES` in your
+  CI image.
 
 ## 5f. Operational data → AI (log analysis)
 
