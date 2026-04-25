@@ -49,10 +49,23 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   serve llama3.3:70b` pins backend (vLLM / Transformers / SGLang) +
   dtype + chat template + GPU shape in a reproducible bento
   manifest, ships a usable `/chat` UI at `:3000`, and `openllm
-  deploy` reuses the same manifest against a managed BentoCloud
-  cluster without rewriting serving config; the heavyweight
-  counterpart to [`mlx-lm`](clis/mlx-lm/) on the cluster side.
-  Skip the rest of this tree.
+   deploy` reuses the same manifest against a managed BentoCloud
+   cluster without rewriting serving config; the heavyweight
+   counterpart to [`mlx-lm`](clis/mlx-lm/) on the cluster side, or
+   [`koboldcpp`](clis/koboldcpp/) if you want a **single portable
+   binary** (no Python, no daemon, no package manager) that takes a
+   `.gguf` path on the command line and exposes it as an
+   OpenAI-compatible endpoint with first-class sampler knobs
+   (`min-p`, `top-a`, dynamic temperature, DRY, mirostat) the other
+   local runtimes hide — AGPL-3.0 is the catch if you plan to embed
+   it in a hosted product, or [`exo`](clis/exo/) if your real ask is
+   "**run a model that does not fit on any one of my machines**" —
+   it shards a 70B-class model across a heterogeneous cluster of
+   everyday devices (MacBook + Linux box + spare Mac Mini on the
+   same LAN) and exposes one OpenAI-compatible endpoint;
+   network-bound on a 1 Gb LAN, so use it for *capacity* not
+   *throughput*.
+   Skip the rest of this tree.
 
 ## 2. Where do you live?
 
@@ -766,6 +779,7 @@ in the first place.
 | Regression-test a prompt across providers and fail CI when quality / cost / latency budget breaks | [`promptfoo`](clis/promptfoo/) |
 | Multi-provider terminal chat TUI with persistent SQLite history and `/`-search across past conversations | [`elia`](clis/elia/) |
 | Long-lived local daemon that indexes your notes / PDF / code corpus and answers chat queries with citations, fully offline-capable | [`khoj`](clis/khoj/) |
+| Capture-and-recall over your *own recent activity* (clipboard / IDE selections / saved snippets), then chat with citations grounded in that personal corpus | [`pieces-cli`](clis/pieces-cli/) |
 | AI-review a finished diff at PR time, post inline GitHub PR comments, no write access to the repo | [`code-review-gpt`](clis/code-review-gpt/) |
 | Find the needle in multi-GB application logs, plain-English summary of anomaly clusters, classical mining + optional LLM summarization | [`logai`](clis/logai/) |
 | Build a portable on-disk embeddings index (sentence-transformers + Faiss-CPU), ship it offline, query it with the same CLI | [`txtai`](clis/txtai/) |
