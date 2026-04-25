@@ -216,6 +216,19 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
   monorepos.
 - **No, prefer the CLI to bring its own tools** → `aider` (built-in repo-map),
   `gptme` (built-in shell/python/browser), `plandex` (built-in plan engine).
+- **Want to *author* tools as plain shell / JS / Python scripts and
+  expose them to a chat CLI without a Python framework** →
+  [`llm-functions`](clis/llm-functions/). Each tool is a single
+  executable file with a few `# @describe` / `# @option` argc-comment
+  lines; `argc build` extracts a typed OpenAI `functions.json`
+  schema from those comments. Canonical client is
+  [`aichat`](clis/aichat/), but the JSON works with any
+  tool-calling client. Bundled `mcp.sh` bridges any MCP server's
+  tools into the same surface, so an aichat session can call MCP
+  tools without aichat itself implementing MCP. Pick this over a
+  Python agent framework when "tools are files in a directory" is
+  exactly the model you want; pick a typed framework instead when
+  you need isolation, observability, or hosted deployment.
 
 ## 5. Multi-file, multi-step plans?
 
@@ -435,6 +448,37 @@ docs. For those, run a converter first.
   `marker_single paper.pdf out/ && cat out/paper/paper.md | llm
   '...'`. Skip it only if `pdftotext` is good enough for your input
   (one-column, no tables, no math).
+- **Convert *messy* documents (multi-column scans, handwritten
+  forms, merged-cell financial tables) where `marker` and
+  `pdftotext` lose structure** → [`zerox`](clis/zerox/). Renders
+  each page to PNG and asks a vision-capable LLM (GPT-4o, Claude
+  3.5/3.7 Sonnet, Gemini 1.5 Pro, or local `llava` /
+  `llama3.2-vision` via Ollama) to transcribe — the model *is* the
+  OCR. `npx zerox doc.pdf -o ./out --maintain-format` keeps table
+  / heading style consistent across long documents; `--schema
+  schema.json` does typed structured extraction. Real money on
+  frontier models (~$0.005–$0.02 per page) and non-deterministic;
+  pick `marker` first when its output is usable, fall back to
+  `zerox` when it isn't.
+
+## 5d.1. Web pages → LLM-ingestible Markdown
+
+Source-tree packers (§5c) and document converters (§5d) cover repos
+and files. The third input shape is the open web — SPAs, JS-rendered
+articles, paginated docs sites — which `curl | html2text` mangles.
+
+- **Fetch a URL (or crawl a site) and get clean Markdown an LLM can
+  reason over** → [`crawl4ai`](clis/crawl4ai/). Playwright-backed
+  fetch handles SPAs and infinite scroll, then a `fit_markdown`
+  content filter drops nav / footer / ads using heuristic main-
+  article extraction (5–10× token reduction vs. raw `html2text`).
+  `crwl <url>` for one-shot, `crwl <url> --depth 2 --max-pages 50`
+  for BFS crawl, `crwl <url> -s schema.json` for typed extraction.
+  Heavy install (~300 MB browser binaries) — use `curl |
+  html2text` if your inputs are static and small. Doubles as an
+  MCP server: `docker run unclecode/crawl4ai` exposes the same
+  surface to opencode / codex / cline so a coding agent gets a
+  browser without you wiring one.
 
 ## 5e. Evaluating prompts (gating quality, not producing it)
 
