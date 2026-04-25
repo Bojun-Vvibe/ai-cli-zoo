@@ -32,7 +32,26 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   generation — wired up correctly in one command" rather than any
   single component (`harbor up open-webui ollama searxng speaches
   comfyui` brings the lot up on Docker Compose with cross-service
-  URLs already threaded; hard prereq is Docker).
+  URLs already threaded; hard prereq is Docker), or
+  [`mlx-lm`](clis/mlx-lm/) if you are on Apple Silicon and want the
+  *fastest* local decode the hardware can do — `mlx_lm.server --model
+  mlx-community/Qwen3-Coder-30B-A3B-Instruct-4bit` gets you ~80 tok/s
+  of a coding-grade model behind an OpenAI-compatible URL on a 64 GB
+  M3 Max with no Docker and no GPU box; the Apple-blessed Metal
+  kernels are 1.5–3× faster than llama.cpp on the same Mac, the
+  small orthogonal CLI family (`generate`/`chat`/`server`/`convert`
+  /`lora`/`fuse`) shell-scripts cleanly into a weights-to-endpoint
+  pipeline, and ~4900 ready-to-run conversions live in the
+  `mlx-community` HF org — Apple-Silicon-only is the hard catch
+  (no x86 / NVIDIA / AMD path), or [`openllm`](clis/openllm/) if you
+  have NVIDIA GPUs (one box or a cluster) and want a *production-
+  shaped* OpenAI-compatible endpoint with one command — `openllm
+  serve llama3.3:70b` pins backend (vLLM / Transformers / SGLang) +
+  dtype + chat template + GPU shape in a reproducible bento
+  manifest, ships a usable `/chat` UI at `:3000`, and `openllm
+  deploy` reuses the same manifest against a managed BentoCloud
+  cluster without rewriting serving config; the heavyweight
+  counterpart to [`mlx-lm`](clis/mlx-lm/) on the cluster side.
   Skip the rest of this tree.
 
 ## 2. Where do you live?
@@ -545,6 +564,29 @@ articles, paginated docs sites — which `curl | html2text` mangles.
   if you specifically need agentic / MCP metrics. Default
   telemetry is on — set `DEEPEVAL_TELEMETRY_OPT_OUT=YES` in your
   CI image.
+- **Lift accuracy on a specific reasoning step *without* changing
+  client code, by spending more inference-time compute** →
+  [`optillm`](clis/optillm/). Drop a single OpenAI-compatible proxy
+  in front of your provider, prefix the model name on just the call
+  that matters (`model="moa-gpt-4o-mini"` for Mixture-of-Agents,
+  `model="mcts-claude-3-5-sonnet"` for Monte-Carlo tree search,
+  `model="cepo-llama-3.3-70b"` for Cerebras' CePO planning loop),
+  and the proxy runs N parallel upstream calls + synthesis behind
+  one response your client sees as plain `chat.completions`.
+  Published gains are real (MARS over Gemini 2.5 Flash Lite: +30 pts
+  on AIME 2025; CePO over Llama 3.3 70B: +18.6 on Math-L5) but the
+  cost is N× tokens / N× latency / N× $, so use it *selectively* —
+  route only the architectural-plan / root-cause / hard-math step
+  through `optillm`, not every chat turn, and A/B with `promptfoo`
+  or `deepeval` to confirm the technique wins on your distribution.
+  Pair upstream with [`mlx-lm`](clis/mlx-lm/) or
+  [`openllm`](clis/openllm/) for a fully self-hosted "cheap small
+  model + inference-time compute = strong reasoning" stack. Skip if
+  you'd rather pay per-token for a natively reasoning-tuned model
+  (DeepSeek-R1, OpenAI o-series, Claude with extended thinking) than
+  pay per-N-samples for ensemble inference, or if your bottleneck is
+  *tool use* rather than *reasoning quality* (that's an agent-loop
+  problem, not an inference-proxy problem).
 
 ## 5f. Operational data → AI (log analysis)
 
@@ -732,6 +774,9 @@ in the first place.
 | Strip a `curl`'d webpage to clean text (or minified HTML) for piping into any LLM CLI | [`strip-tags`](clis/strip-tags/) |
 | Named system prompts in a TOML config file, swappable with one flag in a Unix pipeline (`sc -p commit < diff.txt`), plus glob input (`sc -g 'src/**/*.rs' "..."`) | [`smartcat`](clis/smartcat/) |
 | Run local GGUF models with hardware-aware container selection (CPU / CUDA / ROCm / Metal / Vulkan, same command line) and an OpenAI-compatible HTTP endpoint other catalog CLIs can target | [`ramalama`](clis/ramalama/) |
+| On Apple Silicon, fastest local decode the hardware can do — `mlx_lm.server` exposes any MLX-converted model (Llama 3.x/4.x, Qwen 2.5/3, DeepSeek-R1, Mistral, Phi, Gemma) behind an OpenAI-compatible URL with no Docker; ~4900 ready-to-run conversions in the `mlx-community` HF org; small orthogonal CLI family (`generate`/`chat`/`server`/`convert`/`lora`/`fuse`) | [`mlx-lm`](clis/mlx-lm/) |
+| Production-shaped self-hosted LLM serving on NVIDIA GPUs — `openllm serve llama3.3:70b` pins backend (vLLM / Transformers / SGLang) + dtype + chat template + GPU shape in one reproducible bento manifest, ships a `/chat` UI, same manifest deploys to a managed BentoCloud cluster | [`openllm`](clis/openllm/) |
+| Lift accuracy on hard reasoning steps with no client change — drop an OpenAI-compatible proxy in front of your provider, prefix the model name (`moa-gpt-4o-mini`, `mcts-claude-3-5-sonnet`, `cepo-llama-3.3-70b`) to switch between ~20 inference-time-compute techniques (MoA, MCTS, BoN, Self-Consistency, CePO, MARS, AutoThink, LongCePO) | [`optillm`](clis/optillm/) |
 | Embed LLM calls as type-annotated Python functions, get validated Pydantic objects back (streaming-aware), no agent loop | [`magentic`](clis/magentic/) |
 | Write the agent program as a Markdown file with `# Heading` mentals and `use:` / `delegate:` links — readable by non-engineers, runnable by a single C++ binary | [`mentals-ai`](clis/mentals-ai/) |
 | One-shot natural-language → shell command with an iterative `[R]evise` loop so you can nudge the suggestion without retyping the original intent | [`ai-shell`](clis/ai-shell/) |
