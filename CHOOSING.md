@@ -564,7 +564,13 @@ in the first place.
   registry), `serena` (no analytics; egress = locally-spawned
   LSP processes + the connected MCP client; optional dashboard
   binds `127.0.0.1` only), `seagoat` (no analytics; daemon binds
-  locally, embedding is local, queries hit `127.0.0.1`).
+  locally, embedding is local, queries hit `127.0.0.1`),
+  `kit` (no analytics; egress = the OCI registries you push/pull
+  plus HuggingFace on `kit import` plus your Cosign / KMS endpoint),
+  `agno` (off in OSS; egress = your model providers + your DB;
+  AgentOS UI and OTel export are opt-in),
+  `claude-code-router` (no analytics; egress = the providers you
+  declare; proxy + UI bind to `127.0.0.1` only).
 - **Permissive license required (no AGPL, no GPL)** → avoid `plandex`
   (AGPL core), `open-interpreter` (AGPL-3.0), `khoj` (AGPL-3.0),
   `patchwork` (AGPL-3.0), `tenere` (GPL-3.0), and
@@ -668,3 +674,6 @@ in the first place.
 | Want LLM calls **as type-annotated Python functions** that return validated Pydantic objects (`@marvin.fn def extract_invoice(text) -> Invoice`) for app code / notebooks / glue scripts — typed `classify` / `extract` / `cast` / `generate` primitives, no agent loop, no framework forest | [`marvin`](clis/marvin/) |
 | Want a **self-hostable end-to-end agent stack** — inline completion + chat + autonomous agent + PR opening behind one Docker image, integrations (`postgres` / `chrome` / `github` / `jira` / `slack`) wired up as YAML, agent loop on-prem while still reaching cloud LLMs for the chat tier (telemetry on by default — flip off explicitly) | [`refact`](clis/refact/) |
 | Want a **readable ~500-line dependency-light Python chat client** with streaming + structured Pydantic-schema output + session save/load + parameter control — no LangChain, no agent loop, no hidden prompts; the right substrate for glue scripts and notebooks where pulling a 500 MB framework to make one chat call is the actual problem (project in maintenance mode — last v0.2.2) | [`simpleaichat`](clis/simpleaichat/) |
+| Want **one immutable, signable, content-addressable bundle for the *entire* AI/ML thing** — model weights + datasets + prompts + agent specs + MCP server bundles — stored in the OCI registry you already operate, with full Cosign signing, AI SBOM generation, ModelPack interop, and layered storage that diff-shares unchanged weights across versions; CNCF-governed substrate, not an agent or model client | [`kit`](clis/kit/) |
+| Want a Python **agent framework where the agent you build *is* the production API in ~20 lines** — declare `Agent` / `Team` / `Workflow`, get a stateless session-scoped FastAPI runtime (`AgentOS`) with per-user memory + streaming + a stable HTTP+WS surface for free, with per-agent model assignment across 30+ providers and an opt-in hosted observability UI | [`agno`](clis/agno/) |
+| Want **per-task model routing for an agent harness that hardcoded one provider** — keep the upstream agent's UX (sub-agents, hooks, MCP) but bind `default` / `think` / `longContext` / `background` / `webSearch` to different upstream models (DeepSeek for cheap edits, GPT-5 for hard planning, Gemini 2.5 Pro for 1M-context, local Qwen-Coder via Ollama for background summaries), with a transformer registry rewriting request shapes per provider | [`claude-code-router`](clis/claude-code-router/) |
