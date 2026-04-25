@@ -81,8 +81,8 @@ Single-program model. The `lm += "..."` operator threads an LM state
 through the program; `@guidance` decorators define reusable
 sub-routines (think "function with prompt + sampler context").
 There's no scheduler / supervisor — for multi-agent orchestration
-pair with [`langgraph`](../langgraph/), [`autogen`](https://github.com/microsoft/autogen)-style
-runtimes, or call multiple guidance programs from a parent agent
+pair with [`langgraph`](../langgraph/), AutoGen-style runtimes,
+or call multiple guidance programs from a parent agent
 loop. The mental model is "guidance is what you call when you'd
 otherwise hand-code a regex parser around `chat.completions.create`".
 
