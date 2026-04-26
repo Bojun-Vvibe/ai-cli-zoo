@@ -1,9 +1,10 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **291 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **294 AI coding CLIs**.
 
-Most recent additions: [nemoguardrails](clis/nemoguardrails/),
-[pocketflow](clis/pocketflow/), [pgai](clis/pgai/). Each entry
+Most recent additions: [yek](clis/yek/),
+[claudette](clis/claudette/),
+[codecompanion.nvim](clis/codecompanion.nvim/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
