@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **297 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **300 AI coding CLIs**.
 
 Most recent additions: [agent-zero](clis/agent-zero/),
 [whisper.cpp](clis/whisper.cpp/),
