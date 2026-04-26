@@ -225,6 +225,26 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
   a shell + browser sandbox. macOS-host-only for the macOS-guest path
   (Apple Virtualization is Apple-silicon-locked); first-boot image
   pull is multi-GB.
+- **"The agent needs to drive a real desktop GUI, but I want the
+  planner and the visual grounder to be *different* models so I can
+  put open weights on one half and a frontier API on the other"** →
+  [`agent-s`](clis/agent-s/) (`gui-agents` on PyPI). Planner LLM
+  emits high-level actions from a screenshot; a separate
+  visual-grounding model (UI-TARS-1.5-7B served by vLLM is the
+  recommended open option, or Claude / GPT-4o reused as the
+  grounder) returns the exact pixel coordinates to click; Agent-S3
+  adds `Mixture-of-Grounding` to vote across multiple grounders for
+  ambiguous targets. Same architecture as OpenAI Operator and
+  Anthropic Computer Use, with both halves swappable. Pick this
+  over [`cua`](clis/cua/) when you want to control the
+  planner ↔ grounder split explicitly (cost / open-weight / latency
+  tuning) rather than a single closed-API computer-use call; pick
+  this over DOM-grounded [`browser-use`](clis/browser-use/) /
+  [`stagehand`](clis/stagehand/) / [`skyvern`](clis/skyvern/) when
+  the target is a native desktop app, a Canvas-rendered UI, or any
+  surface without a usable accessibility tree. Trade-off: pixel-
+  grounded loops are slower per step than DOM-grounded ones, and
+  OSWorld success rates remain well below human even at SOTA.
 - **"Run an agent in a bundled Docker sandbox with a built-in browser
   and a journal of every step"** → [`codel`](clis/codel/). One
   `docker run` brings up backend + headless browser + code editor +
@@ -445,6 +465,23 @@ agent. These are install-once-and-forget tools.
   sub-paths from a one-shot CLI call) — pick `chatblade` for shell
   pipelines, `magentic` when the consumer is Python code that wants
   real objects.
+- **Build a typed flow / tool / prompt app once and run it in JS,
+  Go, *or* Python with the same plugin schema, with a local
+  Developer UI that shows every model call's request / response /
+  token count / latency as an inspectable tree** →
+  [`genkit`](clis/genkit/). Google / Firebase's polyglot agent
+  framework: `npm i -g genkit-cli && genkit start -- npm run dev`
+  boots the inspector on `localhost:4000`, prompts are versioned
+  `.prompt` / `.dotprompt` files with a side-by-side variant runner,
+  and the same flow deploys to Firebase Cloud Functions, Cloud Run,
+  or any Express / Hono / Fastify / Next.js handler. Pick this over
+  [`langgraph`](clis/langgraph/) / [`pydantic-ai`](clis/pydantic-ai/)
+  when cross-language portability matters more than Python ecosystem
+  depth; pick over [`mastra`](clis/mastra/) when you also need a Go
+  or Python port of the same flow. Trade-off: some plugins
+  (Vertex / Google AI) are clearly first-class while others lag a
+  release behind the JS core, so pin plugin versions per flow rather
+  than just the core.
 - **Regression-test a prompt across N providers and assert quality /
   cost / latency** → [`promptfoo`](clis/promptfoo/). Declarative
   `promptfooconfig.yaml`, cartesian eval, HTML diff viewer, optional
@@ -586,6 +623,23 @@ docs. For those, run a converter first.
   pipeline; pick `docling` if your corpus is mixed-format or you
   need the typed IR; pick `zerox` if your inputs are adversarial
   scans and you can afford a frontier vision model.
+- **Already have clean text and need to *chunk* it well — token /
+  sentence / recursive / semantic / SDPM / late / code / neural /
+  slumber chunkers under one library, then push straight into a
+  vector store** → [`chonkie`](clis/chonkie/). Picks chunking back
+  out of the framework where [`llama-index`](clis/llama-index/) and
+  [`haystack`](clis/haystack/) bury it: `pip install chonkie` is the
+  lean default (token + sentence + recursive + code chunkers, no
+  model deps), `chonkie[semantic]` / `chonkie[neural]` /
+  `chonkie[qdrant]` / `chonkie[all]` opt into model-backed chunkers
+  and vector-store handshakes (Qdrant, Chroma, Pinecone, Weaviate,
+  Turbopuffer, pgvector). `Refinery` (overlap / embeddings /
+  summary) and `Handshake` adapters deliver chunks straight into
+  the index without manual `upsert` glue. Pick this when chunking
+  quality is the bottleneck and you want to A/B several strategies
+  without rewriting the surrounding pipeline; pick a heavier
+  framework if you also need agentic query rewriting and reranking
+  in the same library.
 
 ## 5d.1. Web pages → LLM-ingestible Markdown
 
