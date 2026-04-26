@@ -1,6 +1,9 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **282 AI coding CLIs**. Each entry
+A curated, deeply-annotated catalog comparing **285 AI coding CLIs**.
+
+Most recent additions: [datasette](clis/datasette/), [gpt4all](clis/gpt4all/),
+[pandas-ai](clis/pandas-ai/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
