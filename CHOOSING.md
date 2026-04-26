@@ -149,7 +149,21 @@ This is a decision tree, not a leaderboard. Start at the top and walk down.
   command, `wut` interprets what already happened. Use Ollama
   (`OLLAMA_MODEL=...`) when scrollback may contain secrets.
 - **Inside an IDE** → [`cline`](clis/cline/) (VS Code),
-  [`continue`](clis/continue/) (VS Code + JetBrains).
+  [`continue`](clis/continue/) (VS Code + JetBrains), or
+  [`avante.nvim`](clis/avante.nvim/) if you live in **Neovim** and want
+  a Cursor-style sidebar + agentic loop where the model's proposed
+  edits stage as a real three-way conflict in the buffer (so `co` /
+  `ct` / `[x` / `]x` accept-or-reject hunks the same way you resolve
+  git merges) — Anthropic / OpenAI / Gemini / Bedrock / local Ollama,
+  precompiled Rust shared library does the heavy lifting, MCP via
+  `mcphub.nvim`, off-by-default telemetry; or
+  [`stagewise`](clis/stagewise/) if your bottleneck is **"tell the
+  model *which* DOM element I mean"** — a VS Code extension paired
+  with a dev-mode browser toolbar lets you click the actual broken
+  button in your running localhost app, and a framework adapter
+  (React / Vue / Next / Nuxt / SvelteKit) plus source map turn that
+  click into the exact JSX/Vue template line the agent edits, BYO
+  model key, MCP-client capable, AGPL-3.0.
 - **GitHub-issue → PR, no local UI** → [`sweep`](clis/sweep/), or
   [`patchwork`](clis/patchwork/) if you want a **library of fix-shaped
   Patchflows** (`AutoFix` over Semgrep findings, `DependencyUpgrade`
@@ -193,6 +207,24 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
   change spans multiple files.
 - **"Approve each tool call"** → `cline`, `opencode` (default).
 - **"Run a sandbox, just don't break my host"** → `codex`, `OpenHands`.
+- **"The agent needs to drive a real desktop GUI, not just a shell —
+  but I refuse to give it my actual user session"** →
+  [`cua`](clis/cua/). Spins up a disposable macOS guest via Apple
+  Virtualization (legal macOS-on-macOS, unique in the catalog) or a
+  Linux guest anywhere, runs a vision-LLM `observe → plan → act →
+  verify` loop *inside* the guest, and tears it down when the
+  `Computer` context manager exits. Anthropic computer-use tool +
+  OpenAI Responses API computer-use preview are first-class; an MCP
+  *server* (`cua-mcp-server`) exposes the sandbox as `screenshot` /
+  `click` / `type` / `bash` / `read_file` for any MCP client. Pick
+  this over [`self-operating-computer`](clis/self-operating-computer/)
+  when "the model `rm -rf`'s my home" is a non-starter; pick it over
+  [`OpenHands`](clis/openhands/) / [`e2b`](clis/e2b/) when the agent
+  needs *GUI* affordances (native macOS app QA, end-to-end browser +
+  desktop flows, training data for a UI-grounding model) rather than
+  a shell + browser sandbox. macOS-host-only for the macOS-guest path
+  (Apple Virtualization is Apple-silicon-locked); first-boot image
+  pull is multi-GB.
 - **"Run an agent in a bundled Docker sandbox with a built-in browser
   and a journal of every step"** → [`codel`](clis/codel/). One
   `docker run` brings up backend + headless browser + code editor +
