@@ -1,9 +1,9 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **288 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **291 AI coding CLIs**.
 
-Most recent additions: [rigging](clis/rigging/), [embedchain](clis/embedchain/),
-[atomic-agents](clis/atomic-agents/). Each entry
+Most recent additions: [nemoguardrails](clis/nemoguardrails/),
+[pocketflow](clis/pocketflow/), [pgai](clis/pgai/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
