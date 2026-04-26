@@ -248,6 +248,32 @@ aider     mentat     continue     opencode     codex     OpenHands     sweep
   all-in-one runtime. Skip it if you only want a single coding-CLI on
   your local machine — none of E2B's value materialises until you have
   an agent that programmatically spawns sandboxes.
+- **"Same shape as E2B but I want to self-host the control plane on
+  my own hardware under AGPL"** → [`daytona`](clis/daytona/). Sub-second
+  cold starts via snapshot caching, drop-in Python / TypeScript SDKs
+  (`Sandbox.process.exec`, `Sandbox.fs.*`, `Sandbox.git.*`), and a
+  `daytona` CLI that provisions sandboxes from `daytona sandbox create`.
+  Pick over `e2b` when you need on-prem / VPC install with no per-second
+  hosted billing; pick `e2b` when hosted Firecracker microVMs are fine
+  and Apache-2.0 licensing matters more than self-host control.
+- **"I need a *web* agent that compiles its plan into replayable
+  Selenium / Playwright code, not just live clicks"** →
+  [`lavague`](clis/lavague/). Two-step World Model → Action Engine
+  pipeline: planner LLM emits a high-level instruction, code-gen LLM
+  compiles it to a runnable browser snippet, the snippet is executed
+  *and* committed to disk. Pick over [`browser-use`](clis/browser-use/) /
+  [`stagehand`](clis/stagehand/) when the deliverable is a maintained
+  scraper you can lint and rerun without an LLM in the loop, not a
+  one-shot agent session.
+- **"Auto-augment my test suite at PR time so coverage strictly goes
+  up, with the *coverage report* as the reward signal"** →
+  [`qodo-cover`](clis/qodo-cover/). Closed-loop test generation:
+  LLM proposes a test, runner executes it, coverage delta is measured,
+  test is only kept if coverage strictly increased and the suite still
+  passes. CI integration (GitHub Action / GitLab CI recipe) makes it
+  a per-PR gate. Pick over a generic coding CLI when "tests that
+  actually raise the coverage number" is the explicit acceptance
+  criterion, not a side effect.
 - **"Agent loop with hard per-task budget caps in steps + tokens +
   USD"** → [`chatgpt-cli`](clis/chatgpt-cli/) `--agent`. ReAct or
   Plan/Execute, workdir sandbox enforced at the tool layer, allowlist
