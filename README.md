@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **330 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **333 AI coding CLIs**.
 
 Most recent additions: [trl](clis/trl/),
 [peft](clis/peft/),
