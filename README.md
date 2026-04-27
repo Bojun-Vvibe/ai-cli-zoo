@@ -1,10 +1,10 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **354 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **360 AI coding CLIs**.
 
-Most recent additions: [prefect](clis/prefect/),
-[harlequin](clis/harlequin/),
-[sqlite-utils](clis/sqlite-utils/). Each entry
+Most recent additions: [duckdb](clis/duckdb/),
+[sqlfluff](clis/sqlfluff/),
+[rill](clis/rill/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
