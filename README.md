@@ -1,10 +1,10 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **387 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **390 AI coding CLIs**.
 
-Most recent additions: [procs](clis/procs/),
-[sd](clis/sd/),
-[glow](clis/glow/). Each entry
+Most recent additions: [lazydocker](clis/lazydocker/),
+[jless](clis/jless/),
+[duf](clis/duf/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
