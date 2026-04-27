@@ -1,10 +1,10 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **384 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **387 AI coding CLIs**.
 
-Most recent additions: [just](clis/just/),
-[tokei](clis/tokei/),
-[gum](clis/gum/). Each entry
+Most recent additions: [procs](clis/procs/),
+[sd](clis/sd/),
+[glow](clis/glow/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
