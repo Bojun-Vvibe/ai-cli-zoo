@@ -1,10 +1,10 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **402 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **405 AI coding CLIs**.
 
-Most recent additions: [gitui](clis/gitui/),
-[helix](clis/helix/),
-[pueue](clis/pueue/). Each entry
+Most recent additions: [choose](clis/choose/),
+[grex](clis/grex/),
+[nushell](clis/nushell/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
