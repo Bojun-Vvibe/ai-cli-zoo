@@ -1,10 +1,10 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **372 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **375 AI coding CLIs**.
 
-Most recent additions: [zellij](clis/zellij/),
-[yazi](clis/yazi/),
-[bottom](clis/bottom/). Each entry
+Most recent additions: [hyperfine](clis/hyperfine/),
+[gh-dash](clis/gh-dash/),
+[xh](clis/xh/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
