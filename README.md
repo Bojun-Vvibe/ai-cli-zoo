@@ -1,10 +1,10 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **312 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **315 AI coding CLIs**.
 
-Most recent additions: [lmql](clis/lmql/),
-[devon](clis/devon/),
-[codespin](clis/codespin/). Each entry
+Most recent additions: [prompttools](clis/prompttools/),
+[sqlite-vec](clis/sqlite-vec/),
+[probe](clis/probe/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
