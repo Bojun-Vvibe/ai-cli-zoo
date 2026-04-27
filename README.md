@@ -1,10 +1,10 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **363 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **366 AI coding CLIs**.
 
-Most recent additions: [posting](clis/posting/),
-[tach](clis/tach/),
-[oxc](clis/oxc/). Each entry
+Most recent additions: [usql](clis/usql/),
+[atuin](clis/atuin/),
+[dbmate](clis/dbmate/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
