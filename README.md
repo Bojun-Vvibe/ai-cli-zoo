@@ -1,10 +1,10 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **345 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **348 AI coding CLIs**.
 
-Most recent additions: [dlt](clis/dlt/),
-[verba](clis/verba/),
-[autoevals](clis/autoevals/). Each entry
+Most recent additions: [aim](clis/aim/),
+[openlit](clis/openlit/),
+[jina](clis/jina/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
