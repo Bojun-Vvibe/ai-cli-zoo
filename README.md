@@ -1,10 +1,10 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **393 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **396 AI coding CLIs**.
 
-Most recent additions: [broot](clis/broot/),
-[gping](clis/gping/),
-[ouch](clis/ouch/). Each entry
+Most recent additions: [mcfly](clis/mcfly/),
+[viu](clis/viu/),
+[tealdeer](clis/tealdeer/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
