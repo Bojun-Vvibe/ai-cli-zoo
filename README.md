@@ -1,10 +1,10 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **378 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **381 AI coding CLIs**.
 
-Most recent additions: [bat](clis/bat/),
-[ripgrep](clis/ripgrep/),
-[zoxide](clis/zoxide/). Each entry
+Most recent additions: [fd](clis/fd/),
+[eza](clis/eza/),
+[starship](clis/starship/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
