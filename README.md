@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **408 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **411 AI coding CLIs**.
 
 Most recent additions: [difftastic](clis/difftastic/),
 [watchexec](clis/watchexec/),
