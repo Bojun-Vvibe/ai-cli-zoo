@@ -1,10 +1,10 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **333 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **336 AI coding CLIs**.
 
-Most recent additions: [trl](clis/trl/),
-[peft](clis/peft/),
-[lerobot](clis/lerobot/). Each entry
+Most recent additions: [kedro](clis/kedro/),
+[metaflow](clis/metaflow/),
+[together-python](clis/together-python/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
