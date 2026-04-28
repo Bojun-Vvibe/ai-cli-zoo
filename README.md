@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **426 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **429 AI coding CLIs**.
 
 Most recent additions: [navi](clis/navi/),
 [kdash](clis/kdash/),
