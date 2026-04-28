@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **463 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **466 AI coding CLIs**.
 
-Most recent additions: [trippy](clis/trippy/),
+Most recent additions: [hurl](clis/hurl/),
+[chafa](clis/chafa/),
+[frogmouth](clis/frogmouth/),
+[trippy](clis/trippy/),
 [mdcat](clis/mdcat/),
 [ctop](clis/ctop/),
 [tig](clis/tig/),
