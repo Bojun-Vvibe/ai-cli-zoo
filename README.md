@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **459 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **462 AI coding CLIs**.
 
-Most recent additions: [xplr](clis/xplr/),
+Most recent additions: [restic](clis/restic/),
+[rclone](clis/rclone/),
+[jc](clis/jc/),
+[xplr](clis/xplr/),
 [glances](clis/glances/),
 [tere](clis/tere/),
 [hyperfine](clis/hyperfine/),
