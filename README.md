@@ -1,10 +1,10 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **417 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **420 AI coding CLIs**.
 
-Most recent additions: [bacon](clis/bacon/),
-[git-cliff](clis/git-cliff/),
-[mprocs](clis/mprocs/). Each entry
+Most recent additions: [httpie](clis/httpie/),
+[jq](clis/jq/),
+[onefetch](clis/onefetch/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
