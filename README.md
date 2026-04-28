@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **456 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **459 AI coding CLIs**.
 
-Most recent additions: [hyperfine](clis/hyperfine/),
+Most recent additions: [xplr](clis/xplr/),
+[glances](clis/glances/),
+[tere](clis/tere/),
+[hyperfine](clis/hyperfine/),
 [starship](clis/starship/),
 [htmlq](clis/htmlq/),
 [erdtree](clis/erdtree/),
@@ -10,10 +13,7 @@ Most recent additions: [hyperfine](clis/hyperfine/),
 [toolong](clis/toolong/),
 [yq](clis/yq/),
 [fx](clis/fx/),
-[gitu](clis/gitu/),
-[presenterm](clis/presenterm/),
-[slumber](clis/slumber/),
-[jaq](clis/jaq/). Each entry
+[gitu](clis/gitu/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
 the right tool for the job in under five minutes.
 
