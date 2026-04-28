@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **484 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **487 AI coding CLIs**.
 
-Most recent additions: [fzf](clis/fzf/),
+Most recent additions: [mask](clis/mask/),
+[tabiew](clis/tabiew/),
+[act](clis/act/),
+[fzf](clis/fzf/),
 [pet](clis/pet/),
 [git-branchless](clis/git-branchless/),
 [television](clis/television/),
