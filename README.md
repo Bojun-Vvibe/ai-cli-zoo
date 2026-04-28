@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **444 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **447 AI coding CLIs**.
 
-Most recent additions: [presenterm](clis/presenterm/),
+Most recent additions: [yq](clis/yq/),
+[fx](clis/fx/),
+[gitu](clis/gitu/),
+[presenterm](clis/presenterm/),
 [slumber](clis/slumber/),
 [jaq](clis/jaq/). Each entry
 is hand-written from real usage, not marketing copy. The goal: help you pick
