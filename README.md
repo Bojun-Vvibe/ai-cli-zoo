@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **469 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **472 AI coding CLIs**.
 
-Most recent additions: [sniffnet](clis/sniffnet/),
+Most recent additions: [qsv](clis/qsv/),
+[httpstat](clis/httpstat/),
+[curlie](clis/curlie/),
+[sniffnet](clis/sniffnet/),
 [oxker](clis/oxker/),
 [zenith](clis/zenith/),
 [hurl](clis/hurl/),
