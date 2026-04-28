@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **505 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **508 AI coding CLIs**.
 
-Most recent additions: [fnm](clis/fnm/),
+Most recent additions: [uv](clis/uv/),
+[turso-cli](clis/turso-cli/),
+[jqp](clis/jqp/),
+[fnm](clis/fnm/),
 [pixi](clis/pixi/),
 [kustomize](clis/kustomize/),
 [typos](clis/typos/),
