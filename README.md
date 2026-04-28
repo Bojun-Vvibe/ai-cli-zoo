@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **420 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **423 AI coding CLIs**.
 
 Most recent additions: [httpie](clis/httpie/),
 [jq](clis/jq/),
