@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **453 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **456 AI coding CLIs**.
 
 Most recent additions: [hyperfine](clis/hyperfine/),
 [starship](clis/starship/),
