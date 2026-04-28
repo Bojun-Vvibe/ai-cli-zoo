@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **496 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **499 AI coding CLIs**.
 
-Most recent additions: [xq](clis/xq/),
+Most recent additions: [volta](clis/volta/),
+[caddy](clis/caddy/),
+[bat-extras](clis/bat-extras/),
+[xq](clis/xq/),
 [gdu](clis/gdu/),
 [xcp](clis/xcp/),
 [chezmoi](clis/chezmoi/),
