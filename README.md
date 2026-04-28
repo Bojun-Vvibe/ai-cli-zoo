@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **465 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **463 AI coding CLIs**.
 
-Most recent additions: [tig](clis/tig/),
+Most recent additions: [trippy](clis/trippy/),
+[mdcat](clis/mdcat/),
+[ctop](clis/ctop/),
+[tig](clis/tig/),
 [silicon](clis/silicon/),
 [kondo](clis/kondo/),
 [restic](clis/restic/),
