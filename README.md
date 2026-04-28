@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **478 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **481 AI coding CLIs**.
 
-Most recent additions: [serpl](clis/serpl/),
+Most recent additions: [television](clis/television/),
+[gitoxide](clis/gitoxide/),
+[dua-cli](clis/dua-cli/),
+[serpl](clis/serpl/),
 [rga](clis/rga/),
 [git-absorb](clis/git-absorb/),
 [atac](clis/atac/),
