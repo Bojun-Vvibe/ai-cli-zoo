@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **588 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **591 AI coding CLIs**.
 
-Most recent additions: [pup](clis/pup/),
+Most recent additions: [rage](clis/rage/),
+[mkcert](clis/mkcert/),
+[peco](clis/peco/),
+[pup](clis/pup/),
 [magic-wormhole](clis/magic-wormhole/),
 [shellharden](clis/shellharden/),
 [fend](clis/fend/),
