@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **571 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **574 AI coding CLIs**.
 
-Most recent additions: [vacuum](clis/vacuum/),
+Most recent additions: [hishtory](clis/hishtory/),
+[sad](clis/sad/),
+[fselect](clis/fselect/),
+[vacuum](clis/vacuum/),
 [wstunnel](clis/wstunnel/),
 [sccache](clis/sccache/),
 [glab](clis/glab/),
