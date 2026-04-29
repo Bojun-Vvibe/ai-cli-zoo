@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **538 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **541 AI coding CLIs**.
 
 Most recent additions: [pgcli](clis/pgcli/),
 [kopia](clis/kopia/),
