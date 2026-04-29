@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **520 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **523 AI coding CLIs**.
 
-Most recent additions: [age](clis/age/),
+Most recent additions: [taplo](clis/taplo/),
+[zk](clis/zk/),
+[cocogitto](clis/cocogitto/),
+[age](clis/age/),
 [sops](clis/sops/),
 [rye](clis/rye/),
 [biome](clis/biome/),
