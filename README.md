@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **603 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **606 AI coding CLIs**.
 
-Most recent additions: [macchina](clis/macchina/),
+Most recent additions: [cargo-machete](clis/cargo-machete/),
+[rmpc](clis/rmpc/),
+[mactop](clis/mactop/),
+[macchina](clis/macchina/),
 [ripsecrets](clis/ripsecrets/),
 [gtop](clis/gtop/),
 [dua](clis/dua/),
