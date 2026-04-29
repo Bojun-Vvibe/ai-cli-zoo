@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **562 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **565 AI coding CLIs**.
 
-Most recent additions: [license](clis/license/),
+Most recent additions: [glab](clis/glab/),
+[git-machete](clis/git-machete/),
+[kubectx](clis/kubectx/),
+[license](clis/license/),
 [gomplate](clis/gomplate/),
 [fastfetch](clis/fastfetch/),
 [fish-shell](clis/fish-shell/),
