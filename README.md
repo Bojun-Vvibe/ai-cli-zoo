@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **544 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **547 AI coding CLIs**.
 
-Most recent additions: [bruno](clis/bruno/),
+Most recent additions: [lazyjj](clis/lazyjj/),
+[lazysql](clis/lazysql/),
+[visidata](clis/visidata/),
+[bruno](clis/bruno/),
 [helmfile](clis/helmfile/),
 [dyff](clis/dyff/),
 [pgcli](clis/pgcli/),
