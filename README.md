@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **526 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **529 AI coding CLIs**.
 
-Most recent additions: [espanso](clis/espanso/),
+Most recent additions: [k6](clis/k6/),
+[websocat](clis/websocat/),
+[grpcurl](clis/grpcurl/),
+[espanso](clis/espanso/),
 [vivid](clis/vivid/),
 [toipe](clis/toipe/),
 [taplo](clis/taplo/),
