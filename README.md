@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **591 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **594 AI coding CLIs**.
 
-Most recent additions: [rage](clis/rage/),
+Most recent additions: [termusic](clis/termusic/),
+[taskwarrior-tui](clis/taskwarrior-tui/),
+[gpg-tui](clis/gpg-tui/),
+[rage](clis/rage/),
 [mkcert](clis/mkcert/),
 [peco](clis/peco/),
 [pup](clis/pup/),
