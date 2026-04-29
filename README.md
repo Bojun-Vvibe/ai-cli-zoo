@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **574 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **577 AI coding CLIs**.
 
 Most recent additions: [hishtory](clis/hishtory/),
 [sad](clis/sad/),
