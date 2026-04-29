@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **511 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **514 AI coding CLIs**.
 
 Most recent additions: [numbat](clis/numbat/),
 [pkl](clis/pkl/),
