@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **609 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **612 AI coding CLIs**.
 
-Most recent additions: [iredis](clis/iredis/),
+Most recent additions: [dolt](clis/dolt/),
+[havn](clis/havn/),
+[dijo](clis/dijo/),
+[iredis](clis/iredis/),
 [tlrc](clis/tlrc/),
 [serie](clis/serie/),
 [cargo-machete](clis/cargo-machete/),
