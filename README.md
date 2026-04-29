@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **556 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **559 AI coding CLIs**.
 
 Most recent additions: [fish-shell](clis/fish-shell/),
 [asciinema](clis/asciinema/),
