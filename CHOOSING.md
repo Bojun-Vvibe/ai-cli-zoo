@@ -522,6 +522,57 @@ agent. These are install-once-and-forget tools.
   rust-analyzer driven script instead) or when the change is
   inherently semantic and better described in English (then reach
   for [`aider`](clis/aider/) or [`opencode`](clis/opencode/)).
+- **Load-test an HTTP service with honest, reproducible
+  latency-vs-throughput numbers** → [`vegeta`](clis/vegeta/). Single
+  Go binary, **constant-rate** (open-model) loading — `-rate=200`
+  schedules 200 req/s arrive at the target whether the server is
+  healthy or melting, the only loading model that does not suffer
+  from coordinated omission and the only one that produces
+  apples-to-apples curves across runs. Binary results stream flows
+  from `attack` into `report` / `plot` / `dump` / `encode` so one
+  load run is reportable as text + JSON + interactive HTML latency
+  plot + CSV without re-loading the target. Pick over
+  [`oha`](clis/oha/) (closed-model, beautiful real-time TUI — better
+  for interactive exploration) and over [`k6`](clis/k6/) (full
+  scenario DSL — better when "scenario" not "fire request X at rate
+  Y" is the unit of work). CI gate one-liner: `vegeta attack ... |
+  vegeta report -type=json | jq -e '.latencies."99th" < 250000000
+  and .success > 0.995'`.
+- **Run Git hooks across a polyglot repo without dragging in
+  Node + Python + Ruby runtimes** → [`lefthook`](clis/lefthook/).
+  One Go binary, one `lefthook.yml`, **parallel-by-default**
+  execution (a 5-command pre-commit cuts from ~12 s serial to
+  ~3 s parallel on a typical TS monorepo), file-glob filtering
+  (`glob: "*.{ts,tsx}"`), staged-file injection (`{staged_files}`),
+  `stage_fixed: true` re-staging (the `lint-staged` killer feature,
+  but native), tags + skip rules. Pick over `husky` + `lint-staged`
+  when the repo spans more than just JS/TS or when serial
+  pre-commit time is the pain; pick over `pre-commit` (Python)
+  when speed + runtime-free single binary beats the larger
+  community-rule catalog. Bypass via `LEFTHOOK=0 git commit ...`,
+  not `--no-verify` muscle memory.
+- **Find secrets in a repo / cloud surface / SaaS workspace and
+  know which ones are *actually live*** →
+  [`trufflehog`](clis/trufflehog/). Single Go binary; ~800
+  detector types where each one is a `(regex, verifier)` pair —
+  the regex catches the candidate, the verifier makes a read-only
+  API probe (`aws sts get-caller-identity`, GitHub `/user`, Slack
+  `auth.test`, Stripe `/v1/charges?limit=1`, etc.) to confirm the
+  credential is currently valid; `--only-verified` drops
+  ~90–99 % of regex matches and leaves an actionable "8 live
+  secrets to rotate now" list instead of an 800-row audit. Same
+  scan engine across ~25 source types (filesystem, git history,
+  GitHub orgs, GitLab, S3, GCS, Docker images, container
+  registries, Postman, Jira, Confluence, Slack, Elasticsearch,
+  CI logs, SQL dumps), one JSON output schema, `--fail` for CI
+  gating. Pair with a fast regex-only scanner (`gitleaks`) on
+  every commit + `trufflehog --only-verified` on a nightly
+  schedule. Caveats: AGPL-3.0 (fine to run from CI, has
+  obligations if you embed it into a hosted SaaS scanner you
+  offer third parties); verification means the binary *will*
+  call AWS / GitHub / Slack / Stripe with the candidate
+  credential, so air-gapped scans need `--no-verification` and a
+  higher false-positive tolerance.
 
 ## 5c. Context-packing pipeline (LLM-input shaping)
 
