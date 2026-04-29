@@ -551,6 +551,61 @@ agent. These are install-once-and-forget tools.
   when speed + runtime-free single binary beats the larger
   community-rule catalog. Bypass via `LEFTHOOK=0 git commit ...`,
   not `--no-verify` muscle memory.
+- **Keep a versioned API collection in your repo (Postman /
+  Insomnia, but the collection is git-diffable text and the
+  runner is CI-friendly)** → [`bruno`](clis/bruno/). Each
+  request is a `.bru` file (method, URL, headers, body,
+  assertions, scripts) committed in `api-tests/`; the desktop
+  app edits them visually, `bru run api-tests --env staging
+  --reporter-junit reports/bruno-junit.xml` runs the same
+  artifact in CI. No cloud workspace, no account, no
+  telemetry. Pick over Postman / Insomnia when the API
+  contract should live in `git` and PR review should show
+  `+ headers.idempotency-key: {{requestId}}` instead of an
+  opaque workspace ID change. Pick [`hurl`](clis/hurl/) instead
+  for one-file declarative HTTP checks driven from a Makefile
+  with no GUI; pick `bruno` when the *collection* + a desktop
+  editor for non-CLI teammates is the unit.
+- **Deploy a multi-Helm-chart platform (cert-manager + ingress
+  + external-dns + monitoring + the app) as one declarative
+  artifact with a `diff` gate before any write** →
+  [`helmfile`](clis/helmfile/). One Go binary reads
+  `helmfile.yaml` declaring `repositories:`, `environments:`
+  (`{{ .Environment.Name }}` template injection over per-env
+  values files), and `releases:` with cross-release `needs:`
+  dependency edges; `helmfile -e prod diff` shells out to
+  the `helm-diff` plugin to print the manifest delta against
+  the live cluster, `helmfile -e prod apply` runs the entire
+  reconciliation in topological order. Pick over plain `helm
+  upgrade --install` wrapped in bash when the platform is 5+
+  charts with ordering constraints; pick over ArgoCD / Flux
+  when you want a *push* tool you run from CI rather than a
+  controller pulling from git continuously. Pair with
+  [`kustomize`](clis/kustomize/) (orthogonal — overlays plain
+  manifests, not Helm releases) and `helm-secrets` + SOPS for
+  encrypted per-env values.
+- **Diff two YAML / JSON files structurally — show that a key
+  was renamed or a list reordered, not 200 lines of
+  indentation noise** → [`dyff`](clis/dyff/). Parses both
+  sides as trees, walks them, emits path-addressed change
+  reports (`spec.template.spec.containers.[name=app].image
+  changed from foo:1.2.3 to foo:1.2.4`), with optional
+  `--ignore-order-changes` for lists where order does not
+  matter and `--filter <path>` to scope the diff to one
+  subtree. The viewer that makes `helm template`, `kustomize
+  build`, `kubectl diff`, and `kubectl apply --dry-run=server
+  -o yaml` actually reviewable: a `yq -i 'sort_keys(..)'` run
+  that shows up as a full-file rewrite in `git diff` collapses
+  to "no semantic changes, only key ordering" in `dyff`. Pick
+  over plain `diff` / `git diff` whenever the inputs are YAML
+  config (Kubernetes manifests, Helm rendered output, GitHub
+  Actions, Compose, Ansible). Pair with
+  [`helmfile`](clis/helmfile/) (`helmfile template` → `dyff`),
+  [`yq`](clis/yq/) (yq mutates, dyff verifies the mutation hit
+  only the intended path), and [`delta`](clis/delta/)
+  (orthogonal — delta highlights line diffs of code, dyff
+  changes the unit of comparison from lines to nodes for
+  config).
 - **Find secrets in a repo / cloud surface / SaaS workspace and
   know which ones are *actually live*** →
   [`trufflehog`](clis/trufflehog/). Single Go binary; ~800
