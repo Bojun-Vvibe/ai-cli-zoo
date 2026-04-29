@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **535 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **538 AI coding CLIs**.
 
-Most recent additions: [vegeta](clis/vegeta/),
+Most recent additions: [pgcli](clis/pgcli/),
+[kopia](clis/kopia/),
+[ghq](clis/ghq/),
+[vegeta](clis/vegeta/),
 [lefthook](clis/lefthook/),
 [trufflehog](clis/trufflehog/),
 [czkawka](clis/czkawka/),
