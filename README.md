@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **583 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **585 AI coding CLIs**.
 
-Most recent additions: [ty](clis/ty/),
+Most recent additions: [fend](clis/fend/),
+[harper](clis/harper/),
+[vale](clis/vale/),
+[ty](clis/ty/),
 [freeze](clis/freeze/),
 [gh](clis/gh/),
 [mc](clis/mc/),
