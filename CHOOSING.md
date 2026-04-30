@@ -1286,6 +1286,12 @@ in the first place.
 
 ## Recently added (+3)
 
+- [kubescape](clis/kubescape/) — OPA-backed Kubernetes / IaC posture scanner mapped to NSA / MITRE / CIS controls with SARIF + JUnit gating — compliance-shaped K8s security
+- [devbox](clis/devbox/) — per-project hermetic dev shells backed by Nix without writing Nix; one `devbox.json` reproduces across macOS / Linux / CI — reproducible dev environments
+- [git-bug](clis/git-bug/) — distributed bug tracker stored as git refs, sync over `git push` / `git pull`, optional bridges to GitHub / GitLab / Jira — offline-first issue tracking
+
+## Previously added
+
 - [crane](clis/crane/) — daemonless OCI registry plumbing (copy / mutate / inspect remote images) — supply chain plumbing
 - [osv-scanner](clis/osv-scanner/) — OSV.dev-backed dependency vulnerability scanner with SARIF + CI-gate exit codes — software composition analysis
 - [goreleaser](clis/goreleaser/) — declarative release pipelines: cross-compile, archive, sign, SBOM, publish — release engineering
