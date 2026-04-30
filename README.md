@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **630 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **633 AI coding CLIs**.
 
 Most recent additions: [gobang](clis/gobang/),
 [ttyper](clis/ttyper/),
