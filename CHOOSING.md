@@ -1303,6 +1303,12 @@ in the first place.
 
 ## Recently added (+3)
 
+- [kubectl-tree](clis/kubectl-tree/) — `kubectl` plugin that walks `metadata.ownerReferences` downward from any root object (Deployment, Helm release Secret, Argo `Application`, Crossplane composite, custom CR) and renders the controller-spawned subtree as ASCII; CRD-aware via API discovery, `--show-images` decorates Pods, `-A` widens across namespaces — owner-graph snapshot, not a selector-graph or live-watch tool
+- [kubespy](clis/kubespy/) — single-object live watcher with three lenses (`trace` for human-readable transitions, `changes` for RFC-6902 JSON-Patch diffs per tick, `status` for `.status`-subtree-only renders); the right tool when an object is *changing* and you need the trajectory rather than the final snapshot — read-only, dormant upstream since 2024 but still the canonical "watch this CR walk through its phases" probe
+- [kubefwd](clis/kubefwd/) — bulk port-forward + `/etc/hosts` DNS bridging; `sudo -E kubefwd services -n <ns>` forwards every Service in one or more namespaces and writes hosts entries so locally-running code resolves `postgres`, `redis`, `api.dev` exactly as it would from inside a Pod, then reaps the entries on shutdown — laptop-as-Pod for integration tests against an existing cluster
+
+## Previously added (+3)
+
 - [conftest](clis/conftest/) — OPA Rego policy test runner for Kubernetes / Terraform / Dockerfile / Helm / arbitrary YAML/JSON/HCL; one binary, no server, policies live in `policy/*.rego` next to the code they govern, exits non-zero in CI when a `deny` rule fires — policy-as-code unit tests, not an admission controller
 - [checkov](clis/checkov/) — multi-framework IaC misconfiguration scanner (Terraform / CloudFormation / Kubernetes / Helm / Dockerfile / GitHub Actions / ARM / Bicep / Serverless) with ~1000 built-in policies mapped to CIS / NIST / PCI / HIPAA, SARIF + baseline workflow for adopting on existing repos — broad batteries-included IaC scanning
 - [glasskube](clis/glasskube/) — Kubernetes package manager treating each install as a `Package` CRD reconciled by an in-cluster operator (transitive dependency resolution, `glasskube update`, local web UI via `glasskube serve`); `apt`/`brew`-style ergonomics for cluster add-ons — Helm alternative for teams that want operator-driven app lifecycle

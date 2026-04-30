@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **702 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **705 AI coding CLIs**.
 
-Most recent additions: [conftest](clis/conftest/),
+Most recent additions: [kubectl-tree](clis/kubectl-tree/),
+[kubespy](clis/kubespy/),
+[kubefwd](clis/kubefwd/),
+[conftest](clis/conftest/),
 [checkov](clis/checkov/),
 [glasskube](clis/glasskube/),
 [skaffold](clis/skaffold/),
