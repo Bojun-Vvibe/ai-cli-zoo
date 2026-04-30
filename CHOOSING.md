@@ -1303,21 +1303,21 @@ in the first place.
 
 ## Recently added (+3)
 
+- [skaffold](clis/skaffold/) — inner-loop build/deploy orchestrator for Kubernetes; one `skaffold.yaml` watches source, rebuilds container images, side-loads or pushes them, and reapplies Helm / Kustomize / raw manifests with port-forward + log-tail wired through `dev` mode — the edit-save-see-it-running loop for "my code only makes sense inside a cluster"
+- [flipt](clis/flipt/) — self-hosted feature-flag + dynamic-config server (GPL-3.0) shipped as one Go binary with HTTP/gRPC + OpenFeature/OFREP APIs; v2 stores flags as YAML in a Git repo so flag changes go through the same PR review as code — feature flags without a SaaS tether
+- [litestream](clis/litestream/) — streaming WAL replication for SQLite to S3 / GCS / Azure Blob / SFTP with second-level RPO and point-in-time restore; no fork of SQLite, no app library, the same binary handles backup and restore — durable single-node SQLite for ephemeral compute
+
+## Previously added (+3)
+
 - [kubeconform](clis/kubeconform/) — fast, offline Kubernetes manifest schema validator (kubeval successor); parallel by default, CRD-aware via `-schema-location` templates, drops into pre-commit / CI without the validation-step tax — schema validation, not policy
 - [popeye](clis/popeye/) — read-only Kubernetes cluster sanitizer that grades each namespace and resource kind (dangling Services, missing limits, unused ConfigMaps, RBAC sprawl) with HTML / JUnit output for recurring report-card cron — drift visibility week-over-week
 - [dockle](clis/dockle/) — container image linter for CIS Docker Benchmark + best-practice checks (root user, missing `HEALTHCHECK`, leaked `.npmrc` / `id_rsa`); complements (does not replace) a CVE scanner — image hygiene, not vulnerabilities
 
-## Previously added (+3)
+## Previously added
 
 - [pulumi](clis/pulumi/) — IaC engine where AWS / Azure / GCP / Kubernetes resources are declared in TypeScript / Python / Go / .NET against a stateful resource graph with `preview` / `up` / `import` lifecycle — IaC in real languages
 - [flux](clis/flux/) — CNCF GitOps controller suite for Kubernetes; `GitRepository` / `OCIRepository` sources reconciled by `Kustomization` / `HelmRelease` controllers with image-automation closing the registry → manifest loop — pull-based GitOps without a central CD server
 - [kyverno](clis/kyverno/) — CNCF policy engine where `ClusterPolicy` CRDs in plain YAML do admission validation / mutation / generation / image-signature verification with no Rego, runnable offline as a CI gate — Kubernetes-native policy without a separate DSL
-
-## Previously added
-
-- [argocd](clis/argocd/) — GitOps CD CLI for Kubernetes; manages `Application` CRs with sync/diff/rollback/wait gates against the Argo CD controller — pull-based continuous delivery
-- [nerdctl](clis/nerdctl/) — Docker-compatible CLI for `containerd` with rootless mode, BuildKit, Stargz lazy pull, OCI image encryption + signing — daemonless container runtime UX
-- [lima](clis/lima/) — declarative Linux VMs on macOS via QEMU/Apple-VZ with auto file sharing + port forwarding; the engine behind `colima` and Homebrew `nerdctl` — Linux dev VM on a Mac
 
 ## Earlier rotation
 
