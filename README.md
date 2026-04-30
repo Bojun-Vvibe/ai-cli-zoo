@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **708 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **711 AI coding CLIs**.
 
 Most recent additions: [kubectl-tree](clis/kubectl-tree/),
 [kubespy](clis/kubespy/),
