@@ -1286,11 +1286,17 @@ in the first place.
 
 ## Recently added (+3)
 
+- [argocd](clis/argocd/) — GitOps CD CLI for Kubernetes; manages `Application` CRs with sync/diff/rollback/wait gates against the Argo CD controller — pull-based continuous delivery
+- [nerdctl](clis/nerdctl/) — Docker-compatible CLI for `containerd` with rootless mode, BuildKit, Stargz lazy pull, OCI image encryption + signing — daemonless container runtime UX
+- [lima](clis/lima/) — declarative Linux VMs on macOS via QEMU/Apple-VZ with auto file sharing + port forwarding; the engine behind `colima` and Homebrew `nerdctl` — Linux dev VM on a Mac
+
+## Previously added
+
 - [kubescape](clis/kubescape/) — OPA-backed Kubernetes / IaC posture scanner mapped to NSA / MITRE / CIS controls with SARIF + JUnit gating — compliance-shaped K8s security
 - [devbox](clis/devbox/) — per-project hermetic dev shells backed by Nix without writing Nix; one `devbox.json` reproduces across macOS / Linux / CI — reproducible dev environments
 - [git-bug](clis/git-bug/) — distributed bug tracker stored as git refs, sync over `git push` / `git pull`, optional bridges to GitHub / GitLab / Jira — offline-first issue tracking
 
-## Previously added
+## Earlier additions
 
 - [crane](clis/crane/) — daemonless OCI registry plumbing (copy / mutate / inspect remote images) — supply chain plumbing
 - [osv-scanner](clis/osv-scanner/) — OSV.dev-backed dependency vulnerability scanner with SARIF + CI-gate exit codes — software composition analysis

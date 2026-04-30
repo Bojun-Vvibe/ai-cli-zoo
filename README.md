@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **672 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **675 AI coding CLIs**.
 
-Most recent additions: [kubescape](clis/kubescape/),
+Most recent additions: [argocd](clis/argocd/),
+[nerdctl](clis/nerdctl/),
+[lima](clis/lima/),
+[kubescape](clis/kubescape/),
 [devbox](clis/devbox/),
 [git-bug](clis/git-bug/),
 [buf](clis/buf/),
