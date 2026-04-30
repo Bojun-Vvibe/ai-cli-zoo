@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **660 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **663 AI coding CLIs**.
 
 Most recent additions: [buf](clis/buf/),
 [cargo-nextest](clis/cargo-nextest/),
