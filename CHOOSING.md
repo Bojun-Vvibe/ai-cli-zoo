@@ -1319,6 +1319,12 @@ in the first place.
 - [flipt](clis/flipt/) — self-hosted feature-flag + dynamic-config server (GPL-3.0) shipped as one Go binary with HTTP/gRPC + OpenFeature/OFREP APIs; v2 stores flags as YAML in a Git repo so flag changes go through the same PR review as code — feature flags without a SaaS tether
 - [litestream](clis/litestream/) — streaming WAL replication for SQLite to S3 / GCS / Azure Blob / SFTP with second-level RPO and point-in-time restore; no fork of SQLite, no app library, the same binary handles backup and restore — durable single-node SQLite for ephemeral compute
 
+## Latest additions (+3)
+
+- [natscli](clis/natscli/) — official NATS CLI: pub/sub on the wire, JetStream stream + consumer + KV + object-store admin as subjects, `nats bench` coordinated load tests with latency histograms, multi-environment contexts (`nats context add prod --creds=…`); the operational counterpart to `nats-server` you reach for whenever the answer is not "write a Go program" — operate / debug / benchmark NATS without client code
+- [pgroll](clis/pgroll/) — zero-downtime Postgres schema migrations via expand / contract: each migration creates a new view alongside the old with triggers keeping the underlying table in sync, so old + new app versions coexist during deploy and a destructive change (drop column, rename table, tighten constraint, swap type) ships without a maintenance window or N+1 / N / N-1 application shim; reversible until `pgroll complete` — destructive Postgres migrations as feature flags, not one-way doors
+- [himalaya](clis/himalaya/) — modern scriptable email CLI / TUI: one Rust binary speaks IMAP / Maildir / Notmuch / JMAP for read and SMTP / Sendmail for send (backend is a config choice), `-o json` everywhere makes envelopes pipe into `jq`, OAuth2 + PKCE for major providers with refresh tokens in the system keyring, three-pane vim-key TUI built on the same JSON library so behavior cannot drift; replaces the `mbsync` + `notmuch` + `neomutt` + `msmtp` + custom-config stack for everyone who wants email in `tmux` without a weekend to assemble it — terminal email without the 1996 ergonomics tax
+
 ## Previously added (+3)
 
 - [kubeconform](clis/kubeconform/) — fast, offline Kubernetes manifest schema validator (kubeval successor); parallel by default, CRD-aware via `-schema-location` templates, drops into pre-commit / CI without the validation-step tax — schema validation, not policy
