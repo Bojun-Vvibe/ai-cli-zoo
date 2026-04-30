@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **621 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **624 AI coding CLIs**.
 
-Most recent additions: [tre](clis/tre/),
+Most recent additions: [kalker](clis/kalker/),
+[systemctl-tui](clis/systemctl-tui/),
+[rainfrog](clis/rainfrog/),
+[tre](clis/tre/),
 [csview](clis/csview/),
 [nala](clis/nala/),
 [dysk](clis/dysk/),
