@@ -906,6 +906,23 @@ then summarize.
   `kubectl-ai`, but it is the only catalog entry that ingests
   alerts, runs the investigation, and posts the RCA back where
   the on-call human looks.
+- **Pipe agent traces, prompt logs, and token-usage metrics through one
+  vendor-neutral collector before they hit any backend** →
+  [`otel-collector`](clis/otel-collector/) for the canonical OTLP landing
+  pad with `tailsamplingprocessor` (keep 100% of error / high-token
+  agent traces, sample successes at 1%) and OTTL-based prompt/PII
+  redaction; [`vector`](clis/vector/) when you want a single Rust binary
+  doing logs + metrics + traces with VRL for in-line redaction and
+  cheap S3 + ClickHouse fan-out; [`fluent-bit`](clis/fluent-bit/) for
+  the smallest possible sidecar (~2 MB RSS) next to a 14 GB model
+  server, with Wasm/Lua filters for in-flight scrubbing. Compose: Fluent
+  Bit at the edge → OTel Collector / Vector at the regional aggregator
+  tier → vendor SIEM + cold storage. Pick this layer *before* you pick
+  an LLM-observability SDK ([`langfuse`](clis/langfuse/) /
+  [`arize-phoenix`](clis/arize-phoenix/) /
+  [`openllmetry`](clis/openllmetry/) /
+  [`helicone`](clis/helicone/)) so the SDK has a stable place to send
+  spans regardless of which backend you swap in.
 
 ## 5g. Token budgeting and HTML cleaning (front-ends to the LLM call)
 

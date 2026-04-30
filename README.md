@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **687 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **690 AI coding CLIs**.
 
-Most recent additions: [kubeconform](clis/kubeconform/),
+Most recent additions: [vector](clis/vector/),
+[fluent-bit](clis/fluent-bit/),
+[otel-collector](clis/otel-collector/),
+[kubeconform](clis/kubeconform/),
 [popeye](clis/popeye/),
 [dockle](clis/dockle/),
 [grype](clis/grype/),
