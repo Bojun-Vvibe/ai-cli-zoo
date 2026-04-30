@@ -1286,11 +1286,17 @@ in the first place.
 
 ## Recently added (+3)
 
+- [pulumi](clis/pulumi/) — IaC engine where AWS / Azure / GCP / Kubernetes resources are declared in TypeScript / Python / Go / .NET against a stateful resource graph with `preview` / `up` / `import` lifecycle — IaC in real languages
+- [flux](clis/flux/) — CNCF GitOps controller suite for Kubernetes; `GitRepository` / `OCIRepository` sources reconciled by `Kustomization` / `HelmRelease` controllers with image-automation closing the registry → manifest loop — pull-based GitOps without a central CD server
+- [kyverno](clis/kyverno/) — CNCF policy engine where `ClusterPolicy` CRDs in plain YAML do admission validation / mutation / generation / image-signature verification with no Rego, runnable offline as a CI gate — Kubernetes-native policy without a separate DSL
+
+## Previously added
+
 - [argocd](clis/argocd/) — GitOps CD CLI for Kubernetes; manages `Application` CRs with sync/diff/rollback/wait gates against the Argo CD controller — pull-based continuous delivery
 - [nerdctl](clis/nerdctl/) — Docker-compatible CLI for `containerd` with rootless mode, BuildKit, Stargz lazy pull, OCI image encryption + signing — daemonless container runtime UX
 - [lima](clis/lima/) — declarative Linux VMs on macOS via QEMU/Apple-VZ with auto file sharing + port forwarding; the engine behind `colima` and Homebrew `nerdctl` — Linux dev VM on a Mac
 
-## Previously added
+## Earlier rotation
 
 - [kubescape](clis/kubescape/) — OPA-backed Kubernetes / IaC posture scanner mapped to NSA / MITRE / CIS controls with SARIF + JUnit gating — compliance-shaped K8s security
 - [devbox](clis/devbox/) — per-project hermetic dev shells backed by Nix without writing Nix; one `devbox.json` reproduces across macOS / Linux / CI — reproducible dev environments
