@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **681 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **684 AI coding CLIs**.
 
-Most recent additions: [grype](clis/grype/),
+Most recent additions: [kubeconform](clis/kubeconform/),
+[popeye](clis/popeye/),
+[dockle](clis/dockle/),
+[grype](clis/grype/),
 [kpt](clis/kpt/),
 [terragrunt](clis/terragrunt/),
 [pulumi](clis/pulumi/),
