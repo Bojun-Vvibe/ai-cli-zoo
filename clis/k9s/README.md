@@ -1,63 +1,80 @@
 # k9s
 
-- **Repo:** https://github.com/derailed/k9s
-- **Version:** v0.50.18 (latest stable, 2026-04)
-- **License:** Apache-2.0 ([LICENSE](https://github.com/derailed/k9s/blob/master/LICENSE))
-- **Language:** Go
-- **Install:** `brew install derailed/k9s/k9s` · `go install github.com/derailed/k9s@latest` · binary releases on the GitHub release page
+> **Terminal UI for Kubernetes clusters.** Full-screen TUI that
+> turns `kubectl get / describe / logs / exec / edit / delete`
+> into a keyboard-driven console: live-updating resource lists
+> across all namespaces, drill-down into pods → containers →
+> logs / shell, port-forward / cordon / drain / scale by
+> hotkey, plugin system for custom actions, and pluggable
+> "skins" + benchmark / pulse / xray views for cluster health.
+> Pinned to **v0.50.18**
+> ([LICENSE](https://github.com/derailed/k9s/blob/master/LICENSE),
+> Apache-2.0).
 
-## What it does
+Source: <https://github.com/derailed/k9s>
 
-`k9s` is a full-screen terminal UI for managing Kubernetes clusters. It reads
-your active kubeconfig context (respecting `$KUBECONFIG`) and renders a
-keyboard-driven, vim-flavoured TUI over the live cluster: `:pods`,
-`:deployments`, `:svc`, `:nodes`, `:cm`, `:secrets`, `:events`, `:ns`, `:ctx`
-(and the same for any CRD installed in the cluster) each open a sortable,
-filterable, auto-refreshing view. From the row under the cursor you tail logs
-(`l`), exec into a container shell (`s`), describe (`d`), edit live (`e`),
-port-forward (`Shift+F`), delete with confirmation (`Ctrl+D`), or pop a YAML
-view (`y`). Resource usage (CPU/mem) renders inline if `metrics-server` is
-installed. Pulse mode (`:pulse`) shows real-time cluster activity, XRay
-(`:xray`) shows owner-reference graphs, and the popeye plugin highlights
-misconfigurations. Customisation is YAML in `~/.config/k9s/`: skins, hotkeys,
-plugins, aliases, and per-context views.
+## TL;DR
 
-## When to pick it / when not to
+`k9s` opens against your current kube context and renders any
+resource by typing `:<resource>` (`:pods`, `:deploy`, `:svc`,
+`:ing`, `:node`, even CRDs) — hotkeys then act on the
+highlighted row: `l` logs, `s` shell, `d` describe, `e` edit
+in `$EDITOR`, `Ctrl-d` delete, `Shift-f` port-forward. Filter
+inline with `/regex`, switch namespace with `:ns`, switch
+context with `:ctx`. RBAC-aware (`:rbac` shows what the
+current user can do), supports read-only mode for incident
+response, and ships a `pulses` dashboard plus `popeye` /
+`benchmark` integrations for a one-pane cluster health view.
 
-Pick `k9s` when you spend any meaningful time inspecting a live cluster from
-the terminal and `kubectl get pods -w | grep ... | awk ...` plus a second
-window for `kubectl logs -f` plus a third for `kubectl describe` is the loop
-you would otherwise run. The single-screen, auto-refresh, one-keystroke-action
-model collapses 4-6 `kubectl` invocations into one TUI session and is the
-canonical answer for "I need to triage what is wrong in this cluster right
-now". Pairs naturally with [`kdash`](../kdash/) (lighter Rust alternative,
-overview-first) and orthogonal to [`kubectl-ai`](../kubectl-ai/) which is the
-LLM-driven natural-language layer over the same `kubectl` API.
-
-Skip it when the workflow is one-shot scripted (`kubectl apply -f` in CI —
-stay on raw `kubectl`), when you want a read-only overview without per-row
-mutating actions (use `kdash` or the dashboard add-on), or when the cluster
-is a single-node minikube where the TUI overhead is more than the workload it
-manages. Default keybinds give powerful destructive actions (`Ctrl+D` delete,
-`e` live edit) two keystrokes deep — for production clusters, set up
-read-only contexts via RBAC rather than relying on muscle memory, and consider
-the `--readonly` flag.
-
-## Example invocations
+## Install
 
 ```bash
-# Open against the active kubeconfig context, default namespace
+# Homebrew (macOS / Linux)
+brew install k9s
+
+# Install script
+curl -sS https://webi.sh/k9s | sh
+
+# Go install
+go install github.com/derailed/k9s@latest
+
+# Container (read-only kubeconfig mount)
+docker run --rm -it \
+  -v $HOME/.kube/config:/root/.kube/config:ro \
+  derailed/k9s
+```
+
+## Example
+
+```bash
+# Default: opens against current context, all namespaces if RBAC allows
 k9s
 
-# Pin to a specific namespace and start in the pods view
-k9s -n kube-system -c pod
+# Pin to one namespace + a non-default context
+k9s -n payments --context staging-eu
 
-# Read-only mode for a production cluster (disables all mutating actions)
-k9s --readonly --context prod-eu-west-1
+# Read-only mode for an on-call session you do not want to mutate
+k9s --readonly
 
-# Use a specific kubeconfig file
-k9s --kubeconfig ~/.kube/staging.yaml
-
-# Inside k9s: filter pods by label, then tail logs
-# :pods<Enter>  /app=api<Enter>   l   (then Esc to detach)
+# Headless command mode: jump straight to a resource view
+k9s -c deploy
 ```
+
+## When to use
+
+- You triage Kubernetes incidents and want pod logs, exec,
+  and describe one keystroke apart instead of re-typing
+  `kubectl` invocations.
+- You manage many contexts / namespaces and need fast switching
+  with RBAC visibility.
+- You want a cluster overview (nodes, pulses, popeye lints,
+  pod metrics) without standing up a separate dashboard.
+
+## When NOT to use
+
+- You need scripted automation in CI — k9s is interactive;
+  use plain `kubectl` or `kubectl-neat` / `kustomize` there.
+- You are looking for GitOps reconciliation or drift detection
+  — that is `argocd` / `flux`, not k9s.
+- The cluster is locked down to API-only access without an
+  interactive TTY (bastion-less serverless setups).
