@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **657 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **660 AI coding CLIs**.
 
-Most recent additions: [skate](clis/skate/),
+Most recent additions: [buf](clis/buf/),
+[cargo-nextest](clis/cargo-nextest/),
+[soft-serve](clis/soft-serve/),
+[skate](clis/skate/),
 [ttyd](clis/ttyd/),
 [agg](clis/agg/),
 [tmate](clis/tmate/),
