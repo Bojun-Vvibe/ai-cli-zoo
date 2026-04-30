@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **645 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **648 AI coding CLIs**.
 
-Most recent additions: [bore](clis/bore/),
+Most recent additions: [fq](clis/fq/),
+[trdsql](clis/trdsql/),
+[wrk](clis/wrk/),
+[bore](clis/bore/),
 [ffsend](clis/ffsend/),
 [xsv](clis/xsv/),
 [so](clis/so/),
