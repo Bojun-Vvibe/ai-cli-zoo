@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **654 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **657 AI coding CLIs**.
 
-Most recent additions: [tmate](clis/tmate/),
+Most recent additions: [skate](clis/skate/),
+[ttyd](clis/ttyd/),
+[agg](clis/agg/),
+[tmate](clis/tmate/),
 [pomsky](clis/pomsky/),
 [gitnr](clis/gitnr/),
 [fq](clis/fq/),
