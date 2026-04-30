@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **699 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **702 AI coding CLIs**.
 
-Most recent additions: [skaffold](clis/skaffold/),
+Most recent additions: [conftest](clis/conftest/),
+[checkov](clis/checkov/),
+[glasskube](clis/glasskube/),
+[skaffold](clis/skaffold/),
 [flipt](clis/flipt/),
 [litestream](clis/litestream/),
 [step-cli](clis/step-cli/),

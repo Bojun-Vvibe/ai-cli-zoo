@@ -1303,6 +1303,12 @@ in the first place.
 
 ## Recently added (+3)
 
+- [conftest](clis/conftest/) — OPA Rego policy test runner for Kubernetes / Terraform / Dockerfile / Helm / arbitrary YAML/JSON/HCL; one binary, no server, policies live in `policy/*.rego` next to the code they govern, exits non-zero in CI when a `deny` rule fires — policy-as-code unit tests, not an admission controller
+- [checkov](clis/checkov/) — multi-framework IaC misconfiguration scanner (Terraform / CloudFormation / Kubernetes / Helm / Dockerfile / GitHub Actions / ARM / Bicep / Serverless) with ~1000 built-in policies mapped to CIS / NIST / PCI / HIPAA, SARIF + baseline workflow for adopting on existing repos — broad batteries-included IaC scanning
+- [glasskube](clis/glasskube/) — Kubernetes package manager treating each install as a `Package` CRD reconciled by an in-cluster operator (transitive dependency resolution, `glasskube update`, local web UI via `glasskube serve`); `apt`/`brew`-style ergonomics for cluster add-ons — Helm alternative for teams that want operator-driven app lifecycle
+
+## Previously added (+3)
+
 - [skaffold](clis/skaffold/) — inner-loop build/deploy orchestrator for Kubernetes; one `skaffold.yaml` watches source, rebuilds container images, side-loads or pushes them, and reapplies Helm / Kustomize / raw manifests with port-forward + log-tail wired through `dev` mode — the edit-save-see-it-running loop for "my code only makes sense inside a cluster"
 - [flipt](clis/flipt/) — self-hosted feature-flag + dynamic-config server (GPL-3.0) shipped as one Go binary with HTTP/gRPC + OpenFeature/OFREP APIs; v2 stores flags as YAML in a Git repo so flag changes go through the same PR review as code — feature flags without a SaaS tether
 - [litestream](clis/litestream/) — streaming WAL replication for SQLite to S3 / GCS / Azure Blob / SFTP with second-level RPO and point-in-time restore; no fork of SQLite, no app library, the same binary handles backup and restore — durable single-node SQLite for ephemeral compute
