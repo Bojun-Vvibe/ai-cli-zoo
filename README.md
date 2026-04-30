@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **618 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **621 AI coding CLIs**.
 
-Most recent additions: [dysk](clis/dysk/),
+Most recent additions: [tre](clis/tre/),
+[csview](clis/csview/),
+[nala](clis/nala/),
+[dysk](clis/dysk/),
 [termshark](clis/termshark/),
 [spotify-tui](clis/spotify-tui/),
 [wishlist](clis/wishlist/),
