@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **693 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **696 AI coding CLIs**.
 
-Most recent additions: [cilium-cli](clis/cilium-cli/),
+Most recent additions: [step-cli](clis/step-cli/),
+[linkerd](clis/linkerd/),
+[consul](clis/consul/),
+[cilium-cli](clis/cilium-cli/),
 [argo-rollouts](clis/argo-rollouts/),
 [kube-score](clis/kube-score/),
 [vector](clis/vector/),
