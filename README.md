@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **723 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **726 AI coding CLIs**.
 
-Most recent additions: [osquery](clis/osquery/),
+Most recent additions: [cue](clis/cue/),
+[regctl](clis/regctl/),
+[ko](clis/ko/),
+[osquery](clis/osquery/),
 [rekor](clis/rekor/),
 [timoni](clis/timoni/),
 [wasmtime](clis/wasmtime/),
