@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **747 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **750 AI coding CLIs**.
 
-Most recent additions: [pandoc](clis/pandoc/),
+Most recent additions: [borg](clis/borg/),
+[valkey](clis/valkey/),
+[mlr](clis/mlr/),
+[pandoc](clis/pandoc/),
 [aria2](clis/aria2/),
 [smassh](clis/smassh/),
 [pkgx](clis/pkgx/),
