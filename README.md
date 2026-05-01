@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **738 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **741 AI coding CLIs**.
 
-Most recent additions: [d2](clis/d2/),
+Most recent additions: [sapling](clis/sapling/),
+[melange](clis/melange/),
+[colima](clis/colima/),
+[d2](clis/d2/),
 [yt-dlp](clis/yt-dlp/),
 [carapace](clis/carapace/),
 [wasmer](clis/wasmer/),

@@ -1383,7 +1383,10 @@ in the first place.
 
 - [kubescape](clis/kubescape/) — OPA-backed Kubernetes / IaC posture scanner mapped to NSA / MITRE / CIS controls with SARIF + JUnit gating — compliance-shaped K8s security
 - [devbox](clis/devbox/) — per-project hermetic dev shells backed by Nix without writing Nix; one `devbox.json` reproduces across macOS / Linux / CI — reproducible dev environments
-- [git-bug](clis/git-bug/) — distributed bug tracker stored as git refs, sync over `git push` / `git pull`, optional bridges to GitHub / GitLab / Jira — offline-first issue tracking
+ - [git-bug](clis/git-bug/) — distributed bug tracker stored as git refs, sync over `git push` / `git pull`, optional bridges to GitHub / GitLab / Jira — offline-first issue tracking
+ - [colima](clis/colima/) — Docker-socket-compatible local container runtime for macOS / Linux on top of Lima, with optional bundled k3s and Apple Silicon Rosetta amd64 emulation, no desktop app — container runtime VM manager
+ - [melange](clis/melange/) — declarative apk package builder with hermetic sandbox + signed apks + SBOM / SLSA provenance, the upstream pair to [`apko`](clis/apko/) for distroless OCI images — supply-chain-first package builder
+ - [sapling](clis/sapling/) — git-compatible scalable source control (`sl`) with stack-first smartlog, `absorb`, and transactional `undo` across rebases / amends, the [`jj`](clis/jj/) sibling shipped from a giant-monorepo lineage — modern git-interop VCS
 
 ## Earlier additions
 
