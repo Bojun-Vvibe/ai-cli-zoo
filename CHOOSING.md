@@ -1381,6 +1381,9 @@ in the first place.
 
 ## Earlier rotation
 
+- [pandoc](clis/pandoc/) — Haskell universal document converter with ~40 readers and a larger set of writers, Lua filters operating on the parsed AST, and built-in CSL `--citeproc`, GPL-2.0-or-later — author once, emit Markdown / PDF / docx / EPUB / slide deck from one source
+- [aria2](clis/aria2/) — multi-protocol (HTTP/FTP/SFTP/BitTorrent/Metalink) segmented downloader with multi-source mirror splitting and a JSON-RPC control surface, GPL-2.0-or-later with OpenSSL exception — saturate the link when bytes-per-second is the constraint
+- [smassh](clis/smassh/) — local-first Textual TUI typing trainer with custom corpora and JSONL result history that never leaves the machine, MIT — keyboard speed practice without a SaaS account
 - [kubescape](clis/kubescape/) — OPA-backed Kubernetes / IaC posture scanner mapped to NSA / MITRE / CIS controls with SARIF + JUnit gating — compliance-shaped K8s security
 - [devbox](clis/devbox/) — per-project hermetic dev shells backed by Nix without writing Nix; one `devbox.json` reproduces across macOS / Linux / CI — reproducible dev environments
  - [git-bug](clis/git-bug/) — distributed bug tracker stored as git refs, sync over `git push` / `git pull`, optional bridges to GitHub / GitLab / Jira — offline-first issue tracking

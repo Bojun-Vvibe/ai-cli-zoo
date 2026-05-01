@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **744 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **747 AI coding CLIs**.
 
-Most recent additions: [pkgx](clis/pkgx/),
+Most recent additions: [pandoc](clis/pandoc/),
+[aria2](clis/aria2/),
+[smassh](clis/smassh/),
+[pkgx](clis/pkgx/),
 [yamlfmt](clis/yamlfmt/),
 [talisman](clis/talisman/),
 [sapling](clis/sapling/),
