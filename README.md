@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **799 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **802 AI coding CLIs**.
 
-Most recent additions: [skopeo](clis/skopeo/),
+Most recent additions: [jira-cli](clis/jira-cli/),
+[teller](clis/teller/),
+[pls](clis/pls/),
+[skopeo](clis/skopeo/),
 [goss](clis/goss/),
 [benthos](clis/benthos/),
 [ripgrep-all](clis/ripgrep-all/),
