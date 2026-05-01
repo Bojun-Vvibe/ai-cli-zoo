@@ -628,6 +628,53 @@ agent. These are install-once-and-forget tools.
   call AWS / GitHub / Slack / Stripe with the candidate
   credential, so air-gapped scans need `--no-verification` and a
   higher false-positive tolerance.
+- **Block secrets at commit time with a managed detector catalog
+  and a team incident dashboard** → [`ggshield`](clis/ggshield/)
+  (Python; MIT). The official GitGuardian client wraps ~400
+  detector families behind one CLI surface — `ggshield install -m
+  local` writes a pre-commit hook so every staged diff is scanned
+  before it lands in `.git/objects`, `ggshield secret scan ci`
+  auto-detects GitHub Actions / GitLab / Azure Pipelines /
+  CircleCI / Jenkins for server-side PR scanning, and the same
+  binary covers `secret scan docker`, `secret scan pypi`, `iac
+  scan`, and `sca scan`. Trade-off vs `gitleaks` / `ripsecrets`:
+  you ship file blobs to a third-party API and need a free-tier
+  account, but you stop maintaining your own regex pack and gain
+  an assignable incident view across every repo in the org. Pair
+  with `ripsecrets` or `gitleaks` for offline / air-gapped paths
+  where shipping bytes off-box is not an option.
+
+### Operating systems & shells
+
+- **Need a remote shell that survives Wi-Fi → LTE handoffs, lid
+  close, and 400 ms satellite latency without `tmux` gymnastics**
+  → [`mosh`](clis/mosh/) (C++; GPL-3.0-or-later). Replaces the
+  interactive-SSH terminal with the State Synchronization Protocol
+  over UDP — bootstraps via one SSH handshake, then drops SSH and
+  syncs *terminal screen state* instead of replaying keystrokes,
+  so it predicts your local edits (underlined until confirmed) and
+  the session keeps working across IP changes and hours of
+  disconnect. Different layer from `tmux` / `zellij` (those only
+  detach/reattach within one alive socket) and from
+  `eternal-terminal` (TCP + relay). Choose for any laptop that
+  roams networks; do **not** choose when you need port / X11 /
+  agent forwarding or SFTP — `mosh` deliberately handles only the
+  interactive shell.
+- **Run an Arch / Ubuntu / Fedora userland on top of an immutable
+  desktop (Silverblue, Bluefin, SteamOS) with full host
+  integration — your $HOME, GPU, audio, display already wired** →
+  [`distrobox`](clis/distrobox/) (POSIX shell + podman/docker;
+  GPL-3.0-only). One-shot wrapper that creates rootless containers
+  bind-mounting `$HOME`, `/dev`, the SSH agent, the
+  Wayland/X11 socket, the GPU, and PulseAudio/PipeWire, with
+  `distrobox-export --app firefox` writing a host `.desktop` that
+  launches the containerized binary. Different shape from
+  `toolbox` (Fedora-only, fewer mounts), `nix-shell` (no `apt` /
+  `dnf`, host-kernel userland), `docker run -it` (clean but
+  unintegrated), and `devcontainer` (project-scoped, IDE-driven).
+  Choose for "I want apt + GPU + my home dir in one shell on an
+  ostree host"; do **not** choose for production container
+  workloads or hermetic reproducible builds.
 
 ## 5c. Context-packing pipeline (LLM-input shaping)
 
