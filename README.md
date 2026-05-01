@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **778 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **781 AI coding CLIs**.
 
-Most recent additions: [goaccess](clis/goaccess/),
+Most recent additions: [task-spooler](clis/task-spooler/),
+[plow](clis/plow/),
+[micro](clis/micro/),
+[goaccess](clis/goaccess/),
 [typst](clis/typst/),
 [pdfcpu](clis/pdfcpu/),
 [spr](clis/spr/),
