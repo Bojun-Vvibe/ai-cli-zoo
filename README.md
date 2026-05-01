@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **717 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **720 AI coding CLIs**.
 
-Most recent additions: [parca](clis/parca/),
+Most recent additions: [wasmtime](clis/wasmtime/),
+[apko](clis/apko/),
+[spin](clis/spin/),
+[parca](clis/parca/),
 [sshx](clis/sshx/),
 [git-spice](clis/git-spice/),
 [atlas](clis/atlas/),
