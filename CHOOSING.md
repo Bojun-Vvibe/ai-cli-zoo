@@ -675,6 +675,67 @@ agent. These are install-once-and-forget tools.
   Choose for "I want apt + GPU + my home dir in one shell on an
   ostree host"; do **not** choose for production container
   workloads or hermetic reproducible builds.
+- **Keep your existing bash scripts running today, but stop
+  *writing* new bash, without rewriting any one file in a single
+  jump** → [`oils`](clis/oils/) (C/Python build, Apache-2.0). Ships
+  `osh` (a near-100% bash-compatible runtime that runs your
+  existing `.bashrc`, autotools output, and `set -euo pipefail`
+  pipelines unchanged but with a real parser and cleaner error
+  messages) and `ysh` (a from-scratch shell language with typed
+  values, JSON / J8-Notation as first-class values, expression-
+  vs-command modes, and exceptions instead of `$?` checking) from
+  one binary; `shopt --set ysh:upgrade` lets one codebase migrate
+  file-by-file. Different shape from [`fish-shell`](clis/fish-shell/)
+  (interactive-first, deliberately not POSIX, doesn't run your
+  build scripts) and [`nushell`](clis/nushell/) (structured-data
+  shell, table pipelines — great for data work, not a bash drop-
+  in). Choose when you own bash you have to keep running but want
+  a typed shell language to grow into; do **not** choose as a
+  day-one interactive login shell (interactive UX still trails
+  fish + plugins).
+
+### Release engineering & physical media
+
+- **Sign and verify a release tarball / firmware / model artifact
+  with one Ed25519 key, in one binary, forever — no PKI, no
+  keyring, no certificate chain** → [`minisign`](clis/minisign/)
+  (C, ISC). One key pair (`minisign.pub` + encrypted
+  `minisign.key`), one `<file>.minisig` per artifact, a signed
+  trusted-comment slot so release notes can't be tampered with
+  separately from the file, and a pre-hashed mode (`-H`) that
+  signs the BLAKE2b digest so verification of multi-GB tarballs
+  doesn't re-stream the whole file. Wire-compatible with OpenBSD
+  `signify`. Different shape from `gpg --sign` (full OpenPGP
+  stack — keyrings, web of trust, subkeys, expiry; the reason
+  most projects ship `sha256sums.txt` instead of signed
+  releases), from [`cosign`](clis/cosign/) +
+  [`rekor`](clis/rekor/) (OCI-artifact signing with transparency
+  log and OIDC-bound short-lived keys — overkill for a tarball),
+  and from [`age`](clis/age/) / [`rage`](clis/rage/) (file
+  *encryption*, different problem). Choose for any small project
+  that wants verifiable downloads without operating a PKI; do
+  **not** choose when you need OpenPGP interop with distro
+  maintainers (use `gpg`) or supply-chain provenance with a
+  transparency log (use `cosign` + `rekor`).
+- **Flash a USB installer / SD card from an ISO without `dd`-class
+  destruction risk, on a headless box over SSH** →
+  [`caligula`](clis/caligula/) (Rust, GPL-3.0-or-later). TUI
+  picker that lists removable block devices and refuses to
+  clobber the disk you're booted from, validates the source
+  against `*.sha256` / `*.b3` sidecars or `--hash` BLAKE3 / MD5
+  / SHA1 / SHA256, decompresses `.xz` / `.gz` / `.bz2` / `.zst`
+  / `.lz4` images on the fly so you don't pre-extract a 4 GB
+  ISO, shows real throughput + ETA, and post-write reads the
+  device back to byte-verify the flash succeeded. Different
+  shape from raw `dd` (silent, no progress, no verify, no
+  decompression — footgun-by-default), from balenaEtcher
+  (Electron GUI, ~150 MB, requires a desktop session, can't run
+  over SSH), and from `gnome-multi-writer` / `usbimager` /
+  Rufus (GUI / Windows-only). Choose for any
+  USB-installer / SD-card-flashing workload on Linux or macOS;
+  do **not** choose for partitioning + filesystem operations
+  (use `parted` / `gparted` / `fdisk`) or for cloning live
+  running systems (use `clonezilla` / `partclone`).
 
 ## 5c. Context-packing pipeline (LLM-input shaping)
 
@@ -1350,11 +1411,17 @@ in the first place.
 
 ## Recently added (+3)
 
+- [caligula](clis/caligula/) — user-friendly TUI disk imager in Rust that replaces `dd if=image.iso of=/dev/sdX` with an interactive picker that lists removable block devices (and refuses to clobber the disk you're booted from), validates the source against `*.sha256` / `*.b3` sidecars or `--hash` BLAKE3/MD5/SHA1/SHA256, decompresses `.xz` / `.gz` / `.bz2` / `.zst` / `.lz4` images on the fly so you don't pre-extract a 4 GB ISO, shows real throughput + ETA, and post-write reads the device back to byte-verify the flash succeeded — single static binary, no GUI toolkit, runs over SSH on a headless box. Pick over raw `dd` when you flash USB installers / SD cards regularly and want `dd`-class speed without `dd`-class destruction risk; pick over balenaEtcher when you don't have or want an Electron desktop session; pick over Rufus when you're not on Windows. Skip for Windows-native flashing (use Rufus), partitioning (use `parted` / `gparted`), or live-system cloning (use `clonezilla`).
+- [oils](clis/oils/) — POSIX shell with an upgrade path: ships `osh` (near-100% bash-compatible runtime that runs your existing `.bashrc` / autotools output / `set -euo pipefail` pipelines unchanged but with a real parser and cleaner error messages) and `ysh` (a from-scratch shell language with typed values `Int` / `Str` / `List` / `Dict`, JSON / J8-Notation as first-class values, expression-vs-command modes, exceptions instead of `$?` checking, and garbage collection) from one binary, with `shopt --set ysh:upgrade` letting one codebase migrate file-by-file. Pick over bash / zsh / dash when you want bash-compat *today* + a typed shell language *tomorrow* without rewriting; pick over [`fish-shell`](clis/fish-shell/) when you need POSIX-compat for build scripts; pick over [`nushell`](clis/nushell/) when the workload is `make`-style command orchestration rather than tabular data wrangling. Skip as a day-one interactive login shell (interactive UX still trails fish/zsh+plugins) and for sandboxed embedded scripting (use Lua, Starlark, or [`pkl`](clis/pkl/)).
+- [minisign](clis/minisign/) — dead-simple Ed25519 file signing in a ~300 KB binary: one key pair (`minisign.pub` + encrypted `minisign.key`), one signature file (`<file>.minisig`) per artifact, no keyrings, no web of trust, no certificate chains, no agent daemon — plus a signed *trusted comment* slot so release notes / build metadata can't be tampered with separately from the file, plus a pre-hashed mode (`-H`) that signs the BLAKE2b digest so verification of multi-GB tarballs doesn't re-stream the whole file. Wire-compatible with OpenBSD `signify`. Used in production by Zig releases, Tor Browser, libsodium, dnscrypt-proxy, and WireGuard's Windows installer. Pick over `gpg --sign` when you don't want the OpenPGP keyring / web-of-trust / subkey complexity surface that's the reason most projects ship `sha256sums.txt` instead of signed releases; pick over [`cosign`](clis/cosign/) when you're signing tarballs / binaries / firmware rather than OCI artifacts; pick over [`age`](clis/age/) / [`rage`](clis/rage/) when you need *signing*, not encryption. Skip when you need OpenPGP interop with distro maintainers (use `gpg`) or transparency-log-backed supply-chain provenance (use [`cosign`](clis/cosign/) + [`rekor`](clis/rekor/)).
+
+## Previous rotation (+3)
+
 - [traefik](clis/traefik/) — cloud-native HTTP/TCP/UDP reverse proxy that **discovers its own routes** from Docker labels, Kubernetes IngressRoute / Gateway API CRDs, Consul / Nomad / ECS catalogs, or a watched YAML/TOML directory — every service publishes `traefik.http.routers.api.rule=Host('api.example.com')` and traefik materialises the router → middleware → service graph within sub-second of the service appearing, with built-in ACME (TLS / HTTP / DNS-01 challenges, wildcard certs), an HTTP/3 entrypoint behind a one-line opt-in, a composable middleware library (rateLimit / forwardAuth / circuitBreaker / stripPrefix / compress / IPWhiteList), Prometheus + OTLP observability out of the box, and a live `/dashboard/` view of the routing graph for debugging — pick over [`caddy`](clis/caddy/) when the topology is dynamic (containers come and go faster than you want to edit Caddyfile) and over nginx / HAProxy when "auto-discovery from the runtime" beats raw L7 throughput, complementary to [`consul`](clis/consul/) / [`nomad`](clis/nomad/) / [`podman`](clis/podman/) / [`nerdctl`](clis/nerdctl/) (whose sockets / catalogs traefik consumes directly as providers)
 - [kitty](clis/kitty/) — GPU-accelerated terminal emulator that treats the terminal as a programmable surface: native tabs and split layouts without tmux (`Ctrl+Shift+T` / `Ctrl+Shift+Enter`), the **kitty graphics protocol** for in-band PNG / RGBA image transfer (consumed by `matplotlib`, `chafa --format=kitty`, `nvim` image plugins, `mpv --vo=kitty`, `euporie`), the **kitty keyboard protocol** that disambiguates Ctrl-i vs Tab and reports modifier press / release events for serious modal editors, OSC 8 hyperlinks rendered as real clickable spans, a remote-control socket (`kitty @ launch --type=tab nvim`) scripts can drive from inside the session, and a **kittens** plugin model that ships transparent-config `kitten ssh` (mirrors local zshrc + nvim to the remote box), `kitten icat` (inline images), `kitten diff` (image-aware side-by-side), and `kitten hyperlinked-grep` (rg with clickable file:line: links) — pick over [`wezterm`](clis/wezterm/) when the kitty graphics protocol's broader TUI support matters more than wezterm's Lua-config flexibility, complementary to [`vhs`](clis/vhs/) / [`asciinema`](clis/asciinema/) / [`agg`](clis/agg/) for recording sessions and to tmux for remote persistence
 - [taskwarrior](clis/taskwarrior/) — structured, filter-first task database for the command line: typed attributes (`project`, `tags`, `due`, `wait`, `recur`, `depends`, plus user-defined `uda.*`), one uniform filter grammar across every verb (`task project:work and +urgent and due.before:eow list / count / done / modify / annotate / burndown.daily / export`), recurring tasks with proper instance semantics (`recur:weekly due:fri` materialises one instance per week), dependent tasks hidden until the blocker closes, deferred tasks invisible until a date, per-context implicit filters, a hook system for shell-script integrations (Slack on add, Prometheus metrics, iCal sync), and the v3 **Taskchampion** Rust storage + sync layer giving you a SQLite-backed replica plus end-to-end encrypted multi-device sync against either a self-hosted `taskwarrior-sync-server` or an S3 / GCS bucket — pick over a Markdown / `todo.txt` checklist once you cross ~50 active tasks across multiple projects and need to query "what's due this week, untagged, in any project but @home" as a one-line invocation; a natural sink for LLM agents' "flag-for-followup" tool calls (one `task add` with `+from-agent` tag) so an agent's ephemera becomes a queryable, filter-friendly database the next agent run reads back via `task export +from-agent and status:pending`
 
-## Previous rotation (+3)
+## Two rotations back (+3)
 
 - [podman](clis/podman/) — daemonless, rootless-by-default, Docker-CLI-compatible OCI container engine that emits Kubernetes YAML as its native serialisation: `podman generate kube` produces a manifest `kubectl apply -f` accepts, and `podman play kube` replays one locally; pods are a first-class CLI primitive, the storage / image / signature stacks are shared with `buildah` / `skopeo`, and `podman machine` brings the same engine to macOS / Windows via a managed Linux VM — pick over [`colima`](clis/colima/) / [`nerdctl`](clis/nerdctl/) when you want the rootless Docker-CLI compat layer + `play kube` workflow + the exact engine RHEL / Fedora ship in production, over Docker when "no root daemon, no docker.sock to harden" is the actual ask
 - [nomad](clis/nomad/) — single-binary multi-driver workload scheduler (containers + raw binaries + JVM jars + QEMU VMs + WASM under one HCL job spec), Raft control plane that fits on three 2 GB servers, native batch / system / service / parameterised / periodic job types, canary / blue-green / rolling updates with auto-revert, and Consul-Connect service mesh as a one-line `connect {}` block — pick over Kubernetes when the team / footprint / mixed-driver story makes the kube CRD galaxy the wrong size, complementary to [`consul`](clis/consul/) (service discovery + mesh) and [`tofu`](clis/tofu/) (host provisioning) since Nomad is just the scheduler core

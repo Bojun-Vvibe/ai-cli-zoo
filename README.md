@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **766 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **769 AI coding CLIs**.
 
-Most recent additions: [newsboat](clis/newsboat/),
+Most recent additions: [minisign](clis/minisign/),
+[oils](clis/oils/),
+[caligula](clis/caligula/),
+[newsboat](clis/newsboat/),
 [aerc](clis/aerc/),
 [wtfutil](clis/wtfutil/),
 [diskonaut](clis/diskonaut/),
