@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **760 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **763 AI coding CLIs**.
 
-Most recent additions: [ggshield](clis/ggshield/),
+Most recent additions: [diskonaut](clis/diskonaut/),
+[mergiraf](clis/mergiraf/),
+[rustic](clis/rustic/),
+[ggshield](clis/ggshield/),
 [distrobox](clis/distrobox/),
 [mosh](clis/mosh/),
 [tokio-console](clis/tokio-console/),
