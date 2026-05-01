@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **805 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **808 AI coding CLIs**.
 
-Most recent additions: [sqlx-cli](clis/sqlx-cli/),
+Most recent additions: [tmuxp](clis/tmuxp/),
+[mitmproxy](clis/mitmproxy/),
+[tailscale](clis/tailscale/),
+[sqlx-cli](clis/sqlx-cli/),
 [cargo-watch](clis/cargo-watch/),
 [rqlite](clis/rqlite/),
 [jira-cli](clis/jira-cli/),
