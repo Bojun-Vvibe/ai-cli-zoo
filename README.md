@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **787 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **790 AI coding CLIs**.
 
-Most recent additions: [s5cmd](clis/s5cmd/),
+Most recent additions: [ripgrep-all](clis/ripgrep-all/),
+[jrnl](clis/jrnl/),
+[icdiff](clis/icdiff/),
+[s5cmd](clis/s5cmd/),
 [addlicense](clis/addlicense/),
 [sshuttle](clis/sshuttle/),
 [task-spooler](clis/task-spooler/),
