@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **775 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **778 AI coding CLIs**.
 
-Most recent additions: [spr](clis/spr/),
+Most recent additions: [goaccess](clis/goaccess/),
+[typst](clis/typst/),
+[pdfcpu](clis/pdfcpu/),
+[spr](clis/spr/),
 [gh-poi](clis/gh-poi/),
 [sttr](clis/sttr/),
 [frawk](clis/frawk/),
