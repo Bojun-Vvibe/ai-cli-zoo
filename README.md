@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **781 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **784 AI coding CLIs**.
 
 Most recent additions: [task-spooler](clis/task-spooler/),
 [plow](clis/plow/),
