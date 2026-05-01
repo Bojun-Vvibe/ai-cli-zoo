@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **769 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **772 AI coding CLIs**.
 
-Most recent additions: [minisign](clis/minisign/),
+Most recent additions: [frawk](clis/frawk/),
+[t-rec](clis/t-rec/),
+[amber](clis/amber/),
+[minisign](clis/minisign/),
 [oils](clis/oils/),
 [caligula](clis/caligula/),
 [newsboat](clis/newsboat/),
