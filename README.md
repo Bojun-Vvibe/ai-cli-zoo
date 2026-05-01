@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **790 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **793 AI coding CLIs**.
 
 Most recent additions: [ripgrep-all](clis/ripgrep-all/),
 [jrnl](clis/jrnl/),
