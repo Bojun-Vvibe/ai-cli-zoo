@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **754 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **757 AI coding CLIs**.
 
-Most recent additions: [taskwarrior](clis/taskwarrior/),
+Most recent additions: [tokio-console](clis/tokio-console/),
+[slides](clis/slides/),
+[watchman](clis/watchman/),
+[taskwarrior](clis/taskwarrior/),
 [kitty](clis/kitty/),
 [traefik](clis/traefik/),
 [ugrep](clis/ugrep/),
