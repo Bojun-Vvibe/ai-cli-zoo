@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **729 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **732 AI coding CLIs**.
 
-Most recent additions: [ddev](clis/ddev/),
+Most recent additions: [treefmt](clis/treefmt/),
+[natscli](clis/natscli/),
+[kcat](clis/kcat/),
+[ddev](clis/ddev/),
 [moon](clis/moon/),
 [httpyac](clis/httpyac/),
 [cue](clis/cue/),
