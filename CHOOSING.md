@@ -1387,6 +1387,9 @@ in the first place.
  - [colima](clis/colima/) — Docker-socket-compatible local container runtime for macOS / Linux on top of Lima, with optional bundled k3s and Apple Silicon Rosetta amd64 emulation, no desktop app — container runtime VM manager
  - [melange](clis/melange/) — declarative apk package builder with hermetic sandbox + signed apks + SBOM / SLSA provenance, the upstream pair to [`apko`](clis/apko/) for distroless OCI images — supply-chain-first package builder
  - [sapling](clis/sapling/) — git-compatible scalable source control (`sl`) with stack-first smartlog, `absorb`, and transactional `undo` across rebases / amends, the [`jj`](clis/jj/) sibling shipped from a giant-monorepo lineage — modern git-interop VCS
+ - [talisman](clis/talisman/) — pre-commit / pre-push git hook that scans the staged diff for credential-shaped strings, high-entropy blobs, and SSH / cloud key headers, refusing the commit before the secret enters `.git/objects` — developer-boundary secret guard
+ - [yamlfmt](clis/yamlfmt/) — opinionated Go YAML formatter with a real config file, a `-lint` mode for CI gating, and a `kyaml` formatter for the new Kubernetes encoding — YAML pretty-print + lint
+ - [pkgx](clis/pkgx/) — invocation-scoped package runner that fetches a pinned tool version into `~/.pkgx`, wires PATH for that one command, and never mutates `/usr/local` or installs a shell shim — on-demand binary fetcher
 
 ## Earlier additions
 
