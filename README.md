@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **814 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **817 AI coding CLIs**.
 
-Most recent additions: [borgbackup](clis/borgbackup/),
+Most recent additions: [step](clis/step/),
+[mqttx](clis/mqttx/),
+[nats](clis/nats/),
+[borgbackup](clis/borgbackup/),
 [xan](clis/xan/),
 [b3sum](clis/b3sum/),
 [fswatch](clis/fswatch/),
