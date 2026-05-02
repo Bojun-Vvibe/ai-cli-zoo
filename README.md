@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **877 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **880 AI coding CLIs**.
 
-Most recent additions: [multitail](clis/multitail/),
+Most recent additions: [tuifeed](clis/tuifeed/),
+[cotp](clis/cotp/),
+[circumflex](clis/circumflex/),
+[multitail](clis/multitail/),
 [bingrep](clis/bingrep/),
 [rich-cli](clis/rich-cli/),
 [ghostty](clis/ghostty/),
