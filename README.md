@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **859 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **862 AI coding CLIs**.
 
-Most recent additions: [kubo](clis/kubo/),
+Most recent additions: [yadm](clis/yadm/),
+[vifm](clis/vifm/),
+[byobu](clis/byobu/),
+[kubo](clis/kubo/),
 [jaeger](clis/jaeger/),
 [witness](clis/witness/),
 [kanidm](clis/kanidm/),
