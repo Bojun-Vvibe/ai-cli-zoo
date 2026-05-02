@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **829 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **832 AI coding CLIs**.
 
-Most recent additions: [wrangler](clis/wrangler/),
+Most recent additions: [pack](clis/pack/),
+[buildah](clis/buildah/),
+[redli](clis/redli/),
+[wrangler](clis/wrangler/),
 [flyctl](clis/flyctl/),
 [kind](clis/kind/),
 [muffet](clis/muffet/),
