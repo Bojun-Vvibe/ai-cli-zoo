@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **910 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **913 AI coding CLIs**.
 
-Most recent additions: [mpv](clis/mpv/),
+Most recent additions: [porsmo](clis/porsmo/),
+[humanlog](clis/humanlog/),
+[nh](clis/nh/),
+[mpv](clis/mpv/),
 [wl-clipboard](clis/wl-clipboard/),
 [ncmpcpp](clis/ncmpcpp/),
 [noseyparker](clis/noseyparker/),
