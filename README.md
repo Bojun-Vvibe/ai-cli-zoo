@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **898 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **901 AI coding CLIs**.
 
-Most recent additions: [logdy](clis/logdy/),
+Most recent additions: [halloy](clis/halloy/),
+[hwatch](clis/hwatch/),
+[clipse](clis/clipse/),
+[logdy](clis/logdy/),
 [hexpatch](clis/hexpatch/),
 [f2](clis/f2/),
 [qalc](clis/qalc/),
