@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **916 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **919 AI coding CLIs**.
 
-Most recent additions: [jujutsu](clis/jujutsu/),
+Most recent additions: [ttdl](clis/ttdl/),
+[buku](clis/buku/),
+[countdown](clis/countdown/),
+[jujutsu](clis/jujutsu/),
 [typioca](clis/typioca/),
 [boxes](clis/boxes/),
 [porsmo](clis/porsmo/),
