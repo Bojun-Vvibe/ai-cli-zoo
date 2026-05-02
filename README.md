@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **892 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **895 AI coding CLIs**.
 
-Most recent additions: [sc-im](clis/sc-im/),
+Most recent additions: [qalc](clis/qalc/),
+[tut](clis/tut/),
+[s-tui](clis/s-tui/),
+[sc-im](clis/sc-im/),
 [heh](clis/heh/),
 [qrtool](clis/qrtool/),
 [csvtk](clis/csvtk/),
