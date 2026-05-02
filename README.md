@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **904 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **907 AI coding CLIs**.
 
-Most recent additions: [mdtt](clis/mdtt/),
+Most recent additions: [noseyparker](clis/noseyparker/),
+[reptyr](clis/reptyr/),
+[patat](clis/patat/),
+[mdtt](clis/mdtt/),
 [gomi](clis/gomi/),
 [cicada](clis/cicada/),
 [halloy](clis/halloy/),
