@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **871 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **874 AI coding CLIs**.
 
-Most recent additions: [tini](clis/tini/),
+Most recent additions: [ghostty](clis/ghostty/),
+[pop](clis/pop/),
+[huh](clis/huh/),
+[tini](clis/tini/),
 [stow](clis/stow/),
 [dotbot](clis/dotbot/),
 [timewarrior](clis/timewarrior/),
