@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **868 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **871 AI coding CLIs**.
 
-Most recent additions: [timewarrior](clis/timewarrior/),
+Most recent additions: [tini](clis/tini/),
+[stow](clis/stow/),
+[dotbot](clis/dotbot/),
+[timewarrior](clis/timewarrior/),
 [q-text-as-data](clis/q-text-as-data/),
 [yank](clis/yank/),
 [wuzz](clis/wuzz/),
