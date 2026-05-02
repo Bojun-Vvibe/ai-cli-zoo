@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **850 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **853 AI coding CLIs**.
 
-Most recent additions: [ccache](clis/ccache/),
+Most recent additions: [khal](clis/khal/),
+[mbsync](clis/mbsync/),
+[nickel](clis/nickel/),
+[ccache](clis/ccache/),
 [overmind](clis/overmind/),
 [slsa-verifier](clis/slsa-verifier/),
 [doctl](clis/doctl/),
