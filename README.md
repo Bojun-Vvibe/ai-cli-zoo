@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **853 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **856 AI coding CLIs**.
 
-Most recent additions: [khal](clis/khal/),
+Most recent additions: [kanidm](clis/kanidm/),
+[hledger](clis/hledger/),
+[gallery-dl](clis/gallery-dl/),
+[khal](clis/khal/),
 [mbsync](clis/mbsync/),
 [nickel](clis/nickel/),
 [ccache](clis/ccache/),
