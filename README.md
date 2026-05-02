@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **838 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **841 AI coding CLIs**.
 
-Most recent additions: [golangci-lint](clis/golangci-lint/),
+Most recent additions: [doctl](clis/doctl/),
+[headscale](clis/headscale/),
+[octodns](clis/octodns/),
+[golangci-lint](clis/golangci-lint/),
 [lego](clis/lego/),
 [steampipe](clis/steampipe/),
 [air](clis/air/),
