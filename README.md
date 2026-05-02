@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **886 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **889 AI coding CLIs**.
 
-Most recent additions: [beets](clis/beets/),
+Most recent additions: [csvtk](clis/csvtk/),
+[peaclock](clis/peaclock/),
+[anew](clis/anew/),
+[beets](clis/beets/),
 [gifsicle](clis/gifsicle/),
 [vnstat](clis/vnstat/),
 [diffr](clis/diffr/),
