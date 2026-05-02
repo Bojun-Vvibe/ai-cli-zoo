@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **907 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **910 AI coding CLIs**.
 
-Most recent additions: [noseyparker](clis/noseyparker/),
+Most recent additions: [mpv](clis/mpv/),
+[wl-clipboard](clis/wl-clipboard/),
+[ncmpcpp](clis/ncmpcpp/),
+[noseyparker](clis/noseyparker/),
 [reptyr](clis/reptyr/),
 [patat](clis/patat/),
 [mdtt](clis/mdtt/),
