@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **820 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **823 AI coding CLIs**.
 
-Most recent additions: [terraform-docs](clis/terraform-docs/),
+Most recent additions: [muffet](clis/muffet/),
+[dhall](clis/dhall/),
+[gotestsum](clis/gotestsum/),
+[terraform-docs](clis/terraform-docs/),
 [evans](clis/evans/),
 [ali](clis/ali/),
 [step](clis/step/),
