@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **895 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **898 AI coding CLIs**.
 
-Most recent additions: [qalc](clis/qalc/),
+Most recent additions: [logdy](clis/logdy/),
+[hexpatch](clis/hexpatch/),
+[f2](clis/f2/),
+[qalc](clis/qalc/),
 [tut](clis/tut/),
 [s-tui](clis/s-tui/),
 [sc-im](clis/sc-im/),
