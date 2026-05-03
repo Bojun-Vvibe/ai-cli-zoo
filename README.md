@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **970 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **973 AI coding CLIs**.
 
-Most recent additions: [paru](clis/paru/),
+Most recent additions: [tenv](clis/tenv/),
+[mirrord](clis/mirrord/),
+[figlet](clis/figlet/),
+[paru](clis/paru/),
 [dstask](clis/dstask/),
 [upterm](clis/upterm/),
 [zarf](clis/zarf/),
