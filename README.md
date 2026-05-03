@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [reviewdog](clis/reviewdog/),
+Most recent additions: [turbo](clis/turbo/),
+[go-jsonnet](clis/go-jsonnet/),
+[devspace](clis/devspace/),
+[reviewdog](clis/reviewdog/),
 [gofumpt](clis/gofumpt/),
 [kluctl](clis/kluctl/),
 [flox](clis/flox/),
