@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [oxlint](clis/oxlint/),
+Most recent additions: [cargo-mutants](clis/cargo-mutants/),
+[autorestic](clis/autorestic/),
+[pluto](clis/pluto/),
+[oxlint](clis/oxlint/),
 [litefs](clis/litefs/),
 [marksman](clis/marksman/),
 [actionlint](clis/actionlint/),
