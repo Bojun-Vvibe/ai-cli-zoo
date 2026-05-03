@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **952 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **955 AI coding CLIs**.
 
-Most recent additions: [felix](clis/felix/),
+Most recent additions: [kakoune](clis/kakoune/),
+[frp](clis/frp/),
+[qrcp](clis/qrcp/),
+[felix](clis/felix/),
 [gtm](clis/gtm/),
 [fzf-tab](clis/fzf-tab/),
 [tre-command](clis/tre-command/),
