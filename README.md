@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [quickwit](clis/quickwit/),
+Most recent additions: [actionlint](clis/actionlint/),
+[cargo-deny](clis/cargo-deny/),
+[podlet](clis/podlet/),
+[quickwit](clis/quickwit/),
 [sqruff](clis/sqruff/),
 [pyrefly](clis/pyrefly/),
 [falco](clis/falco/),
