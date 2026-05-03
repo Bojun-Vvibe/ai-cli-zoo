@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **934 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **937 AI coding CLIs**.
 
-Most recent additions: [trashy](clis/trashy/),
+Most recent additions: [rmlint](clis/rmlint/),
+[kail](clis/kail/),
+[tspin](clis/tspin/),
+[trashy](clis/trashy/),
 [angle-grinder](clis/angle-grinder/),
 [dooit](clis/dooit/),
 [stu](clis/stu/),
