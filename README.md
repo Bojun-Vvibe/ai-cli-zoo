@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **940 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **943 AI coding CLIs**.
 
-Most recent additions: [tracexec](clis/tracexec/),
+Most recent additions: [nvitop](clis/nvitop/),
+[iamb](clis/iamb/),
+[shadowenv](clis/shadowenv/),
+[tracexec](clis/tracexec/),
 [pdfgrep](clis/pdfgrep/),
 [mailpit](clis/mailpit/),
 [rmlint](clis/rmlint/),
