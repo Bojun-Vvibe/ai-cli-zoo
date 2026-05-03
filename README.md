@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **925 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **928 AI coding CLIs**.
 
-Most recent additions: [spotify-player](clis/spotify-player/),
+Most recent additions: [hut](clis/hut/),
+[khard](clis/khard/),
+[amfora](clis/amfora/),
+[spotify-player](clis/spotify-player/),
 [termdown](clis/termdown/),
 [teip](clis/teip/),
 [moar](clis/moar/),
