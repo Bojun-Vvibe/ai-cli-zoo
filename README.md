@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **982 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **985 AI coding CLIs**.
 
-Most recent additions: [marp-cli](clis/marp-cli/),
+Most recent additions: [timew](clis/timew/),
+[pgbackrest](clis/pgbackrest/),
+[talosctl](clis/talosctl/),
+[marp-cli](clis/marp-cli/),
 [krew](clis/krew/),
 [pgweb](clis/pgweb/),
 [otel-desktop-viewer](clis/otel-desktop-viewer/),
