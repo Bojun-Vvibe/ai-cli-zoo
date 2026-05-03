@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [cargo-mutants](clis/cargo-mutants/),
+Most recent additions: [cargo-make](clis/cargo-make/),
+[vcluster](clis/vcluster/),
+[alloy](clis/alloy/),
+[cargo-mutants](clis/cargo-mutants/),
 [autorestic](clis/autorestic/),
 [pluto](clis/pluto/),
 [oxlint](clis/oxlint/),
