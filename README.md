@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **946 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **949 AI coding CLIs**.
 
-Most recent additions: [piknik](clis/piknik/),
+Most recent additions: [tre-command](clis/tre-command/),
+[lemmeknow](clis/lemmeknow/),
+[biodiff](clis/biodiff/),
+[piknik](clis/piknik/),
 [bbolt](clis/bbolt/),
 [jp](clis/jp/),
 [nvitop](clis/nvitop/),
