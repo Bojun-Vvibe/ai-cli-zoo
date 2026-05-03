@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **988 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **991 AI coding CLIs**.
 
-Most recent additions: [timew](clis/timew/),
+Most recent additions: [cargo-binstall](clis/cargo-binstall/),
+[risingwave](clis/risingwave/),
+[pocketbase](clis/pocketbase/),
+[timew](clis/timew/),
 [pgbackrest](clis/pgbackrest/),
 [talosctl](clis/talosctl/),
 [marp-cli](clis/marp-cli/),
