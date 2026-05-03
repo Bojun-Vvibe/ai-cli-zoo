@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **976 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **979 AI coding CLIs**.
 
-Most recent additions: [vault](clis/vault/),
+Most recent additions: [otel-desktop-viewer](clis/otel-desktop-viewer/),
+[toot](clis/toot/),
+[kubectl-neat](clis/kubectl-neat/),
+[vault](clis/vault/),
 [nebula](clis/nebula/),
 [mage](clis/mage/),
 [tenv](clis/tenv/),
