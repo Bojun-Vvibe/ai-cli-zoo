@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **964 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **967 AI coding CLIs**.
 
-Most recent additions: [asdf](clis/asdf/),
+Most recent additions: [zarf](clis/zarf/),
+[gowall](clis/gowall/),
+[xcaddy](clis/xcaddy/),
+[asdf](clis/asdf/),
 [forgejo](clis/forgejo/),
 [kompose](clis/kompose/),
 [mutagen](clis/mutagen/),
