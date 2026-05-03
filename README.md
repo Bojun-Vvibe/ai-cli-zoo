@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [falco](clis/falco/),
+Most recent additions: [quickwit](clis/quickwit/),
+[sqruff](clis/sqruff/),
+[pyrefly](clis/pyrefly/),
+[falco](clis/falco/),
 [k0sctl](clis/k0sctl/),
 [pgcat](clis/pgcat/),
 [cargo-binstall](clis/cargo-binstall/),
