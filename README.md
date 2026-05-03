@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **985 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **988 AI coding CLIs**.
 
 Most recent additions: [timew](clis/timew/),
 [pgbackrest](clis/pgbackrest/),
