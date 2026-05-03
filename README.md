@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **958 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **961 AI coding CLIs**.
 
-Most recent additions: [gotty](clis/gotty/),
+Most recent additions: [mutagen](clis/mutagen/),
+[zstd](clis/zstd/),
+[streamlink](clis/streamlink/),
+[gotty](clis/gotty/),
 [termgraph](clis/termgraph/),
 [restish](clis/restish/),
 [kakoune](clis/kakoune/),
