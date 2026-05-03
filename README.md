@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [actionlint](clis/actionlint/),
+Most recent additions: [oxlint](clis/oxlint/),
+[litefs](clis/litefs/),
+[marksman](clis/marksman/),
+[actionlint](clis/actionlint/),
 [cargo-deny](clis/cargo-deny/),
 [podlet](clis/podlet/),
 [quickwit](clis/quickwit/),
