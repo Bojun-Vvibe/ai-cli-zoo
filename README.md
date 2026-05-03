@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [flox](clis/flox/),
+Most recent additions: [reviewdog](clis/reviewdog/),
+[gofumpt](clis/gofumpt/),
+[kluctl](clis/kluctl/),
+[flox](clis/flox/),
 [nixpacks](clis/nixpacks/),
 [uutils-coreutils](clis/uutils-coreutils/),
 [cargo-make](clis/cargo-make/),
