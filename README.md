@@ -1,6 +1,6 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **991 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **994 AI coding CLIs**.
 
 Most recent additions: [cargo-binstall](clis/cargo-binstall/),
 [risingwave](clis/risingwave/),
