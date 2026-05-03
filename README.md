@@ -1,8 +1,11 @@
 # ai-cli-zoo
 
-A curated, deeply-annotated catalog comparing **949 AI coding CLIs**.
+A curated, deeply-annotated catalog comparing **952 AI coding CLIs**.
 
-Most recent additions: [tre-command](clis/tre-command/),
+Most recent additions: [felix](clis/felix/),
+[gtm](clis/gtm/),
+[fzf-tab](clis/fzf-tab/),
+[tre-command](clis/tre-command/),
 [lemmeknow](clis/lemmeknow/),
 [biodiff](clis/biodiff/),
 [piknik](clis/piknik/),
@@ -12,9 +15,6 @@ Most recent additions: [tre-command](clis/tre-command/),
 [iamb](clis/iamb/),
 [shadowenv](clis/shadowenv/),
 [tracexec](clis/tracexec/),
-[pdfgrep](clis/pdfgrep/),
-[mailpit](clis/mailpit/),
-[rmlint](clis/rmlint/),
 [kail](clis/kail/),
 [tspin](clis/tspin/),
 [trashy](clis/trashy/),
