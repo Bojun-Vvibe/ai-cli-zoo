@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [scrcpy](clis/scrcpy/),
+Most recent additions: [aerospace](clis/aerospace/),
+[miniflux](clis/miniflux/),
+[silverbullet](clis/silverbullet/),
+[scrcpy](clis/scrcpy/),
 [mqttui](clis/mqttui/),
 [mediamtx](clis/mediamtx/),
 [wiremix](clis/wiremix/),
