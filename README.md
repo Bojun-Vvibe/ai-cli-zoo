@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [sesh](clis/sesh/),
+Most recent additions: [vdirsyncer](clis/vdirsyncer/),
+[tectonic](clis/tectonic/),
+[fossil](clis/fossil/),
+[sesh](clis/sesh/),
 [ddgr](clis/ddgr/),
 [fastmod](clis/fastmod/),
 [qpdf](clis/qpdf/),
