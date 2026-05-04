@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [temporal](clis/temporal/),
+Most recent additions: [iftop](clis/iftop/),
+[dotdrop](clis/dotdrop/),
+[fzy](clis/fzy/),
+[temporal](clis/temporal/),
 [sox](clis/sox/),
 [bashly](clis/bashly/),
 [pizauth](clis/pizauth/),
