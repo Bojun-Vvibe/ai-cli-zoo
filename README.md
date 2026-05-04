@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [aerospace](clis/aerospace/),
+Most recent additions: [tigerbeetle](clis/tigerbeetle/),
+[gleam](clis/gleam/),
+[asciidoctor](clis/asciidoctor/),
+[aerospace](clis/aerospace/),
 [miniflux](clis/miniflux/),
 [silverbullet](clis/silverbullet/),
 [scrcpy](clis/scrcpy/),
