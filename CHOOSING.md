@@ -643,6 +643,71 @@ agent. These are install-once-and-forget tools.
   an assignable incident view across every repo in the org. Pair
   with `ripsecrets` or `gitleaks` for offline / air-gapped paths
   where shipping bytes off-box is not an option.
+- **Find security-relevant patterns (`subprocess.run(shell=True,
+  user_input)`, `requests.get(..., verify=False)`, hardcoded JWT
+  secret, raw SQL string-concat, K8s `runAsRoot: true`, AWS S3
+  public ACL) across a polyglot repo with one rule format and one
+  CLI** → [`semgrep`](clis/semgrep/) (Python+OCaml; LGPL-2.1).
+  Pattern syntax *is* the target language — `$X == $X` matches
+  every tautological self-comparison in Python / Go / Java / TS /
+  Ruby / C / Terraform / YAML / Dockerfile / ~30 more — with an
+  intra-file taint mode and a curated registry of rule packs
+  (`p/owasp-top-ten`, `p/secrets`, `p/django`, `p/javascript`,
+  `p/golang`, `p/terraform`, `p/dockerfile`, `p/kubernetes`).
+  Different shape from [`ast-grep`](clis/ast-grep/) (syntactic-only,
+  faster, no taint), from `codeql` (much deeper inter-procedural
+  analysis but minutes-to-hours per scan and a Datalog DSL with a
+  steep curve), from [`trivy`](clis/trivy/) /
+  [`grype`](clis/grype/) / [`osv-scanner`](clis/osv-scanner/)
+  (artifact CVE scanners, "do my deps have CVEs" not "is *my*
+  code calling `eval(user_input)`"), and from
+  [`trufflehog`](clis/trufflehog/) / [`gitleaks`](clis/gitleaks/)
+  / [`ggshield`](clis/ggshield/) (secret-only). Pick `semgrep` as
+  the cross-language SAST gate; pair it with `ast-grep` for
+  large-scale syntactic refactors and the dedicated secret
+  scanners for credentials. `semgrep ci --baseline-ref origin/main
+  --config p/default --config p/owasp-top-ten` is the standard
+  PR-diff-only invocation.
+- **Find unused files / exports / dependencies / types / enum
+  members in a TypeScript or JavaScript repo (including pnpm /
+  turborepo / nx monorepos), with framework awareness for ~70
+  configs (`next.config.*`, `vite.config.*`, `jest.config.*`,
+  `eslint.config.*`, …) so it does not flag legitimate entry
+  points** → [`knip`](clis/knip/) (TS; ISC). Strict superset of
+  `depcheck` (which is `package.json`-only) and `ts-prune`
+  (archived in 2023, exports-only). Built on `oxc-parser` /
+  `oxc-resolver` for parse speed; `--reporter json` is the agent
+  surface. Different layer from `tsc --noUnusedLocals` /
+  `eslint-plugin-unused-imports` (file-local only) and from
+  [`madge`](https://github.com/pahen/madge) /
+  [`dependency-cruiser`](https://github.com/sverweij/dependency-cruiser)
+  (graph-visualisation only). The JS/TS-side member of the
+  polyglot dead-code family alongside
+  [`cargo-machete`](clis/cargo-machete/) (Rust deps) and Python /
+  Go equivalents. Pick `knip` for any non-trivial TS/JS codebase
+  the moment "is anyone still importing this?" is a real
+  question.
+- **Format every `.md` file in a docs tree with a CommonMark-strict
+  AST round-trip (parse → AST → re-emit), with plugins for GFM /
+  frontmatter / footnotes / tables / TOC / per-fence formatters
+  (`black`, `ruff`, `gofmt` inside fenced code blocks)** →
+  [`mdformat`](clis/mdformat/) (Python; MIT). The markdown
+  equivalent of `black --check` / `gofmt -l`: AST-safe, agent-safe,
+  CI-shaped. Different shape from [`prettier`](https://prettier.io)
+  for markdown (looser CommonMark conformance, asterisk emphasis
+  defaults, drags in Node toolchain), from
+  [`dprint`](clis/dprint/) `+ dprint-plugin-markdown` (single Rust
+  binary, much faster on huge trees, smaller plugin ecosystem),
+  from [`markdownlint-cli2`](clis/markdownlint-cli2/) (a
+  *linter*, not a formatter — flags MD013 / MD025 etc., does not
+  rewrite layout), and from [`remark`](https://github.com/remarkjs/remark)
+  (full Babel-for-markdown transform engine, more flexible but
+  more configuration sprawl). Pair with `markdownlint-cli2`
+  (style policy) and `vale` / `harper` (prose) for full
+  markdown-PR coverage. Pick `mdformat` when the markdown tree
+  *is* the deliverable and AST-correct round-trip matters; pick
+  `prettier` when markdown is one of many file types in a JS-
+  formatted repo; pick `dprint` when wall-clock dominates.
 
 ### Operating systems & shells
 

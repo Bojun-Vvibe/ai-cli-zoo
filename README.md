@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [granted](clis/granted/),
+Most recent additions: [mdformat](clis/mdformat/),
+[semgrep](clis/semgrep/),
+[knip](clis/knip/),
+[granted](clis/granted/),
 [kamal](clis/kamal/),
 [bencher](clis/bencher/),
 [minikube](clis/minikube/),
