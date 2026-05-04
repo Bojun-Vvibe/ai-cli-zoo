@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [flameshot](clis/flameshot/),
+Most recent additions: [kafkactl](clis/kafkactl/),
+[clickhouse](clis/clickhouse/),
+[dvtm](clis/dvtm/),
+[flameshot](clis/flameshot/),
 [tinymist](clis/tinymist/),
 [lilypond](clis/lilypond/),
 [dozzle](clis/dozzle/),
