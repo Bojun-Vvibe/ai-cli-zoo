@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [mdformat](clis/mdformat/),
+Most recent additions: [py-spy](clis/py-spy/),
+[hey](clis/hey/),
+[samply](clis/samply/),
+[mdformat](clis/mdformat/),
 [semgrep](clis/semgrep/),
 [knip](clis/knip/),
 [granted](clis/granted/),
