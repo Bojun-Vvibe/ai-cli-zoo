@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [qpdf](clis/qpdf/),
+Most recent additions: [sesh](clis/sesh/),
+[ddgr](clis/ddgr/),
+[fastmod](clis/fastmod/),
+[qpdf](clis/qpdf/),
 [exiftool](clis/exiftool/),
 [mas](clis/mas/),
 [kafkactl](clis/kafkactl/),
