@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [wiremix](clis/wiremix/),
+Most recent additions: [scrcpy](clis/scrcpy/),
+[mqttui](clis/mqttui/),
+[mediamtx](clis/mediamtx/),
+[wiremix](clis/wiremix/),
 [bombadillo](clis/bombadillo/),
 [bagels](clis/bagels/),
 [iftop](clis/iftop/),
