@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [pizauth](clis/pizauth/),
+Most recent additions: [temporal](clis/temporal/),
+[sox](clis/sox/),
+[bashly](clis/bashly/),
+[pizauth](clis/pizauth/),
 [senpai](clis/senpai/),
 [grim](clis/grim/),
 [cdebug](clis/cdebug/),
