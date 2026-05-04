@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [dozzle](clis/dozzle/),
+Most recent additions: [flameshot](clis/flameshot/),
+[tinymist](clis/tinymist/),
+[lilypond](clis/lilypond/),
+[dozzle](clis/dozzle/),
 [runme](clis/runme/),
 [wego](clis/wego/),
 [tigerbeetle](clis/tigerbeetle/),
