@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [minikube](clis/minikube/),
+Most recent additions: [granted](clis/granted/),
+[kamal](clis/kamal/),
+[bencher](clis/bencher/),
+[minikube](clis/minikube/),
 [promtool](clis/promtool/),
 [istioctl](clis/istioctl/),
 [opentofu](clis/opentofu/),
