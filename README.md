@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [proto](clis/proto/),
+Most recent additions: [opentofu](clis/opentofu/),
+[opencost](clis/opencost/),
+[yamllint](clis/yamllint/),
+[proto](clis/proto/),
 [bkt](clis/bkt/),
 [aws-vault](clis/aws-vault/),
 [turbo](clis/turbo/),
