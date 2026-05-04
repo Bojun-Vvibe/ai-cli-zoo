@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [commitizen](clis/commitizen/),
+Most recent additions: [ledger](clis/ledger/),
+[beancount](clis/beancount/),
+[fava](clis/fava/),
+[commitizen](clis/commitizen/),
 [cargo-release](clis/cargo-release/),
 [fisher](clis/fisher/),
 [py-spy](clis/py-spy/),
