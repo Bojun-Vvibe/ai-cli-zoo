@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [tigerbeetle](clis/tigerbeetle/),
+Most recent additions: [dozzle](clis/dozzle/),
+[runme](clis/runme/),
+[wego](clis/wego/),
+[tigerbeetle](clis/tigerbeetle/),
 [gleam](clis/gleam/),
 [asciidoctor](clis/asciidoctor/),
 [aerospace](clis/aerospace/),
