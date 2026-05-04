@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [svgo](clis/svgo/),
+Most recent additions: [cdebug](clis/cdebug/),
+[sq](clis/sq/),
+[reflex](clis/reflex/),
+[svgo](clis/svgo/),
 [pngquant](clis/pngquant/),
 [jpegoptim](clis/jpegoptim/),
 [ledger](clis/ledger/),
