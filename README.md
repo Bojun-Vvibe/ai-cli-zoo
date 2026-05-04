@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [vdirsyncer](clis/vdirsyncer/),
+Most recent additions: [xidel](clis/xidel/),
+[notmuch](clis/notmuch/),
+[picocom](clis/picocom/),
+[vdirsyncer](clis/vdirsyncer/),
 [tectonic](clis/tectonic/),
 [fossil](clis/fossil/),
 [sesh](clis/sesh/),
