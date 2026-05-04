@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [kafkactl](clis/kafkactl/),
+Most recent additions: [qpdf](clis/qpdf/),
+[exiftool](clis/exiftool/),
+[mas](clis/mas/),
+[kafkactl](clis/kafkactl/),
 [clickhouse](clis/clickhouse/),
 [dvtm](clis/dvtm/),
 [flameshot](clis/flameshot/),
