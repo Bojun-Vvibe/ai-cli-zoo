@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [somo](clis/somo/),
+Most recent additions: [greenclip](clis/greenclip/),
+[filebrowser](clis/filebrowser/),
+[greenmask](clis/greenmask/),
+[somo](clis/somo/),
 [recoverpy](clis/recoverpy/),
 [bartib](clis/bartib/),
 [dotenv-linter](clis/dotenv-linter/),
