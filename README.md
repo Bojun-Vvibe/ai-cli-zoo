@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [igrep](clis/igrep/),
+Most recent additions: [tidy-viewer](clis/tidy-viewer/),
+[percollate](clis/percollate/),
+[howdoi](clis/howdoi/),
+[igrep](clis/igrep/),
 [gitql](clis/gitql/),
 [pik](clis/pik/),
 [httm](clis/httm/),
