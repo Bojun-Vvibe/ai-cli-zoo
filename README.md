@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [httm](clis/httm/),
+Most recent additions: [igrep](clis/igrep/),
+[gitql](clis/gitql/),
+[pik](clis/pik/),
+[httm](clis/httm/),
 [xc](clis/xc/),
 [grcov](clis/grcov/),
 [gitmoji-cli](clis/gitmoji-cli/),
