@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [drill](clis/drill/),
+Most recent additions: [pomo](clis/pomo/),
+[gh-ost](clis/gh-ost/),
+[dnslookup](clis/dnslookup/),
+[drill](clis/drill/),
 [mblaze](clis/mblaze/),
 [youplot](clis/youplot/),
 [tidy-viewer](clis/tidy-viewer/),
