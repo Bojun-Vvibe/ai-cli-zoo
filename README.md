@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [cheat](clis/cheat/),
+Most recent additions: [horcrux](clis/horcrux/),
+[forgit](clis/forgit/),
+[walk](clis/walk/),
+[cheat](clis/cheat/),
 [epy](clis/epy/),
 [uni](clis/uni/),
 [resvg](clis/resvg/),
