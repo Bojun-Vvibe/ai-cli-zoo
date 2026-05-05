@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [nsxiv](clis/nsxiv/),
+Most recent additions: [dotenv-linter](clis/dotenv-linter/),
+[diskus](clis/diskus/),
+[terminaltexteffects](clis/terminaltexteffects/),
+[nsxiv](clis/nsxiv/),
 [translate-shell](clis/translate-shell/),
 [ponysay](clis/ponysay/),
 [logcli](clis/logcli/),
