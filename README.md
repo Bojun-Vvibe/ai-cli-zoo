@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [bfs](clis/bfs/),
+Most recent additions: [tuckr](clis/tuckr/),
+[hstr](clis/hstr/),
+[kube-bench](clis/kube-bench/),
+[bfs](clis/bfs/),
 [ttyplot](clis/ttyplot/),
 [abduco](clis/abduco/),
 [greenclip](clis/greenclip/),
