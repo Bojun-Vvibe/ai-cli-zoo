@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [gitmoji-cli](clis/gitmoji-cli/),
+Most recent additions: [httm](clis/httm/),
+[xc](clis/xc/),
+[grcov](clis/grcov/),
+[gitmoji-cli](clis/gitmoji-cli/),
 [rare](clis/rare/),
 [trzsz](clis/trzsz/),
 [xidel](clis/xidel/),
