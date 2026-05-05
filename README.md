@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [tuckr](clis/tuckr/),
+Most recent additions: [gopass](clis/gopass/),
+[sake](clis/sake/),
+[ggh](clis/ggh/),
+[tuckr](clis/tuckr/),
 [hstr](clis/hstr/),
 [kube-bench](clis/kube-bench/),
 [bfs](clis/bfs/),
