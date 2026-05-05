@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [dotenv-linter](clis/dotenv-linter/),
+Most recent additions: [somo](clis/somo/),
+[recoverpy](clis/recoverpy/),
+[bartib](clis/bartib/),
+[dotenv-linter](clis/dotenv-linter/),
 [diskus](clis/diskus/),
 [terminaltexteffects](clis/terminaltexteffects/),
 [nsxiv](clis/nsxiv/),
