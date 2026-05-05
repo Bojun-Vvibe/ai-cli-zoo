@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [horcrux](clis/horcrux/),
+Most recent additions: [git-graph](clis/git-graph/),
+[musikcube](clis/musikcube/),
+[menyoki](clis/menyoki/),
+[horcrux](clis/horcrux/),
 [forgit](clis/forgit/),
 [walk](clis/walk/),
 [cheat](clis/cheat/),
