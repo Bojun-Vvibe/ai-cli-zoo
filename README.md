@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [logcli](clis/logcli/),
+Most recent additions: [nsxiv](clis/nsxiv/),
+[translate-shell](clis/translate-shell/),
+[ponysay](clis/ponysay/),
+[logcli](clis/logcli/),
 [gosec](clis/gosec/),
 [cyme](clis/cyme/),
 [git-graph](clis/git-graph/),
