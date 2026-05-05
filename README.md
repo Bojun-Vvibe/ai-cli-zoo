@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [killport](clis/killport/),
+Most recent additions: [resvg](clis/resvg/),
+[podman-tui](clis/podman-tui/),
+[hgrep](clis/hgrep/),
+[killport](clis/killport/),
 [eva](clis/eva/),
 [findutils](clis/findutils/),
 [pomo](clis/pomo/),
