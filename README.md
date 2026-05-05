@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [xidel](clis/xidel/),
+Most recent additions: [gitmoji-cli](clis/gitmoji-cli/),
+[rare](clis/rare/),
+[trzsz](clis/trzsz/),
+[xidel](clis/xidel/),
 [notmuch](clis/notmuch/),
 [picocom](clis/picocom/),
 [vdirsyncer](clis/vdirsyncer/),
