@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [gopass](clis/gopass/),
+Most recent additions: [bunster](clis/bunster/),
+[toxiproxy](clis/toxiproxy/),
+[rattler-build](clis/rattler-build/),
+[gopass](clis/gopass/),
 [sake](clis/sake/),
 [ggh](clis/ggh/),
 [tuckr](clis/tuckr/),
