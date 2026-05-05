@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [pomo](clis/pomo/),
+Most recent additions: [killport](clis/killport/),
+[eva](clis/eva/),
+[findutils](clis/findutils/),
+[pomo](clis/pomo/),
 [gh-ost](clis/gh-ost/),
 [dnslookup](clis/dnslookup/),
 [drill](clis/drill/),
