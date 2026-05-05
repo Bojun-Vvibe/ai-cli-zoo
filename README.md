@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [greenclip](clis/greenclip/),
+Most recent additions: [bfs](clis/bfs/),
+[ttyplot](clis/ttyplot/),
+[abduco](clis/abduco/),
+[greenclip](clis/greenclip/),
 [filebrowser](clis/filebrowser/),
 [greenmask](clis/greenmask/),
 [somo](clis/somo/),
