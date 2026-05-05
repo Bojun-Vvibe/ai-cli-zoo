@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [tidy-viewer](clis/tidy-viewer/),
+Most recent additions: [drill](clis/drill/),
+[mblaze](clis/mblaze/),
+[youplot](clis/youplot/),
+[tidy-viewer](clis/tidy-viewer/),
 [percollate](clis/percollate/),
 [howdoi](clis/howdoi/),
 [igrep](clis/igrep/),
