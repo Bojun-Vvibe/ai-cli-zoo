@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [esc](clis/esc/),
+Most recent additions: [iroh](clis/iroh/),
+[rio](clis/rio/),
+[grv](clis/grv/),
+[esc](clis/esc/),
 [kubevela](clis/kubevela/),
 [troubleshoot](clis/troubleshoot/),
 [q](clis/q/),
