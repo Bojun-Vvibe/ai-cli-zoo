@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [dep-tree](clis/dep-tree/),
+Most recent additions: [carbonyl](clis/carbonyl/),
+[daktilo](clis/daktilo/),
+[hostctl](clis/hostctl/),
+[dep-tree](clis/dep-tree/),
 [sunbeam](clis/sunbeam/),
 [git-changelog](clis/git-changelog/),
 [kine](clis/kine/),

@@ -801,6 +801,48 @@ agent. These are install-once-and-forget tools.
   do **not** choose for partitioning + filesystem operations
   (use `parted` / `gparted` / `fdisk`) or for cloning live
   running systems (use `clonezilla` / `partclone`).
+- **Manage `/etc/hosts` as named, toggleable profiles instead of
+  `sudo $EDITOR /etc/hosts`** → [`hostctl`](clis/hostctl/) (Go;
+  MIT). Profile-grouped writes bracketed by
+  `# profile.begin <name>` markers, enable/disable a whole profile
+  in one command, YAML/JSON/TOML import-export so per-client or
+  `staging` host maps can live in dotfiles, Docker integration to
+  pull container IPs in automatically. Single static binary; the
+  only privileged step is the actual write to `/etc/hosts` — no
+  setuid helper, by design. Pick over hand-editing when you juggle
+  multiple clients / environments locally; pick over a full DNS
+  resolver setup (`dnsmasq`, `coredns`) when entries are
+  per-developer rather than infrastructure-wide.
+
+### Novelty / quality-of-life
+
+- **Browse the modern web from inside a TTY (yes, including JS,
+  WebGL, and video over SSH)** → [`carbonyl`](clis/carbonyl/)
+  (Rust + C++ Chromium fork; BSD-3-Clause). Replaces the Skia GPU
+  backend with a half-block (`▀`/`▄`) unicode raster path,
+  keeping Blink + V8 + WebAudio intact, so SPAs render correctly
+  at ~60 fps over SSH with mouse support. The only entry in the
+  catalog where modern OAuth flows actually work in a remote shell
+  without forwarding a graphical session. Different shape from
+  [`browsh`](clis/browsh/) (Marionette + headless Firefox, lower
+  frame rate), [`elinks`](clis/elinks/) (text-only HTML, no JS),
+  and [`amfora`](clis/amfora/) / [`bombadillo`](clis/bombadillo/)
+  (Gemini/Gopher only). Project caveat: last release is 2023-02
+  with no CVE backports, so treat it as an SSH rescue tool /
+  novelty rather than a daily driver.
+- **Audio feedback on every keypress, configured per-app, with
+  multiple typewriter / mechanical-keyboard sample packs** →
+  [`daktilo`](clis/daktilo/) (Rust; Apache-2.0 / MIT). Multiple
+  `[[sound_preset]]` blocks in TOML with weighted sample pools,
+  per-key regex bindings, and `enabled_for` / `disabled_for`
+  window-title regex so the typewriter clack only plays in your
+  editor and not in Slack. Bundled presets: IBM Model M, Cherry MX
+  Blue, Olympia SM3, "boxy typewriter", drum kit. Different from
+  `bucklespring` (single sample, no per-app filtering, no
+  multi-preset config). Same author as
+  [`git-cliff`](clis/git-cliff/), [`menyoki`](clis/menyoki/),
+  and [`kmon`](clis/kmon/) — same single-binary, prebuilt-release
+  shape.
 
 ## 5c. Context-packing pipeline (LLM-input shaping)
 
