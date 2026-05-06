@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [pacaptr](clis/pacaptr/),
+Most recent additions: [prql](clis/prql/),
+[neomutt](clis/neomutt/),
+[mgmt](clis/mgmt/),
+[pacaptr](clis/pacaptr/),
 [projectable](clis/projectable/),
 [sniffglue](clis/sniffglue/),
 [carbonyl](clis/carbonyl/),
