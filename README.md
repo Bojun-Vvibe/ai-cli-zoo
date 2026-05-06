@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [prql](clis/prql/),
+Most recent additions: [eternal-terminal](clis/eternal-terminal/),
+[coder](clis/coder/),
+[wasmedge](clis/wasmedge/),
+[prql](clis/prql/),
 [neomutt](clis/neomutt/),
 [mgmt](clis/mgmt/),
 [pacaptr](clis/pacaptr/),
