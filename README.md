@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [carbonyl](clis/carbonyl/),
+Most recent additions: [pacaptr](clis/pacaptr/),
+[projectable](clis/projectable/),
+[sniffglue](clis/sniffglue/),
+[carbonyl](clis/carbonyl/),
 [daktilo](clis/daktilo/),
 [hostctl](clis/hostctl/),
 [dep-tree](clis/dep-tree/),
