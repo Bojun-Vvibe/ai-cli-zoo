@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [q](clis/q/),
+Most recent additions: [esc](clis/esc/),
+[kubevela](clis/kubevela/),
+[troubleshoot](clis/troubleshoot/),
+[q](clis/q/),
 [dnote](clis/dnote/),
 [hk](clis/hk/),
 [rqbit](clis/rqbit/),
