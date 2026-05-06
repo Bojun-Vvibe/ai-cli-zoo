@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [git-filter-repo](clis/git-filter-repo/),
+Most recent additions: [rqbit](clis/rqbit/),
+[gickup](clis/gickup/),
+[superhtml](clis/superhtml/),
+[git-filter-repo](clis/git-filter-repo/),
 [clusterctl](clis/clusterctl/),
 [oranda](clis/oranda/),
 [bunster](clis/bunster/),
