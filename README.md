@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [bunster](clis/bunster/),
+Most recent additions: [git-filter-repo](clis/git-filter-repo/),
+[clusterctl](clis/clusterctl/),
+[oranda](clis/oranda/),
+[bunster](clis/bunster/),
 [toxiproxy](clis/toxiproxy/),
 [rattler-build](clis/rattler-build/),
 [gopass](clis/gopass/),
