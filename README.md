@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [rqbit](clis/rqbit/),
+Most recent additions: [q](clis/q/),
+[dnote](clis/dnote/),
+[hk](clis/hk/),
+[rqbit](clis/rqbit/),
 [gickup](clis/gickup/),
 [superhtml](clis/superhtml/),
 [git-filter-repo](clis/git-filter-repo/),
