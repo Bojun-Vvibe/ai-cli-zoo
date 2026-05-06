@@ -2,7 +2,10 @@
 
 A curated, deeply-annotated catalog comparing **1000 AI coding CLIs**.
 
-Most recent additions: [kine](clis/kine/),
+Most recent additions: [dep-tree](clis/dep-tree/),
+[sunbeam](clis/sunbeam/),
+[git-changelog](clis/git-changelog/),
+[kine](clis/kine/),
 [neonctl](clis/neonctl/),
 [weaver](clis/weaver/),
 [sile](clis/sile/),
